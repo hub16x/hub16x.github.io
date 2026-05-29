@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="https://www.gstatic.com/classroom/favicon.png">
+    <title>Classroom 16x - Log in to play</title>
+    
+    <style>
+        :root {
+            --theme-color: #0f1aab;
+            --xp-color: #0958b3;
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Ocupa toda la altura de la ventana */
+            overflow: hidden; /* Evita barras de desplazamiento dobles */
+        }
+
+        /* --- ESTILOS DEL ENCABEZADO Y LOGO --- */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #eff2f5;
+            border-bottom: 1px solid #e4e6ef;
+        }
+
+        header a {
+            display: inline-block;
+        }
+
+        header img {
+            height: 40px;
+            vertical-align: middle;
+        }
+
+        /* --- ESTILOS DEL IFRAME --- */
+        .iframe-container {
+            flex: 1; /* Ocupa el espacio restante debajo del header */
+            width: 100%;
+            background-color: #000;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* --- ESTILOS DEL MENÚ DE CAMUFLAJE (Alt + Z) --- */
+        .cloak-modal {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+        }
+
+        .cloak-content {
+            background-color: #ffffff;
+            margin: 10% auto;
+            padding: 25px;
+            border-radius: 1.2rem;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--theme-color);
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .cloak-header {
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cloak-close {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #999;
+        }
+
+        .cloak-close:hover {
+            color: #f44336;
+        }
+
+        .cloak-field {
+            margin-bottom: 15px;
+        }
+
+        .cloak-field label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+
+        .cloak-select,
+        .cloak-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 0.5rem;
+            border: 1px solid #ccc;
+            font-family: inherit;
+        }
+
+        .cloak-btn-save {
+            background-color: var(--theme-color);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .cloak-btn-save:hover {
+            background-color: var(--xp-color);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Menú oculto de camuflaje (Alt + Z) -->
+    <div id="secretCloakModal" class="cloak-modal">
+        <div class="cloak-content">
+            <div class="cloak-header">
+                <span>Tab Disguise Settings</span>
+                <span class="cloak-close" onclick="toggleCloakMenu()">&times;</span>
+            </div>
+
+            <div class="cloak-field">
+                <label for="cloakCustomTitle">Custom Tab Title</label>
+                <input type="text" id="cloakCustomTitle" class="cloak-input" placeholder="Enter custom title...">
+            </div>
+
+            <div class="cloak-field">
+                <label for="cloakPresetLang">Preset Language Title</label>
+                <select id="cloakPresetLang" class="cloak-select" onchange="applyPresetLang(this.value)">
+                    <option value="">-- Choose a language --</option>
+                    <option value="en">English (Home - Classroom)</option>
+                    <option value="es">Español (Inicio - Classroom)</option>
+                    <option value="fr">Français (Accueil - Classroom)</option>
+                    <option value="de">Deutsch (Startseite - Classroom)</option>
+                </select>
+            </div>
+
+            <div class="cloak-field">
+                <label for="cloakIconSelect">Page Icon (Favicon Preset)</label>
+                <select id="cloakIconSelect" class="cloak-select">
+                    <option value="https://www.gstatic.com/classroom/favicon.png">Google Classroom (Default)</option>
+                    <option value="https://www.gstatic.com/images/branding/productlogos/drive_2026/v1/web-32dp/logo_drive_2026_color_1x_web_32dp.png">Google Drive</option>
+                    <option value="https://www.gstatic.com/images/branding/searchlogo/ico/favicon.ico">Google Search</option>
+                </select>
+            </div>
+
+            <div class="cloak-field">
+                <label for="cloakIconUrl">Or Paste Icon URL</label>
+                <input type="text" id="cloakIconUrl" class="cloak-input" placeholder="https://example.com/image.png">
+            </div>
+
+            <div class="cloak-field">
+                <label style="display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem;">Or Upload Image File</label>
+                <input type="file" id="cloakIconFile" accept="image/*" class="cloak-input" style="padding: 5px;">
+            </div>
+
+            <button class="cloak-btn-save" onclick="saveCloakSettings()">Apply Changes</button>
+        </div>
+    </div>
+
+    <!-- Barra Superior con tu Logo y Enlace -->
+    <header>
+        <!-- PON AQUÍ TU ENLACE Y TU LOGO -->
+        <a href="https://classroom16x.netlify.app">
+            <img src="/assets/logo/logo.png" alt="CLASSROOM 16X - UNBLOCKED UNBANNED GAMES EZ - PLAY NOW, ANYWHERE, JUST PLAY.">
+        </a>
+        <span style="font-size: 0.85rem; color: #7e8299;">Press <strong>Alt+Z</strong> to edit tab settings.</span>
+    </header>
+
+    <!-- Iframe Central -->
+    <div class="iframe-container">
+        <!-- PON AQUÍ LA URL DE TU PÁGINA -->
+        <iframe src="https://web.cloudmoonapp.com/" allow="fullscreen; autoplay; clipboard-write" sandbox="allow-scripts allow-forms allow-same-origin allow-popups" scrolling="yes"></iframe>
+    </div>
+
+    <!-- Scripts de Camuflaje -->
+    <script>
+        // --- 1. SISTEMA DE CAMUFLAJE AUTOMÁTICO AL INTERACTUAR ---
+        document.addEventListener("DOMContentLoaded", () => {
+            document.title = "Classroom 16x - Unblocked games EZ";
+
+            const titles = {
+                es: "Inicio - Classroom", en: "Home - Classroom", fr: "Accueil - Classroom",
+                de: "Startseite - Classroom", it: "Home page - Classroom", pt: "Início - Classroom"
+            };
+
+            function activarCamuflaje() {
+                const userLang = navigator.language || navigator.userLanguage;
+                const langCode = userLang.slice(0, 2);
+
+                // Cambiar al título falso de Classroom según idioma
+                document.title = titles[langCode] || "Home - Classroom";
+
+                // Remover los listeners para no consumir recursos
+                window.removeEventListener('mousemove', activarCamuflaje);
+                window.removeEventListener('keydown', activarCamuflaje);
+                window.removeEventListener('scroll', activarCamuflaje);
+                window.removeEventListener('touchstart', activarCamuflaje);
+                window.removeEventListener('click', activarCamuflaje);
+            }
+
+            // Escuchar la primera interacción física del usuario real
+            window.addEventListener('mousemove', activarCamuflaje); 
+            window.addEventListener('keydown', activarCamuflaje);   
+            window.addEventListener('scroll', activarCamuflaje);    
+            window.addEventListener('touchstart', activarCamuflaje);
+            window.addEventListener('click', activarCamuflaje);     
+        });
+
+        // --- 2. SISTEMA DE MENÚ DE CAMUFLAJE (Alt + Z) ---
+        window.addEventListener('keydown', (e) => {
+            if (e.altKey && e.key.toLowerCase() === 'z') {
+                e.preventDefault();
+                toggleCloakMenu();
+            }
+        });
+
+        function toggleCloakMenu() {
+            const modal = document.getElementById('secretCloakModal');
+            if (!modal) return;
+
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+
+                const customTitleInput = document.getElementById('cloakCustomTitle');
+                if (customTitleInput) {
+                    customTitleInput.value = document.title;
+                }
+
+                let currentIcon = document.querySelector("link[rel~='icon']");
+                if (currentIcon && currentIcon.href.indexOf('data:image') === -1) {
+                    const iconSelect = document.getElementById('cloakIconSelect');
+                    if (iconSelect) iconSelect.value = currentIcon.href;
+                }
+            }
+        }
+
+        const cloakLanguages = {
+            en: "Home - Classroom", es: "Inicio - Classroom", 
+            fr: "Accueil - Classroom", de: "Startseite - Classroom"
+        };
+
+        function applyPresetLang(langCode) {
+            if (langCode && cloakLanguages[langCode]) {
+                const titleInput = document.getElementById('cloakCustomTitle');
+                if (titleInput) titleInput.value = cloakLanguages[langCode];
+            }
+        }
+
+        function saveCloakSettings() {
+            const titleInput = document.getElementById('cloakCustomTitle');
+            const newTitle = titleInput ? titleInput.value.trim() : "";
+            const presetIcon = document.getElementById('cloakIconSelect').value;
+            const urlIcon = document.getElementById('cloakIconUrl').value.trim();
+            const fileInput = document.getElementById('cloakIconFile');
+
+            if (newTitle) {
+                document.title = newTitle;
+            }
+
+            const updateFavicon = (iconSrc) => {
+                let link = document.querySelector("link[rel~='icon']");
+                if (!link) {
+                    link = document.createElement('link');
+                    link.rel = 'icon';
+                    link.type = 'image/png';
+                    document.head.appendChild(link);
+                }
+                link.href = iconSrc;
+                toggleCloakMenu();
+            };
+
+            if (fileInput && fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    updateFavicon(e.target.result);
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else if (urlIcon) {
+                updateFavicon(urlIcon);
+            } else {
+                updateFavicon(presetIcon);
+            }
+        }
+    </script>
+</body>
+</html>

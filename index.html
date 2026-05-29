@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
+<!-- https://clooudmoonclassroom16x.netlify.app/ -->
 
 <head>
     <meta charset="UTF-8">
@@ -14,37 +15,148 @@
     <meta name="description"
         content="Classroom 16x is a free website that offers quick plays, in school or work, NO ADS! Play quick now!">
     <meta name="google-site-verification" content="cV1CSTdfgWO6O6DRk3wWbY_94nXT6P3_13SNT_zs5jQ" />
-    <!-- Estilo CSS cargado desde catbox (para no alargar el html) -->
-    <link rel="stylesheet" href="https://files.catbox.moe/gimk78.css">
-
-    <!-- Estilos Personalizados -->
+    <!-- Estilos Personalizados e Integración CSS -->
     <style>
         :root {
             --theme-color: #0f1aab;
             --xp-color: #0958b3;
+            --bs-blue: #335dff;
+            --bs-indigo: #754ffe;
+            --bs-purple: #8957ff;
+            --bs-pink: #ff579a;
+            --bs-red: #df325c;
+            --bs-orange: #ff5630;
+            --bs-yellow: #fa9e25;
+            --bs-green: #1cbd64;
+            --bs-teal: #22dddd;
+            --bs-cyan: #00d4ff;
+            --bs-white: #fff;
+            --bs-gray: #7e8299;
+            --bs-gray-dark: #81838a;
+            --bs-gray-100: #f5f8fa;
+            --bs-gray-200: #eff2f5;
+            --bs-gray-300: #e4e6ef;
+            --bs-gray-400: #b5b5c3;
+            --bs-gray-500: #a1a5b7;
+            --bs-gray-600: #7e8299;
+            --bs-gray-700: #5e6278;
+            --bs-gray-800: #81838a;
+            --bs-gray-900: #1f2023;
+            --bs-primary: #624de3;
+            --bs-secondary: #e4e6ef;
+            --bs-tertiary: #ff579a;
+            --bs-success: #1cbd64;
+            --bs-info: #00d4ff;
+            --bs-warning: #fa9e25;
+            --bs-danger: #df325c;
+            --bs-light: #eff2f5;
+            --bs-dark: #1f2023;
+            --bs-primary-rgb: 98, 77, 227;
+            --bs-secondary-rgb: 228, 230, 239;
+            --bs-tertiary-rgb: 255, 87, 154;
+            --bs-success-rgb: 28, 189, 100;
+            --bs-info-rgb: 0, 212, 255;
+            --bs-warning-rgb: 250, 158, 37;
+            --bs-danger-rgb: 223, 50, 92;
+            --bs-white-rgb: 255, 255, 255;
+            --bs-light-rgb: 239, 242, 245;
+            --bs-dark-rgb: 31, 32, 35;
+            --bs-gray-100-rgb: 245, 248, 250;
+            --bs-gray-200-rgb: 239, 242, 245;
+            --bs-gray-300-rgb: 228, 230, 239;
+            --bs-gray-400-rgb: 181, 181, 195;
+            --bs-gray-500-rgb: 161, 165, 183;
+            --bs-gray-600-rgb: 126, 130, 153;
+            --bs-gray-700-rgb: 94, 98, 120;
+            --bs-gray-800-rgb: 129, 131, 138;
+            --bs-gray-900-rgb: 31, 32, 35;
+            --bs-black-rgb: 0, 0, 0;
+            --bs-body-color-rgb: 94, 98, 120;
+            --bs-body-bg-rgb: 255, 255, 255;
+            --bs-font-sans-serif: "Inter";
+            --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+            --bs-body-font-family: var(--bs-font-sans-serif);
+            --bs-body-font-size: 1rem;
+            --bs-body-font-weight: 400;
+            --bs-body-line-height: 1.6;
+            --bs-body-color: #5e6278;
+            --bs-body-bg: #fff;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            :root {
+                scroll-behavior: smooth;
+            }
         }
 
         @font-face {
             font-family: 'Inter';
-            src: url('https://files.catbox.moe/0rqna3.woff2') format('woff2');
+            src: url('/assets/fonts/Inter.woff2') format('woff2');
             font-display: swap;
         }
 
         @font-face {
             font-family: 'Inter-SemiBold';
-            src: url('https://files.catbox.moe/ps9bqj.woff2') format('woff2');
+            src: url('/assets/fonts/Inter-SemiBold.woff2') format('woff2');
             font-display: swap;
         }
 
         @font-face {
             font-family: 'Inter-Bold';
-            src: url('https://files.catbox.moe/4usnmb.woff2') format('woff2');
+            src: url('/assets/fonts/Inter-Bold.woff2') format('woff2');
             font-display: swap;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--bs-body-font-family);
+            font-size: var(--bs-body-font-size);
+            font-weight: var(--bs-body-font-weight);
+            line-height: var(--bs-body-line-height);
+            color: var(--bs-body-color);
+            background-color: var(--bs-body-bg);
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        h6,
+        .h6,
+        h5,
+        .h5,
+        h4,
+        .h4,
+        h3,
+        .h3,
+        h2,
+        .h2,
+        h1,
+        .h1 {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--bs-gray-900);
+        }
+
+        h1,
+        .h1 {
+            font-size: calc(1.35rem + 1.2vw);
         }
 
         @media (min-width: 1200px) {
 
-            /* Ocupa el 96% de la pantalla, dejando solo un 2% libre a cada lado */
+            h1,
+            .h1 {
+                font-size: 2.25rem;
+            }
+
             #main-content,
             .navbar {
                 width: 96% !important;
@@ -53,9 +165,310 @@
             }
         }
 
+        h2,
+        .h2 {
+            font-size: calc(1.3rem + 0.6vw);
+        }
+
+        @media (min-width: 1200px) {
+
+            h2,
+            .h2 {
+                font-size: 1.75rem;
+            }
+        }
+
+        h4,
+        .h4 {
+            font-size: 1.125rem;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        b,
+        strong {
+            font-weight: 700;
+        }
+
+        img,
+        svg {
+            vertical-align: middle;
+        }
+
+        label {
+            display: inline-block;
+        }
+
+        button {
+            border-radius: 0;
+        }
+
+        input,
+        button,
+        select,
+        optgroup,
+        textarea {
+            margin: 0;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+        }
+
+        button,
+        select {
+            text-transform: none;
+        }
+
+        select {
+            word-wrap: normal;
+        }
+
+        button,
+        [type="button"],
+        [type="reset"],
+        [type="submit"] {
+            -webkit-appearance: button;
+        }
+
+        button:not(:disabled),
+        [type="button"]:not(:disabled),
+        [type="reset"]:not(:disabled),
+        [type="submit"]:not(:disabled) {
+            cursor: pointer;
+        }
+
+        iframe {
+            border: 0;
+        }
+
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container,
+        .container-fluid {
+            width: 100%;
+            padding-right: var(--bs-gutter-x, 1rem);
+            padding-left: var(--bs-gutter-x, 1rem);
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.4;
+            color: var(--bs-gray-700);
+            background-color: #e4e6ef;
+            border: 1px solid #e4e6ef;
+            border-radius: 0.375rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .form-control::placeholder {
+            color: var(--bs-gray-500);
+            opacity: 1;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+            width: 100%;
+        }
+
+        .input-group>.form-control {
+            position: relative;
+            flex: 1 1 auto;
+            width: 1%;
+            min-width: 0;
+        }
+
+        .input-group-text {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.4;
+            color: #7e8299;
+            text-align: center;
+            white-space: nowrap;
+            background-color: #e4e6ef;
+            border: 1px solid #e4e6ef;
+            border-radius: 0.375rem;
+        }
+
+        .input-group:not(.has-validation)> :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .input-group> :not(:first-child):not(.dropdown-menu) {
+            margin-left: -1px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .navbar {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 0.75rem;
+            padding-right: 0;
+            padding-bottom: 0.75rem;
+            padding-left: 0;
+        }
+
+        .navbar>.container-fluid {
+            display: flex;
+            flex-wrap: inherit;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            padding-top: 0.3rem;
+            padding-bottom: 0.3rem;
+            margin-right: 1rem;
+            font-size: 1.25rem;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 992px) {
+            .navbar-expand-lg {
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+            }
+        }
+
+        .navbar-light .navbar-brand {
+            color: rgba(0, 0, 0, 0.9);
+        }
+
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #eff2f5;
+            background-clip: border-box;
+            border: 1px solid #eff2f5;
+            border-radius: 0.5rem;
+        }
+
+        .card-body {
+            flex: 1 1 auto;
+            padding: 1.5rem 1.5rem;
+            color: #5e6278;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+
+        .shadow-none {
+            box-shadow: none !important;
+        }
+
+        .border-0 {
+            border: 0 !important;
+        }
+
+        .border-top {
+            border-top: 1px solid #e4e6ef !important;
+        }
+
+        .min-vh-100 {
+            min-height: 100vh !important;
+        }
+
+        .flex-column {
+            flex-direction: column !important;
+        }
+
+        .flex-grow-1 {
+            flex-grow: 1 !important;
+        }
+
+        .justify-content-between {
+            justify-content: space-between !important;
+        }
+
+        .align-items-center {
+            align-items: center !important;
+        }
+
+        .m-0 {
+            margin: 0 !important;
+        }
+
+        .mx-3 {
+            margin-right: 1rem !important;
+            margin-left: 1rem !important;
+        }
+
+        .mt-5 {
+            margin-top: 3rem !important;
+        }
+
+        .mb-3 {
+            margin-bottom: 1rem !important;
+        }
+
+        .mb-4 {
+            margin-bottom: 2rem !important;
+        }
+
+        .px-3 {
+            padding-right: 1rem !important;
+            padding-left: 1rem !important;
+        }
+
+        .py-4 {
+            padding-top: 2rem !important;
+            padding-bottom: 2rem !important;
+        }
+
+        .pe-2 {
+            padding-right: 0.5rem !important;
+        }
+
+        .ps-0 {
+            padding-left: 0 !important;
+        }
+
+        .text-gray-500 {
+            color: #a1a5b7 !important;
+        }
+
+        .bg-transparent {
+            background-color: transparent !important;
+        }
+
+        @media (max-width: 1399.98px) {
+            .container-fluid {
+                max-width: 1300px;
+            }
+        }
+
+        .layout-section {
+            padding: 1.5rem 0 2rem;
+        }
+
         @media (min-width: 1600px) {
 
-            /* En pantallas muy grandes, se queda en un cómodo 94% (3% libre a cada lado) */
             #main-content,
             .navbar {
                 width: 94% !important;
@@ -68,28 +481,67 @@
         .titulo h1 {
             font-family: 'Inter-SemiBold', sans-serif;
             text-transform: lowercase;
-            /* Mantiene la estética humilde del h1 */
             font-size: 35px;
         }
 
         .card-masonry {
             font-family: 'Inter', sans-serif;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            grid-gap: 20px;
+            grid-auto-rows: minmax(120px, auto);
+            grid-auto-flow: dense;
         }
 
         /* Optimización de Tarjetas */
-        .card-masonry .card img {
-            border-radius: 1em;
+        .card-masonry .card {
+            border: 0;
+            border-radius: 1rem;
+            background-color: transparent;
+            position: relative;
+            overflow: hidden;
         }
 
-        .card-masonry .card-body span {
+        .card-masonry .card img {
+            border-radius: 1rem;
+        }
+
+        .card-masonry .card .card-body {
+            position: absolute;
+            inset: 0 0 -2rem 0;
+            text-align: center;
+            padding: 1rem 0.5rem;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            background: linear-gradient(to bottom,
+                    rgba(19, 19, 21, 0.1) 0%,
+                    rgba(19, 19, 21, 0.45) 75%,
+                    rgba(19, 19, 21, 0.76) 100%);
+            z-index: 10;
+            opacity: 0;
+            transition: 0.25s;
+        }
+
+        .card-masonry .card .card-body span {
             color: white;
+        }
+
+        .card-masonry .card.large {
+            grid-column-end: span 2;
+            grid-row-end: span 2;
+        }
+
+        .card-masonry .card:hover .card-body {
+            opacity: 1;
+            bottom: 0;
         }
 
         .img-custom-width {
             width: 100%;
         }
 
-        /* 💻 Estilos para el visor del juego incrustado (Para que se adapte al diseño) */
+        /* Visor del juego incrustado */
         #pantalla-juego {
             width: 100%;
             text-align: center;
@@ -100,6 +552,7 @@
             width: 100%;
             max-width: 900px;
             height: 600px;
+            max-height: 70vh;
             border: 3px solid var(--theme-color);
             border-radius: 1em;
             background: #000;
@@ -133,14 +586,8 @@
             transition: background 0.2s;
         }
 
-        .btn-back:hover {
-            background-color: var(--xp-color);
-        }
-
-        /* 🆕 Estilos del Botón de Pantalla Completa */
-        .btn-fullscreen {
-            background-color: #28a745;
-            /* Color verde llamativo */
+        .btn-report {
+            background-color: #e74c3c;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -149,7 +596,27 @@
             font-family: 'Inter-Bold', sans-serif;
             margin-bottom: 20px;
             margin-left: 10px;
-            /* Separación horizontal del botón HOME */
+            transition: background 0.2s;
+        }
+
+        .btn-report:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-back:hover {
+            background-color: var(--xp-color);
+        }
+
+        .btn-fullscreen {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 0.5em;
+            cursor: pointer;
+            font-family: 'Inter-Bold', sans-serif;
+            margin-bottom: 20px;
+            margin-left: 10px;
             transition: background 0.2s;
         }
 
@@ -157,7 +624,7 @@
             background-color: #218838;
         }
 
-        /* Esto fuerza a que el texto sea blanco cuando el modo oscuro está activo */
+        /* Forzado de color blanco en modo oscuro */
         .modo-oscuro h1,
         .modo-oscuro h2,
         .modo-oscuro span,
@@ -166,12 +633,11 @@
             color: #ffffff !important;
         }
 
-        /* Opcional: Para asegurar que el título del buscador también sea visible */
         .modo-oscuro #buscador {
             color: #ffffff !important;
         }
 
-        /* 🕶️ Secret Cloak Menu Styles (Alt + Z) */
+        /* Secret Cloak Menu Styles (Alt + Z) */
         .cloak-modal {
             display: none;
             position: fixed;
@@ -270,6 +736,91 @@
         .cloak-btn-save:hover {
             background-color: var(--xp-color);
         }
+
+        /* Diseño de tres columnas pegado a los bordes */
+        .visor-layout-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 98% !important;
+            max-width: 100% !important;
+            margin: 0 auto;
+            gap: 15px;
+        }
+
+        .visor-central {
+            flex: 1;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        /* 💻 Lateral con Scroll Independiente */
+        .visor-lateral.card-masonry {
+            width: 280px !important;
+            flex-shrink: 0;
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 16px !important;
+            font-family: 'Inter', sans-serif !important;
+
+            /* Ajustes para Scroll Independiente */
+            max-height: 82vh !important;
+            overflow-y: auto !important;
+            padding-right: 0px;
+            /* Reducido a 0 porque no hay barra visible */
+
+            /* Ocultar scroll en Firefox e Internet Explorer/Edge antiguo */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        /* Ocultar scroll en navegadores basados en WebKit (Chrome, Safari, Edge moderno, Opera) */
+        .visor-lateral.card-masonry::-webkit-scrollbar {
+            display: none;
+        }
+
+        .visor-lateral.card-masonry::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .visor-lateral.card-masonry::-webkit-scrollbar-thumb {
+            background-color: rgba(155, 155, 155, 0.4);
+            border-radius: 10px;
+        }
+
+        .visor-lateral.card-masonry::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(155, 155, 155, 0.7);
+        }
+
+        /* Desactiva el formato grande de las tarjetas ".large" solo para las columnas laterales */
+        .visor-lateral.card-masonry .card.large {
+            grid-column-end: span 1 !important;
+            grid-row-end: span 1 !important;
+        }
+
+        /* Estructura para adaptar tus DIVs al formato cuadrado (1:1) en los laterales */
+        .visor-lateral.card-masonry .card {
+            width: 100% !important;
+            aspect-ratio: 1 / 1 !important;
+            margin: 0 !important;
+            overflow: hidden !important;
+            position: relative !important;
+            display: block !important;
+        }
+
+        /* Las imágenes ocupan todo el espacio del contenedor cuadrado */
+        .visor-lateral.card-masonry .card img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+        }
+
+        /* Oculta los laterales en pantallas de menor resolución */
+        @media (max-width: 1500px) {
+            .visor-lateral {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -282,7 +833,7 @@
                 <span class="cloak-close" onclick="toggleCloakMenu()">&times;</span>
             </div>
 
-            <!-- Campo del Título Personalizado (¡ESTO FALTABA!) -->
+            <!-- Campo del Título Personalizado -->
             <div class="cloak-field">
                 <label for="cloakCustomTitle">Custom Tab Title</label>
                 <input type="text" id="cloakCustomTitle" class="cloak-input" placeholder="Enter custom title...">
@@ -335,13 +886,13 @@
         </div>
     </div>
 
-    <!-- Barra de Navegación Corregida Responsiva -->
+    <!-- Barra de Navegación -->
     <nav class="navbar navbar-expand-lg layout-header navbar-light px-3">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <!-- Logo que actúa como botón de inicio -->
             <div class="navbar-brand m-0" style="cursor: pointer;" onclick="cerrarJuego()">
-                <img src="https://i.postimg.cc/5NwkhMWw/logo-3.png" height="40" alt="CLASSROOM 16X">
-                <button id="mi-boton-tema" onclick="cambiarTema()" style="padding: 8px 15px; cursor: pointer; border-radius: 8px; 
+                <img src="/assets/logo/logo.png" height="40" alt="CLASSROOM 16X">
+                <button id="mi-boton-tema" aria-label="Toggle dark mode" onclick="cambiarTema()" style="padding: 8px 15px; cursor: pointer; border-radius: 8px; 
     border: 2px solid #0f1aab; background: white; color: #0f1aab; 
     font-weight: bold; transition: 0.3s;">
                     🌙 Dark Mode
@@ -360,7 +911,8 @@
                         </svg>
                     </span>
                     <input type="text" class="form-control form-control-flush bg-transparent border-0 ps-0"
-                        id="buscador" placeholder="Search .." onkeyup="filtrarJuegos()" style="font-family: Inter;">
+                        id="buscador" placeholder="Search .." aria-label="Search games" onkeyup="filtrarJuegos()"
+                        style="font-family: Inter;">
                 </div>
             </div>
         </div>
@@ -373,16 +925,15 @@
             <!-- ──────── CONTAINER DEL MENÚ PRINCIPAL ──────── -->
             <div id="contenedor-menu">
                 <div class="titulo mb-4">
-                    <h1>classroom 16x - unƅlocked gаmes ez</h1>
+                    <h1 id="main-title-element">classroom 16x - unƅlocked gаmes ez</h1>
                 </div>
 
                 <!-- Rejilla de Tarjetas de Juegos -->
                 <div class="card-masonry">
-                    <!-- Juego: BIG TOWER -->
+                    <!-- Juego: BIG TOWER TINY SQUARE -->
                     <div onclick="abrirJuego('https://ubg98.github.io/BigTowerTinySquare/')" class="card large"
-                        style="cursor: pointer;">
-                        <img src="https://ezclasswork.com/public/upload/game/0lvyHxHUIP.png" alt="BIG TOWER"
-                            class="img-fluid">
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/big-tower-tiny-square.webp" alt="BIG TOWER" class="img-fluid">
                         <div class="card-body">
                             <span>BIG TOWER TINY SQUARE</span>
                         </div>
@@ -390,7 +941,7 @@
 
                     <!-- Juego: DRIVE MAD -->
                     <div onclick="abrirJuego('https://mellifluous-baklava-b2e4fd.netlify.app')" class="card"
-                        style="cursor: pointer;">
+                        style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://ezclasswork.com/public/upload/game/thumb-4TRMf8dlug.png" alt="DRIVE MAD"
                             class="img-fluid">
                         <div class="card-body">
@@ -400,7 +951,7 @@
 
                     <!-- Juego: STICKMAN HOOK -->
                     <div onclick="abrirJuego('https://stirring-rolypoly-f287c4.netlify.app')" class="card"
-                        style="cursor: pointer;">
+                        style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://ezclasswork.com/public/upload/game/thumb-3IZE1sWF2o.png" alt="STICKMAN HOOK"
                             class="img-fluid">
                         <div class="card-body">
@@ -410,7 +961,7 @@
 
                     <!-- Juego: DREADHEAD PARKOUR -->
                     <div onclick="abrirJuego('https://dreadheadparkour.gitlab.io/file/')" class="card"
-                        style="cursor: pointer;">
+                        style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://ezclasswork.com/public/upload/game/thumb-HkPGndJljg.webp"
                             alt="DREADHEAD PARKOUR" class="img-fluid">
                         <div class="card-body">
@@ -420,9 +971,8 @@
 
                     <!-- Juego: COOKIE CLICKER -->
                     <div onclick="abrirJuego('https://script.google.com/macros/s/AKfycbxGM35J29NkO-2LYjxWj_cA9IUaaXypkUy-LqXyLRbGTz0R6lXmAEapz1STN1jlTIRavw/exec')"
-                        class="card large" style="cursor: pointer;">
-                        <img src="https://static.wikia.nocookie.net/ficcion-sin-limites/images/2/26/Cookie-clicker.png/revision/latest?cb=20250613160015&path-prefix=es"
-                            alt="COOKIE CLICKER" class="img-fluid">
+                        class="card large" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/cookie-clicker.webp" alt="COOKIE CLICKER" class="img-fluid">
                         <div class="card-body">
                             <span>COOKIE CLICKER</span>
                         </div>
@@ -430,9 +980,8 @@
 
                     <!-- Juego: SURVIVAL RACE -->
                     <div onclick="abrirJuego('https://racesurvivalgame.com/gg/race-survival/')" class="card"
-                        style="cursor: pointer;">
-                        <img src="https://a.silvergames.com/j/b/survival-race.jpg" alt="SURVIVAL RACE"
-                            class="img-fluid">
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/survival-race.webp" alt="SURVIVAL RACE" class="img-fluid">
                         <div class="card-body">
                             <span>SURVIVAL RACE</span>
                         </div>
@@ -440,7 +989,7 @@
 
                     <!-- Juego: GUNSPIN -->
                     <div onclick="abrirJuego('https://marblerun-3d.github.io/game/GunSpin/')" class="card"
-                        style="cursor: pointer;">
+                        style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://ezclasswork.com/public/upload/game/thumb-5JX6OM04RJ.webp" alt="GUNSPIN"
                             class="img-fluid">
                         <div class="card-body">
@@ -450,7 +999,7 @@
 
                     <!-- Juego: AMONG US -->
                     <div onclick="abrirJuego('https://amongus-online.gitlab.io/file/')" class="card"
-                        style="cursor: pointer;">
+                        style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://ezclasswork.com/public/upload/game/thumb-LayNRvScdC.webp" alt="AMONG US"
                             class="img-fluid">
                         <div class="card-body">
@@ -460,7 +1009,7 @@
 
                     <!-- Juego: OH FLIP -->
                     <div onclick="abrirJuego('https://rad-beijinho-e0b733.netlify.app')" class="card large"
-                        style="cursor: pointer;">
+                        style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://ezclasswork.com/public/upload/game/thumb-83wv3wwULK.webp" alt="oh, flip"
                             class="img-fluid">
                         <div class="card-body">
@@ -470,7 +1019,7 @@
 
                     <!-- Juego: OvO -->
                     <div onclick="abrirJuego('https://ovoclassic-pro.github.io/file/')" class="card"
-                        style="cursor: pointer;">
+                        style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://ezclasswork.com/public/upload/game/rBcL0OlxUS.webp" alt="OvO"
                             class="img-fluid">
                         <div class="card-body">
@@ -479,28 +1028,27 @@
                     </div>
 
                     <!-- Juego: BACKFLIP DIVE 3D -->
-                    <div onclick="abrirJuego('https://html5.gamedistribution.com/rvvASMiM/a9d7229d3be14c0284d5281d125f27f3/index.html')"
-                        class="card" style="cursor: pointer;">
-                        <img src="https://files.catbox.moe/qklpz0.png" alt="BACKFLIP DIVE 3D" class="img-fluid">
+                    <div onclick="abrirJuego('https://bronze-philly-66.tiiny.site/')" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/backflip-dive-3d.webp" alt="BACKFLIP DIVE 3D" class="img-fluid">
                         <div class="card-body">
                             <span>BACKFLIP DIVE 3D</span>
                         </div>
                     </div>
 
                     <!-- Juego: BLUMGI BOUNCE -->
-                    <div onclick="abrirJuego('https://games.arcadrome.com/blumgi-bounce/2/index.html')" class="card"
-                        style="cursor: pointer;">
-                        <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/0364717f000f41088d794db6036f6ed2/blumgi-bounce-logo.png"
-                            alt="BLUMGI BOUNCE" class="img-fluid">
+                    <div onclick="abrirJuego('https://pizzaedition.win/assets/allgames/blumgi-bounce/index.html')"
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/blumgi-bounce.webp" alt="BLUMGI BOUNCE" class="img-fluid">
                         <div class="card-body">
                             <span>BLUMGI BOUNCE</span>
                         </div>
                     </div>
 
                     <!-- Juego: BLUMGI SLIME -->
-                    <div onclick="abrirJuego('https://geet.in.net/get/blumgi-slime/game.html')" class="card"
-                        style="cursor: pointer;">
-                        <img src="https://geet.in.net/get/blumgi-slime/logo.jpg" alt="BLUMGI SLIME" class="img-fluid">
+                    <div onclick="abrirJuego('https://blumgislime.gitlab.io/file/')" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/blumgi-slime.webp" alt="BLUMGI SLIME" class="img-fluid">
                         <div class="card-body">
                             <span>BLUMGI SLIME</span>
                         </div>
@@ -508,7 +1056,7 @@
 
                     <!-- Juego: RED BALL 4 -->
                     <div onclick="abrirJuego('https://playredball4.com/wp-content/uploads/games/redball4/')"
-                        class="card" style="cursor: pointer;">
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/9b739087f9938fb143a2519252addbb8/red-ball-4-logo.png"
                             alt="RED BALL 4" class="img-fluid">
                         <div class="card-body">
@@ -517,26 +1065,26 @@
                     </div>
 
                     <!-- Juego: BLUMGI ROCKET -->
-                    <div onclick="abrirJuego('https://geet.in.net/get/blumgi-rocket/game.html')" class="card"
-                        style="cursor: pointer;">
-                        <img src="https://geet.in.net/get/blumgi-rocket/thumb.png" alt="BLUMGI ROCKET"
-                            class="img-fluid">
+                    <div onclick="abrirJuego('https://classroom2111.github.io/g16/class-413/')" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/blumgi-rocket.webp" alt="BLUMGI ROCKET" class="img-fluid">
                         <div class="card-body">
                             <span>BLUMGI ROCKET</span>
                         </div>
                     </div>
                     <!-- Juego: APPLE KNIGHT MINI DUNGEONS -->
-                    <div onclick="abrirJuego('https://games3.startgamer.ru/2/apple_knight_mini_dungeons/')"
-                        class="card large" style="cursor: pointer;">
+                    <div onclick="abrirJuego('https://res.xc.com/play/30431/index.html')" class="card large"
+                        style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/1fdaee6c03ca147819b5387958e6592c/apple-knight-mini-dungeons-logo.png"
                             alt="APPLE KNIGHT MINI DUNGEONS" class="img-fluid">
                         <div class="card-body">
                             <span>APPLE KNIGHT MINI DUNGEONS</span>
                         </div>
                     </div>
+
                     <!-- Juego: LEVEL DEVIL -->
                     <div onclick="abrirJuego('https://stalwart-licorice-a40e53.netlify.app/')" class="card"
-                        style="cursor: pointer;">
+                        style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/7e18b5cf7da58e6fc90144f747dcc949/level-devil-logo.png"
                             alt="LEVEL DEVIL" class="img-fluid">
                         <div class="card-body">
@@ -545,7 +1093,7 @@
                     </div>
                     <!-- Juego: SUBWAY SURFERS -->
                     <div onclick="abrirJuego('https://files.gamezhero.com/game/905/1d1/9051d1173be765fb/data/index.html')"
-                        class="card" style="cursor: pointer;">
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/6cb3646f9210326b80124e79d6b75192/subway-surfers-logo.png"
                             alt="SUBWAY SURFERS" class="img-fluid">
                         <div class="card-body">
@@ -554,7 +1102,7 @@
                     </div>
                     <!-- Juego: NEON CHALLENGE LEGENDS -->
                     <div onclick="abrirJuego('https://g.igroutka.ru/games/1536/NQlZkEcweMyRiG0b/f07ccc43-4d95-4bf2-ad9f-d128a03b9a72/index.html')"
-                        class="card" style="cursor: pointer;">
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/aea43e12a0278c8916c6b1cc7b59444c/neon-challenge-legends-logo.png"
                             alt="NEON CHALLENGE LEGENDS" class="img-fluid">
                         <div class="card-body">
@@ -563,32 +1111,32 @@
                     </div>
                     <!-- Juego: SPACE WAVES -->
                     <div onclick="abrirJuego('https://space-waves-unblocked.github.io/space-waves/')" class="card"
-                        style="cursor: pointer;">
+                        style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://imgs.crazygames.com/space-waves_1x1/20260330040751/space-waves_1x1-cover?format=auto&quality=100&metadata=none&width=1200"
                             alt="SPACE WAVES" class="img-fluid">
                         <div class="card-body">
                             <span>SPACE WAVES</span>
                         </div>
-                    </div> <!-- <- CORREGIDO: Cierre de la tarjeta Space Waves -->
+                    </div>
                     <!-- Juego: GEOMETRY DASH LITE -->
-                    <div onclick="abrirJuego('https://geometrydashlitefree.com/play/gdlite/')" class="card"
-                        style="cursor: pointer;">
-                        <img src="https://files.catbox.moe/si705u.png" alt="GEOMETRY DASH LITE" class="img-fluid">
+                    <div onclick="abrirJuego('https://lolygames.github.io/gd-lit/')" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/geometry-dash-lite.webp" alt="GEOMETRY DASH LITE" class="img-fluid">
                         <div class="card-body">
                             <span>GEOMETRY DASH LITE</span>
                         </div>
                     </div>
                     <!-- Juego: BASKET RANDOM -->
                     <div onclick="abrirJuego('https://games.gamevgames.com/games/basket-random/index.html')"
-                        class="card" style="cursor: pointer;">
-                        <img src="https://files.catbox.moe/6vsyjv.jpg" alt="BASKET RANDOM" class="img-fluid">
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/basket-random.webp" alt="BASKET RANDOM" class="img-fluid">
                         <div class="card-body">
                             <span>BASKET RANDOM</span>
                         </div>
                     </div>
                     <!-- Juego: 2048 -->
                     <div onclick=" alert('ALERT: To ensure the game looks right, please set it to fullscreen mode.'); abrirJuego('https://2048unblocked.bitbucket.io/file/')"
-                        class="card" style="cursor: pointer;">
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://ezclasswork.com/public/upload/game/thumb-PUAzP3TO0F.webp" alt="2048"
                             class="img-fluid">
                         <div class="card-body">
@@ -597,25 +1145,25 @@
                     </div>
                     <!-- Juego: PAPER.IO 2 -->
                     <div onclick="abrirJuego('https://paperio2.bitbucket.io/file/')" class="card"
-                        style="cursor: pointer;">
-                        <img src="https://paperio2.bitbucket.io/img/paper-io-2.png" alt="PAPER.IO 2" class="img-fluid">
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/paper-io-2.webp" alt="PAPER.IO 2" class="img-fluid">
                         <div class="card-body">
                             <span>PAPER.IO 2</span>
                         </div>
                     </div>
                     <!-- Juego: MONKEY MART -->
                     <div onclick="abrirJuego('https://lively-croissant-f945a3.netlify.app/')" class="card large"
-                        style="cursor: pointer;">
+                        style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://ezclasswork.com/public/upload/game/thumb-cvUM8tPFBv.webp" alt="MONKEY MART"
                             class="img-fluid">
                         <div class="card-body">
                             <span>MONKEY MART</span>
                         </div>
-                    </div> <!-- <- CORREGIDO: Cierre de la tarjeta Monkey Mart -->
+                    </div>
                     <!-- Juego: BALL RUN 2048 -->
-                    <div onclick="abrirJuego('https://codebeautify.org/real-time-html-editor/y25e2a0d063-b033-4c91-bf57-348de168d237#')"
-                        class="card" style="cursor: pointer;">
-                        <img src="https://i.postimg.cc/qB9zBwk8/unnamed-(2).png" alt="BALL RUN 2048" class="img-fluid">
+                    <div onclick="abrirJuego('https://html5.gamedistribution.com/rvvASMiM/39b5aad36f514342966fbf3431e5ba6c/index.html?gd_sdk_referrer_url=https%3A%2F%2Fwww.minijuegos.com%2Fjuego%2Fball-run-2048&mp_api_as3_url=https%3A%2F%2Fssl.minijuegosgratis.com%2Flechuck%2Fas3%2Flatest.swf&mp_api_as3_url_bck=https%3A%2F%2Fapi.minijuegos.com%2Flechuck%2Fclient-as%2F&mp_api_id=5182&mp_api_js_url=https%3A%2F%2Fssl.minijuegosgratis.com%2Flechuck%2Fjs%2Flatest.js&mp_api_js_url_bck=https%3A%2F%2Fapi.minijuegos.com%2Flechuck%2Fclient-js%2F&mp_assets=https%3A%2F%2Fs2.minijuegosgratis.com%2F&mp_embed=0&mp_game_id=242478&mp_game_uid=ball-run-2048&mp_game_url=https%3A%2F%2Fwww.minijuegos.com%2Fjuego%2Fball-run-2048&mp_int=1&mp_locale=es_ES&mp_player_type=IFRAME&mp_site_https_url=https%3A%2F%2Fwww.minijuegos.com%2F&mp_site_name=minijuegos.com&mp_site_url=https%3A%2F%2Fwww.minijuegos.com%2F&mp_timezone=Europe%2FMadrid&mp_view_type=&mini_signature=9c1e8313401c1b67580a9cc4696ce926&xdm_e=https%3A%2F%2Fwww.minijuegos.com&xdm_c=default6372&xdm_p=1&gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5taW5panVlZ29zLmNvbS9qdWVnby9iYWxsLXJ1bi0yMDQ4IiwicGFyZW50RG9tYWluIjoibWluaWp1ZWdvcy5jb20iLCJ0b3BEb21haW4iOiJtaW5panVlZ29zLmNvbSIsImhhc0ltcHJlc3Npb24iOmZhbHNlLCJsb2FkZXJFbmFibGVkIjp0cnVlLCJob3N0IjoiaHRtbDUuZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJ2ZXJzaW9uIjoiMS41LjE4In0%253D')"
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/ball-run-2048.webp" alt="BALL RUN 2048" class="img-fluid">
                         <div class="card-body">
                             <span>BALL RUN 2048</span>
                         </div>
@@ -623,15 +1171,15 @@
 
                     <!-- Juego: PANDA RESORT -->
                     <div onclick="abrirJuego({ es: 'https://www.tablasdemultiplicar.com/gf/panda-resort/52/?language=es&tables_until=10&daily_reward=1&swap_mode=1', en: 'https://www.tablasdemultiplicar.com/gf/panda-resort/52/?language=en&tables_until=10&daily_reward=1&swap_mode=1' })"
-                        class="card" style="cursor: pointer;">
-                        <img src="https://files.catbox.moe/065pyp.png" alt="PANDA RESORT" class="img-fluid">
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/panda-resort.webp" alt="PANDA RESORT" class="img-fluid">
                         <div class="card-body">
                             <span>PANDA RESORT</span>
                         </div>
                     </div>
                     <!-- Juego: 3x3 RUNNER -->
-                    <div onclick="abrirJuego({ es: 'https://www.tafeldiploma.nl/gf/3x3-runner/74/?tables_until=10&language=es&swap_mode=1&1', en: 'https://www.tafeldiploma.nl/gf/3x3-runner/74/?tables_until=10&language=en&swap_mode=1&1' })"
-                        class="card" style="cursor: pointer;">
+                    <div onclick="abrirJuego('https://www.tafeldiploma.nl/gf/3x3-runner/74/?tables_until=10&language=es&swap_mode=1&1')"
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://i.postimg.cc/NFk6vmBQ/3x3-runner-2-(1).png" alt="3x3 RUNNER"
                             class="img-fluid">
                         <div class="card-body">
@@ -640,51 +1188,187 @@
                     </div>
                     <!-- Juego: STEAL A BRAINROT -->
                     <div onclick="abrirJuego('https://classroomlesson.github.io/basic-ruffle-player/html/steal_a_brainrot_2/index.html')"
-                        class="card large" style="cursor: pointer;">
-                        <img src="https://i.postimg.cc/7ZZXHqP0/no-Filter-(1).png" alt="STEAL A BRAINROT"
-                            class="img-fluid">
+                        class="card large" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/steal-a-brainrot.webp" alt="STEAL A BRAINROT" class="img-fluid">
                         <div class="card-body">
                             <span>STEAL A BRAINROT</span>
                         </div>
-                    </div> <!-- <- CORREGIDO: Cierre de la tarjeta Steal a Brainrot -->
+                    </div>
 
                     <!-- Juego: 3x3 OOBY -->
                     <div onclick="abrirJuego({ es: 'https://www.tafeldiploma.nl/gf/obby/70b/?language=es&tables_until=10&swap_mode=1', en: 'https://www.tafeldiploma.nl/gf/obby/70b/?language=en&tables_until=10&swap_mode=1' })"
-                        class="card" style="cursor: pointer;">
-                        <img src="https://files.catbox.moe/6npbiz.png" alt="3x3 OOBY" class="img-fluid">
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/3x3-ooby.webp" alt="3x3 OOBY" class="img-fluid">
                         <div class="card-body">
                             <span>3x3 OOBY</span>
                         </div>
-                    </div> <!-- <- CORREGIDO: Cierre de la tarjeta 3x3 OOBY -->
+                    </div>
                     <!-- Juego: BALDIS BASICS CLASSIC -->
                     <div onclick="abrirJuego('https://baldis-basics-online.github.io/file/')" class="card"
-                        style="cursor: pointer;">
-                        <img src="https://ezclasswork.com/public/upload/game/thumb-53XXPwcAbt.png"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-53XXPwcAbt.webp"
                             alt="BALDIS BASICS CLASSIC" class="img-fluid">
                         <div class="card-body">
                             <span>BALDIS BASICS CLASSIC</span>
                         </div>
-                    </div> <!-- <- CORREGIDO: Cierre de la tarjeta BALDIS BASICS CLASSIC -->
+                    </div>
                     <!-- Juego: MINECRAFT -->
                     <div onclick="abrirJuego('https://d1tm91r4ytbt54.cloudfront.net/2779cbcb-a02f-48a3-9e2e-95a8d123d165/1685483461665/web/index.html')"
-                        class="card" style="cursor: pointer;">
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
                         <img src="https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/Homepage_Discover-our-games_MC-Vanilla-KeyArt_864x864.jpg"
                             alt="MINECRAFT" class="img-fluid">
                         <div class="card-body">
                             <span>MINECRAFT</span>
                         </div>
-                    </div> <!-- <- CORREGIDO: Cierre de la tarjeta BALDIS BASICS CLASSIC -->
+                    </div>
+                    <!-- Juego: DUCK LIFE 4 -->
+                    <div onclick="abrirJuego('https://dnrweqffuwjtx.cloudfront.net/games/2024/wix/duck-life-4/index.html')"
+                        class="card large" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/duck-life-4.webp" alt="DUCK LIFE 4" class="img-fluid">
+                        <div class="card-body">
+                            <span>DUCK LIFE 4</span>
+                        </div>
+                    </div>
+                    <!-- Juego: JETPACK JOYRIDE -->
+                    <div onclick="abrirJuego('https://dnrweqffuwjtx.cloudfront.net/games/2024/wix/duck-life-4/index.html')"
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/jetpack-joyride.webp" alt="JETPACK JOYRIDE" class="img-fluid">
+                        <div class="card-body">
+                            <span>JETPACK JOYRIDE</span>
+                        </div>
+                    </div>
+                    <!-- Juego: SLOPE BALL -->
+                    <div onclick="abrirJuego('https://script.google.com/macros/s/AKfycbxvKf9LHprLoblEMWUoqXn4RHxNhtXwmIwYAEAR8UWCr7lFjKwYvkhzPnsb3RWeDZcm/exec')"
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="https://ezclasswork.com/public/upload/game/TRahOA6tkQ.webp" alt="SLOPE BALL"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>SLOPE BALL</span>
+                        </div>
+                    </div>
+                    <!-- Juego: WATERMELON DROP -->
+                    <div onclick="abrirJuego('https://bitlifeonline.github.io/watermelon-drop/')" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/02018885c1521dd2830683a0ecc86440/watermelon-drop-logo.png"
+                            alt="WATERMELON DROP" class="img-fluid">
+                        <div class="card-body">
+                            <span>WATERMELON DROP</span>
+                        </div>
+                    </div>
+                    <!-- Juego: SOCCER RANDOM -->
+                    <div onclick="abrirJuego('https://soccerrandom.bitbucket.io/file/')" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-1wgH5O57Kb.webp" alt="SOCCER RANDOM"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>SOCCER RANDOM</span>
+                        </div>
+                    </div>
+                    <!-- Juego: CHROME DINO -->
+                    <div onclick="abrirJuego('https://script.google.com/macros/s/AKfycbw52NjEXRvaVQ1ELomMIdmM_zD6JxK1LZVdxc5PxftzqAE00F4GzS15_JRXpyW_qbQz5Q/exec?refrescado=true')"
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-QgBQgTrLUy.webp" alt="CHROME DINO"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>CHROME DINO</span>
+                        </div>
+                    </div>
+                    <!-- Juego: ROBLOX CLICKER -->
+                    <div onclick="abrirJuego('https://scratch.mit.edu/projects/1324128146/embed')" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="https://i.postimg.cc/GpLzyBC9/descarga-1.webp" alt="ROBLOX CLICKER" class="img-fluid">
+                        <div class="card-body">
+                            <span>ROBLOX CLICKER</span>
+                        </div>
+                    </div>
+                    <!-- Juego: VOLLEY RANDOM -->
+                    <div onclick="abrirJuego('https://volleyrandom.bitbucket.io/file/')" class="card large"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-GqrSHWvezl.webp" alt="VOLLEY RANDOM"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>VOLLEY RANDOM</span>
+                        </div>
+                    </div>
+                    <!-- Juego: ROBLOX -->
+                    <div onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');  abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.roblox.client/', en: 'https://web.cloudmoonapp.com/en/game/com.roblox.client/'}) }"
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="https://ezclasswork.com/public/upload/game/thumb-tNMYtz1k5Z.webp" alt="ROBLOX"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>ROBLOX</span>
+                        </div>
+                    </div>
+                    <!-- Juego: GOOGLE CHROME UNBLOCKED -->
+                    <div onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes' )}; abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.android.chrome/', en: 'https://web.cloudmoonapp.com/en/game/com.android.chrome/'})"
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Google_Chrome_icon_%28February_2022%29.svg/1280px-Google_Chrome_icon_%28February_2022%29.svg.png"
+                            alt="GOOGLE CHROME UNBLOCKED" class="img-fluid">
+                        <div class="card-body">
+                            <span>GOOGLE CHROME UNBLOCKED</span>
+                        </div>
+                    </div>
+
+                    <!-- Juego: YOUTUBE UNBLOCKED -->
+                    <div onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes')}; abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.google.android.youtube/', en: 'https://web.cloudmoonapp.com/es/game/com.google.android.youtube/'})"
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/youtube-unblocked.webp" alt="YOUTUBE UNBLOCKED" class="img-fluid">
+                        <div class="card-body">
+                            <span>YOUTUBE UNBLOCKED</span>
+                        </div>
+                    </div>
+                    <!-- Juego: BRAWL STARS -->
+                    <div onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes')}; abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.supercell.brawlstars/', en: 'https://web.cloudmoonapp.com/en/game/com.supercell.brawlstars/' })"
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="https://i.scdn.co/image/ab6761610000e5ebf7b952107c126c561c52171e" alt="BRAWL STARS"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>BRAWL STARS</span>
+                        </div>
+                    </div>
+                    <!-- Juego: CHATGPT UNBLOCKED -->
+                    <div onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes')}; abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.openai.chatgpt/', en: 'https://web.cloudmoonapp.com/en/game/com.openai.chatgpt/' })"
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMdM9MEQ0ExL1PmInT3U5I8v63YXBEdoIT0Q&s"
+                            alt="CHATGPT UNBLOCKED" class="img-fluid">
+                        <div class="card-body">
+                            <span>CHATGPT UNBLOCKED</span>
+                        </div>
+                    </div>
+                    <!-- Juego: BLUMGI PAINTBALL -->
+                    <div onclick="abrirJuego('https://storeg223.github.io/g66/class-871/')" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/blumgi-paintball.webp" alt="BLUMGI PAINTBALL" class="img-fluid">
+                        <div class="card-body">
+                            <span>BLUMGI PAINTBALL</span>
+                        </div>
+                    </div>
                 </div> <!-- Fin de card-masonry -->
             </div> <!-- Fin de contenedor-menu -->
         </div> <!-- Fin de container-fluid -->
 
-        <!-- ──────── CONTAINER DEL VISOR DE JUEGOS ──────── -->
+        <!-- ──────── CONTAINER DEL VISOR DE JUEGOS MODIFICADO ──────── -->
         <div id="pantalla-juego" style="display: none;">
-            <button class="btn-back" onclick="cerrarJuego()">HOME</button>
-            <button class="btn-fullscreen" onclick="toggleFullscreen()">FULLSCREEN</button>
-            <br>
-            <iframe id="visor-juego" src="" allowfullscreen allow="fullscreen; gamepad; autoplay"
-                scrolling="no"></iframe>
+            <div class="visor-layout-container">
+                <!-- Lateral Izquierdo (Grid de 2 columnas con Scroll Independiente) -->
+                <div class="visor-lateral card-masonry" id="lateral-izquierdo"></div>
+
+                <!-- Columna Central -->
+                <div class="visor-central">
+                    <button class="btn-back" onclick="cerrarJuego()">HOME</button>
+                    <button class="btn-fullscreen" onclick="toggleFullscreen()">FULLSCREEN</button>
+                    <button class="btn-report" onclick="reportProblem()">REPORT ISSUE</button>
+                    <br>
+                    <iframe id="visor-juego" src="" allow="fullscreen; gamepad; autoplay; keyboard-hub"
+                        sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-top-navigation allow-top-navigation-by-user-activation allow-downloads"
+                        scrolling="no">
+                    </iframe>
+
+                </div>
+
+                <!-- Lateral Derecho (Grid de 2 columnas con Scroll Independiente) -->
+                <div class="visor-lateral card-masonry" id="lateral-derecho"></div>
+            </div>
         </div>
     </main>
 
@@ -719,246 +1403,490 @@
             </p>
             <br>
             <p class="mb-3" style="font-size: 0.95rem; line-height: 1.6;">
-                Alt+Z to change tab settings.
+                <strong>Alt+Z</strong> to change tab settings.
             </p>
         </div>
+    </div>
+    <noscript>
+        <style>
+            html::before {
+                content: "To use Classroom 16x, enable Javascript in your browser. More information in https://enable-javascript.com";
+                display: block;
+                text-align: center;
+                padding: 50px 20px;
+                font-family: 'Inter-SemiBold' sans-serif;
+                font-size: 18px;
+            }
+        </style>
 
-        <!-- Script de control -->
-        <script>
-            function abrirJuego(urlInput) {
-                let urlFinal = "";
+    </noscript>
 
-                // 🕵️‍♂️ AQUÍ SE COMPRUEBA SI EL JUEGO TIENE UNA LISTA ({ es: '...', en: '...' })
-                if (typeof urlInput === 'object' && urlInput !== null) {
+    <!-- ──────── BLOQUE ÚNICO DE SCRIPTS INTEGRADOS ──────── -->
+    <script>
+        function abrirJuego(urlInput) {
+            let urlFinal = "";
 
-                    // 🌍 Si es un objeto, SÍ está en la lista especial -> Detecta el idioma
-                    const idioma = (navigator.language || navigator.userLanguage).toLowerCase().slice(0, 2);
-
-                    if (idioma === 'es') {
-                        urlFinal = urlInput.es || urlInput.en;
-                    } else {
-                        urlFinal = urlInput.en || urlInput.es;
-                    }
-
+            if (typeof urlInput === 'object' && urlInput !== null) {
+                const idioma = (navigator.language || navigator.userLanguage).toLowerCase().slice(0, 2);
+                if (idioma === 'es') {
+                    urlFinal = urlInput.es || urlInput.en;
                 } else {
-                    // 🚀 ¡AQUÍ ENTRA SI NO ESTÁ EN LA LISTA! (Si es una URL de texto normal)
-                    // El script dice: "Ah, es un juego normal, uso la URL tal cual me la dieron".
-                    urlFinal = urlInput;
+                    urlFinal = urlInput.en || urlInput.es;
                 }
-
-                // 🖥️ Inyecta la URL final calculada en el visor (sea la traducida o la normal)
-                const contenedorMenu = document.getElementById('contenedor-menu');
-                const texto = document.getElementById('text-area');
-                const pantallaJuego = document.getElementById('pantalla-juego');
-                const visorJuego = document.getElementById('visor-juego');
-
-                if (contenedorMenu && pantallaJuego && visorJuego) {
-                    contenedorMenu.style.display = 'none';
-                    pantallaJuego.style.display = 'block';
-                    texto.style.display = 'none';
-                    visorJuego.src = urlFinal;
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            }
-            function cerrarJuego() {
-                document.getElementById('pantalla-juego').style.display = 'none';
-                document.getElementById('contenedor-menu').style.display = 'block';
-                document.getElementById('text-area').style.display = 'block';
-                document.getElementById('visor-juego').src = '';
+            } else {
+                urlFinal = urlInput;
             }
 
-            function toggleFullscreen() {
-                var juegoIframe = document.getElementById('visor-juego');
-                if (juegoIframe.requestFullscreen) {
-                    juegoIframe.requestFullscreen();
-                } else if (juegoIframe.webkitRequestFullscreen) {
-                    juegoIframe.webkitRequestFullscreen();
-                } else if (juegoIframe.msRequestFullscreen) {
-                    juegoIframe.msRequestFullscreen();
-                }
+            const contenedorMenu = document.getElementById('contenedor-menu');
+            const texto = document.getElementById('text-area');
+            const pantallaJuego = document.getElementById('pantalla-juego');
+            const visorJuego = document.getElementById('visor-juego');
+
+            if (contenedorMenu && pantallaJuego && visorJuego) {
+                contenedorMenu.style.display = 'none';
+                pantallaJuego.style.display = 'block';
+                if (texto) texto.style.display = 'none';
+                visorJuego.src = urlFinal;
+
+                // Le pasamos la URL del juego activo a los laterales
+                generarLateralesAleatorios(urlInput);
+
+                // Mover al inicio y bloquear físicamente el scroll en la página principal
+                window.scrollTo(0, 0);
+                document.documentElement.style.overflow = 'hidden';
+                document.body.style.overflow = 'hidden';
+
+                setTimeout(() => {
+                    visorJuego.focus();
+                }, 100);
             }
+        }
 
-            function filtrarJuegos() {
-                var input = document.getElementById('buscador');
-                var filtro = input.value.toLowerCase();
-                var contenedor = document.querySelector('.card-masonry');
-                var tarjetas = contenedor.getElementsByClassName('card');
+        function cerrarJuego() {
+            document.getElementById('pantalla-juego').style.display = 'none';
+            document.getElementById('contenedor-menu').style.display = 'block';
+            const texto = document.getElementById('text-area');
+            if (texto) texto.style.display = 'block';
+            document.getElementById('visor-juego').src = '';
 
-                for (var i = 0; i < tarjetas.length; i++) {
-                    var nombreJuego = tarjetas[i].querySelector('.card-body span');
-                    if (nombreJuego) {
-                        var texto = nombreJuego.textContent || nombreJuego.innerText;
-                        if (texto.toLowerCase().indexOf(filtro) > -1) {
-                            tarjetas[i].style.setProperty('display', '', 'important');
-                        } else {
-                            tarjetas[i].style.setProperty('display', 'none', 'important');
-                        }
+            // Reactivar el scroll en la página principal al salir del juego
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+        }
+
+        function toggleFullscreen() {
+            const juegoIframe = document.getElementById('visor-juego');
+            if (juegoIframe.requestFullscreen) {
+                juegoIframe.requestFullscreen();
+            } else if (juegoIframe.webkitRequestFullscreen) {
+                juegoIframe.webkitRequestFullscreen();
+            } else if (juegoIframe.msRequestFullscreen) {
+                juegoIframe.msRequestFullscreen();
+            }
+        }
+
+        function filtrarJuegos() {
+            const input = document.getElementById('buscador');
+            const filtro = input.value.toLowerCase();
+            const contenedor = document.querySelector('.card-masonry');
+            const tarjetas = contenedor.getElementsByClassName('card');
+
+            for (let i = 0; i < tarjetas.length; i++) {
+                const nombreJuego = tarjetas[i].querySelector('.card-body span');
+                if (nombreJuego) {
+                    const texto = nombreJuego.textContent || nombreJuego.innerText;
+                    if (texto.toLowerCase().indexOf(filtro) > -1) {
+                        tarjetas[i].style.setProperty('display', '', 'important');
+                    } else {
+                        tarjetas[i].style.setProperty('display', 'none', 'important');
                     }
                 }
             }
-        </script>
+        }
 
-        <!-- SCRIPT INYECTOR DE TÍTULO CAMUFLADO -->
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
+        // Control del Modo Oscuro
+        function cambiarTema() {
+            const body = document.body;
+            const html = document.documentElement;
+            const boton = document.getElementById('mi-boton-tema');
+            const titulo = document.getElementById('main-title-element');
+
+            body.classList.toggle('modo-oscuro');
+
+            if (body.classList.contains('modo-oscuro')) {
+                html.setAttribute('data-theme', 'dark');
+                boton.innerHTML = '☀️ Light Mode';
+                boton.style.background = '#0f1aab';
+                boton.style.color = 'white';
+                if (titulo) titulo.style.color = 'white';
+            } else {
+                html.setAttribute('data-theme', 'light');
+                boton.innerHTML = '🌙 Dark Mode';
+                boton.style.background = 'white';
+                boton.style.color = '#0f1aab';
+                if (titulo) titulo.style.color = '';
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. Título y estado inicial (para el robot mierda de google)
+            document.title = "Classroom 16x - Unblocked games EZ";
+
+            // Guardamos el favicon original de tu web por si quieres mantenerlo antes de la interacción
+            // O puedes dejar que use el por defecto de tu servidor.
+
+            // Diccionario de traducciones para el camuflaje
+            const titles = {
+                es: "Inicio - Classroom", en: "Home - Classroom", fr: "Accueil - Classroom",
+                ca: "Inici - Classroom", eu: "Hasiera - Classroom", gl: "Inicio - Classroom",
+                de: "Startseite - Classroom", it: "Home page - Classroom", pt: "Início - Classroom",
+                nl: "Home - Classroom", pl: "Strona główna - Classroom", sv: "Startsida - Classroom",
+                fi: "Aloitussivu - Classroom", no: "Startside - Classroom", da: "Startside - Classroom",
+                el: "Αρχική σελίδα - Classroom", ru: "Главная страница - Classroom", ja: "ホーム - Classroom",
+                ko: "홈 - Classroom", zh: "首页 - Classroom", vi: "Trang chủ - Classroom",
+                th: "หน้าแรก - Classroom", hi: "홈 - Classroom", ar: "الصفحة الرئيسية - Classroom",
+                he: "דף הבית - Classroom", tr: "Ana Sayfa - Classroom", sw: "Mwanzo - Classroom"
+            };
+
+            // 2. Función que activa el camuflaje (Solo se ejecuta ante actividad humana)
+            function activarCamuflaje() {
                 const userLang = navigator.language || navigator.userLanguage;
                 const langCode = userLang.slice(0, 2);
 
-                const titles = {
-                    es: "Inicio - Classroom",
-                    en: "Home - Classroom",
-                    fr: "Accueil - Classroom",
-                    ca: "Inici - Classroom",
-                    eu: "Hasiera - Classroom",
-                    gl: "Inicio - Classroom",
-                    de: "Startseite - Classroom",
-                    it: "Home page - Classroom",
-                    pt: "Início - Classroom",
-                    nl: "Home - Classroom",
-                    pl: "Strona główna - Classroom",
-                    sv: "Startsida - Classroom",
-                    fi: "Aloitussivu - Classroom",
-                    no: "Startside - Classroom",
-                    da: "Startside - Classroom",
-                    el: "Αρχική σελίδα - Classroom",
-                    ru: "Главная страница - Classroom",
-                    ja: "ホーム - Classroom",
-                    ko: "홈 - Classroom",
-                    zh: "首页 - Classroom",
-                    vi: "Trang chủ - Classroom",
-                    th: "หน้าแรก - Classroom",
-                    hi: "होम - Classroom",
-                    ar: "الصفحة الرئيسية - Classroom",
-                    he: "דף הבית - Classroom",
-                    tr: "Ana Sayfa - Classroom",
-                    sw: "Mwanzo - Classroom"
-                };
+                // Cambiar al título falso de Classroom según idioma
+                document.title = titles[langCode] || "Home - Classroom";
 
-                // Comprobamos si el idioma existe en el diccionario
-                if (titles[langCode]) {
-                    // Si existe, SOLO cambia el título al idioma correspondiente
-                    document.title = titles[langCode];
-                } else {
-                    // Si tiene un idioma super raro, este es el título
-                    document.title = "Classroom 16x - Unblocked games EZ";
+                console.log("🎮 Humano detectado mediante interacción. Pestaña camuflada exitosamente.");
 
-                    // Código para cambiar favicon cuando tiene un idioma raro
-                    let link = document.querySelector("link[rel~='icon']");
-                    if (!link) {
-                        link = document.createElement('link');
-                        link.rel = 'icon';
-                        document.head.appendChild(link);
-                    }
-                    link.href = "https://files.catbox.moe/z90mt8.png";
-                }
-            });
-
-        </script>
-        <script>
-            // ⌨️ Event Listener para detectar la combinación Alt + Z
-            window.addEventListener('keydown', (e) => {
-                if (e.altKey && e.key.toLowerCase() === 'z') {
-                    e.preventDefault();
-                    toggleCloakMenu();
-                }
-            });
-
-            function toggleCloakMenu() {
-                const modal = document.getElementById('secretCloakModal');
-                if (modal.style.display === 'block') {
-                    modal.style.display = 'none';
-                } else {
-                    modal.style.display = 'block';
-
-                    // Auto-rellenar campos actuales de forma segura
-                    const customTitleInput = document.getElementById('cloakCustomTitle');
-                    if (customTitleInput) {
-                        customTitleInput.value = document.title;
-                    }
-
-                    let currentIcon = document.querySelector("link[rel~='icon']");
-                    if (currentIcon && currentIcon.href.indexOf('data:image') === -1) {
-                        document.getElementById('cloakIconSelect').value = currentIcon.href;
-                    }
-                }
+                // 3. Limpieza: Remover los listeners para que no sigan consumiendo recursos
+                window.removeEventListener('mousemove', activarCamuflaje);
+                window.removeEventListener('keydown', activarCamuflaje);
+                window.removeEventListener('scroll', activarCamuflaje);
+                window.removeEventListener('touchstart', activarCamuflaje);
+                window.removeEventListener('click', activarCamuflaje);
             }
 
-            // Diccionario interno mapeado para los idiomas rápidos desde el selector
-            const cloakLanguages = {
-                en: "Home - Classroom", es: "Inicio - Classroom", fr: "Accueil - Classroom",
-                de: "Startseite - Classroom", it: "Home page - Classroom", pt: "Início - Classroom",
-                ru: "Главная página - Classroom", zh: "首页 - Classroom", ja: "ホーム - Classroom"
+            // 4. Escuchar interacciones físicas exclusivas de un usuario real
+            window.addEventListener('mousemove', activarCamuflaje); // Mover el ratón
+            window.addEventListener('keydown', activarCamuflaje);   // Presionar una tecla
+            window.addEventListener('scroll', activarCamuflaje);    // Hacer scroll
+            window.addEventListener('touchstart', activarCamuflaje);// Tocar la pantalla (Móviles)
+            window.addEventListener('click', activarCamuflaje);     // Hacer un clic
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.altKey && e.key.toLowerCase() === 'z') {
+                e.preventDefault();
+                toggleCloakMenu();
+            }
+        });
+
+        function toggleCloakMenu() {
+            const modal = document.getElementById('secretCloakModal');
+            if (!modal) return;
+
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+
+                const customTitleInput = document.getElementById('cloakCustomTitle');
+                if (customTitleInput) {
+                    customTitleInput.value = document.title;
+                }
+
+                let currentIcon = document.querySelector("link[rel~='icon']");
+                if (currentIcon && currentIcon.href.indexOf('data:image') === -1) {
+                    const iconSelect = document.getElementById('cloakIconSelect');
+                    if (iconSelect) iconSelect.value = currentIcon.href;
+                }
+            }
+        }
+
+        const cloakLanguages = {
+            en: "Home - Classroom", es: "Inicio - Classroom", fr: "Accueil - Classroom",
+            de: "Startseite - Classroom", it: "Home page - Classroom", pt: "Início - Classroom",
+            ru: "Главная página - Classroom", zh: "首页 - Classroom", ja: "ホーム - Classroom"
+        };
+
+        function applyPresetLang(langCode) {
+            if (langCode && cloakLanguages[langCode]) {
+                const titleInput = document.getElementById('cloakCustomTitle');
+                if (titleInput) titleInput.value = cloakLanguages[langCode];
+            }
+        }
+
+        function saveCloakSettings() {
+            const titleInput = document.getElementById('cloakCustomTitle');
+            const newTitle = titleInput ? titleInput.value.trim() : "";
+            const presetIcon = document.getElementById('cloakIconSelect').value;
+            const urlIcon = document.getElementById('cloakIconUrl').value.trim();
+            const fileInput = document.getElementById('cloakIconFile');
+
+            if (newTitle) {
+                document.title = newTitle;
+            }
+
+            const updateFavicon = (iconSrc) => {
+                let link = document.querySelector("link[rel~='icon']");
+                if (!link) {
+                    link = document.createElement('link');
+                    link.rel = 'icon';
+                    link.type = 'image/png';
+                    document.head.appendChild(link);
+                }
+                link.href = iconSrc;
+                toggleCloakMenu();
             };
 
-            function applyPresetLang(langCode) {
-                if (langCode && cloakLanguages[langCode]) {
-                    document.getElementById('cloakCustomTitle').value = cloakLanguages[langCode];
-                }
-            }
-
-            function saveCloakSettings() {
-                const titleInput = document.getElementById('cloakCustomTitle');
-                const newTitle = titleInput ? titleInput.value.trim() : "";
-                const presetIcon = document.getElementById('cloakIconSelect').value;
-                const urlIcon = document.getElementById('cloakIconUrl').value.trim();
-                const fileInput = document.getElementById('cloakIconFile');
-
-                // 🏷️ 1. Cambiar el título si se ha rellenado
-                if (newTitle) {
-                    document.title = newTitle;
-                }
-                tttttttttttttttt
-                // 🔄 Función auxiliar para inyectar o actualizar el Favicon en el <head>
-                const updateFavicon = (iconSrc) => {
-                    let link = document.querySelector("link[rel~='icon']");
-                    if (!link) {
-                        link = document.createElement('link');
-                        link.rel = 'icon';
-                        link.type = 'image/png';
-                        document.head.appendChild(link);
-                    }
-                    link.href = iconSrc;
-                    toggleCloakMenu(); // Cierra el menú al terminar de actualizar
+            if (fileInput && fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    updateFavicon(e.target.result);
                 };
-
-                // 🛠️ 2. Determinar qué icono aplicar (Archivo local > URL Custom > Preset)
-                if (fileInput && fileInput.files && fileInput.files[0]) {
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        updateFavicon(e.target.result); // Base64 generado localmente desde el archivo subido
-                    };
-                    reader.readAsDataURL(fileInput.files[0]);
-                } else if (urlIcon) {
-                    updateFavicon(urlIcon); // URL externa manual
-                } else {
-                    updateFavicon(presetIcon); // Opción seleccionada en el menú desplegable
-                }
+                reader.readAsDataURL(fileInput.files[0]);
+            } else if (urlIcon) {
+                updateFavicon(urlIcon);
+            } else {
+                updateFavicon(presetIcon);
             }
-        </script>
-        <script>
-            function cambiarTema() {
-                const body = document.body;
-                const boton = document.getElementById('mi-boton-tema');
-                const titulo = document.getElementById('titulo'); // Reemplaza con el ID de tu h1
+        }
 
-                // Alternar clases de fondo y texto
-                body.classList.toggle('modo-oscuro');
-
-                // Cambiar texto y estilos del botón
-                if (body.classList.contains('modo-oscuro')) {
-                    boton.innerHTML = '☀️ Light Mode';
-                    boton.style.background = '#0f1aab';
-                    boton.style.color = 'white';
-                    titulo.style.color = 'white'; // Cambia el h1 a blanco
-                } else {
-                    boton.innerHTML = '🌙 Dark Mode';
-                    boton.style.background = 'white';
-                    boton.style.color = '#0f1aab';
-                    titulo.style.color = ''; // Vuelve al color por defecto
+        // --- SISTEMA DE REPORTE INTEGRADO EN JS ---
+        function injectReportModal() {
+            const style = document.createElement('style');
+            style.innerHTML = `
+                .report-modal {
+                    display: none;
+                    position: fixed;
+                    z-index: 999999;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.6);
+                    backdrop-filter: blur(4px);
+                    font-family: 'Inter', sans-serif;
+                    align-items: center;
+                    justify-content: center;
                 }
+                .report-content {
+                    background-color: #ffffff;
+                    padding: 25px;
+                    border-radius: 1.2rem;
+                    width: 90%;
+                    max-width: 420px;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                    border: 2px solid #e74c3c;
+                    box-sizing: border-box;
+                    animation: reportFadeIn 0.3s ease;
+                }
+                @keyframes reportFadeIn {
+                    from { transform: scale(0.9); opacity: 0; }
+                    to { transform: scale(1); opacity: 1; }
+                }
+                [data-theme="dark"] .report-content {
+                    background-color: #1e1e1e;
+                    color: #f0f0f0;
+                }
+                .report-header {
+                    font-family: 'Inter-Bold', sans-serif;
+                    font-size: 1.3rem;
+                    margin-bottom: 15px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                .report-close {
+                    cursor: pointer;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    color: #999;
+                }
+                .report-close:hover {
+                    color: #f44336;
+                }
+                .report-field {
+                    margin-bottom: 15px;
+                    text-align: left;
+                }
+                .report-field label {
+                    display: block;
+                    font-family: 'Inter-SemiBold', sans-serif;
+                    margin-bottom: 6px;
+                    font-size: 0.9rem;
+                }
+                .report-input, .report-textarea {
+                    width: 100%;
+                    padding: 10px;
+                    border-radius: 0.5rem;
+                    border: 1px solid #ccc;
+                    background: transparent;
+                    color: inherit;
+                    font-family: 'Inter', sans-serif;
+                    box-sizing: border-box;
+                }
+                .report-textarea {
+                    resize: none;
+                    height: 100px;
+                }
+                [data-theme="dark"] .report-input,
+                [data-theme="dark"] .report-textarea {
+                    border-color: #444;
+                    background: #2a2a2a;
+                }
+                .report-btn-submit {
+                    background-color: #e74c3c;
+                    color: white;
+                    border: none;
+                    width: 100%;
+                    padding: 12px;
+                    border-radius: 0.5rem;
+                    font-family: 'Inter-Bold', sans-serif;
+                    cursor: pointer;
+                    transition: background 0.2s;
+                }
+                .report-btn-submit:hover {
+                    background-color: #c0392b;
+                }
+                .report-status {
+                    margin-top: 12px;
+                    font-size: 0.9rem;
+                    text-align: center;
+                    font-family: 'Inter-SemiBold', sans-serif;
+                }
+            `;
+            document.head.appendChild(style);
+
+            const modalDiv = document.createElement('div');
+            modalDiv.id = 'reportModal';
+            modalDiv.className = 'report-modal';
+            modalDiv.innerHTML = `
+                <div class="report-content">
+                    <div class="report-header">
+                        <span>Report a Problem</span>
+                        <span class="report-close" onclick="closeReportModal()">&times;</span>
+                    </div>
+                    <form id="reportForm" onsubmit="submitReportForm(event)">
+                        <input type="hidden" name="access_key" value="b9f8e6e5-23d8-450f-bb3f-5ac35b5bf902">
+                        <input type="hidden" id="reportGameUrl" name="Game URL" value="">
+                        
+                        <div class="report-field">
+                            <label for="reportEmail">Your Email (Optional)</label>
+                            <input type="email" id="reportEmail" name="User Email" class="report-input" placeholder="student@example.com">
+                        </div>
+                        
+                        <div class="report-field">
+                            <label for="reportIssue">What is the issue?</label>
+                            <textarea id="reportIssue" name="Issue Description" class="report-textarea" required placeholder="Describe the problem (e.g., black screen, doesn't load)..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="report-btn-submit" id="reportSubmitBtn">Send Report</button>
+                        <div id="reportStatus" class="report-status"></div>
+                    </form>
+                </div>
+            `;
+            document.body.appendChild(modalDiv);
+        }
+
+        function reportProblem() {
+            if (!document.getElementById('reportModal')) {
+                injectReportModal();
             }
 
-        </script>
+            const gameIframe = document.getElementById('visor-juego');
+            const gameUrl = gameIframe ? gameIframe.src : 'Unknown / Home';
+
+            document.getElementById('reportGameUrl').value = gameUrl;
+            document.getElementById('reportModal').style.display = 'flex';
+        }
+
+        function closeReportModal() {
+            const modal = document.getElementById('reportModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.getElementById('reportForm').reset();
+                document.getElementById('reportStatus').textContent = "";
+            }
+        }
+
+        async function submitReportForm(event) {
+            event.preventDefault();
+            const form = document.getElementById('reportForm');
+            const statusDiv = document.getElementById('reportStatus');
+            const submitBtn = document.getElementById('reportSubmitBtn');
+
+            statusDiv.textContent = "Sending report...";
+            statusDiv.style.color = "inherit";
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    body: formData
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    statusDiv.textContent = "Report sent successfully!";
+                    statusDiv.style.color = "#2ecc71";
+                    form.reset();
+                    setTimeout(() => {
+                        closeReportModal();
+                    }, 2500);
+                } else {
+                    statusDiv.textContent = "Error: Please check your configuration.";
+                    statusDiv.style.color = "#e74c3c";
+                }
+            } catch (error) {
+                statusDiv.textContent = "Failed to send. Please check your connection.";
+                statusDiv.style.color = "#e74c3c";
+            } finally {
+                submitBtn.disabled = false;
+            }
+        }
+
+        function generarLateralesAleatorios(urlInput) {
+            const leftCol = document.getElementById('lateral-izquierdo');
+            const rightCol = document.getElementById('lateral-derecho');
+            if (!leftCol || !rightCol) return;
+
+            leftCol.innerHTML = '';
+            rightCol.innerHTML = '';
+
+            const originalCards = Array.from(document.querySelectorAll('#contenedor-menu .card'));
+            if (originalCards.length === 0) return;
+
+            const urlsToExclude = [];
+            if (typeof urlInput === 'object' && urlInput !== null) {
+                if (urlInput.es) urlsToExclude.push(urlInput.es);
+                if (urlInput.en) urlsToExclude.push(urlInput.en);
+            } else if (typeof urlInput === 'string') {
+                urlsToExclude.push(urlInput);
+            }
+
+            const filteredCards = originalCards.filter(card => {
+                const onclickStr = card.getAttribute('onclick') || '';
+                return !urlsToExclude.some(url => onclickStr.includes(url));
+            });
+
+            const shuffled = [...filteredCards].sort(() => 0.5 - Math.random());
+            const mid = Math.ceil(shuffled.length / 2);
+
+            shuffled.forEach((card, index) => {
+                const clone = card.cloneNode(true);
+                clone.removeAttribute('id');
+
+                if (index < mid) {
+                    leftCol.appendChild(clone);
+                } else {
+                    rightCol.appendChild(clone);
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
