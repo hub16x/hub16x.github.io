@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargando Sistema...</title>
+    <style>
+        /* --- ESTILOS DE LA PANTALLA DE CARGA --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d1117; /* Fondo profundo */
+            color: #ffffff;
+        }
+
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0d1117;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.4s ease-out; /* Desvanecimiento orgánico */
+        }
+
+        .spinner {
+            width: 90px; 
+            height: 90px;
+            border: 10px solid rgba(255, 255, 255, 0.05); 
+            border-radius: 50%;
+            border-top: 10px solid #2563eb; /* Azul brillante */
+            border-right: 10px solid #059669; /* Verde esmeralda */
+            animation: spin 1.1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite; 
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 15px rgba(37, 99, 235, 0.4)); 
+        }
+
+        .loading-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #2563eb, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulseText 1.5s ease-in-out infinite; 
+        }
+
+        /* Estilo elegante para el texto personalizado de tu juego */
+        .custom-subtext {
+            font-size: 1.1rem;
+            color: #9ca3af;
+            margin-bottom: 8px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        #percentage {
+            font-size: 1.5rem;
+            color: #10b981; /* Verde dinámico para el número */
+            font-variant-numeric: tabular-nums;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulseText {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* --- CONTENEDOR DEL IFRAME (PANTALLA COMPLETA) --- */
+        #iframe-container {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loading-screen">
+        <div class="spinner"></div>
+        <div class="loading-text">LOADING</div>
+        <div class="custom-subtext">Loading <em>BIG TOWER TINY SQUARE</em>...</div>
+        <div id="percentage">0%</div>
+    </div>
+
+    <div id="iframe-container">
+        <iframe src="https://ubg98.github.io/BigTowerTinySquare/" title="Big Tower Tiny Square"></iframe>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const loadingScreen = document.getElementById('loading-screen');
+            const iframeContainer = document.getElementById('iframe-container');
+            const percentageText = document.getElementById('percentage');
+            
+            // ⏱️ NUEVA DURACIÓN EXACTA: 4.5 Segundos (4500ms)
+            const TOTAL_TIME = 4500; 
+            
+            // --- LÓGICA DE CARGA IRREGULAR EXTENDIDA A 4.5s ---
+            // Distribución de tiempos modificada para mantener la intriga más tiempo
+            const progressStages = [
+                { percent: 0, timeFactor: 0 },         // Inicio
+                { percent: 14, timeFactor: 0.08 },     // Carga inicial rápida
+                { percent: 19, timeFactor: 0.18 },     // Pequeño trompicon inicial
+                { percent: 55, timeFactor: 0.32 },     // Subida veloz de archivos grandes
+                { percent: 58, timeFactor: 0.60 },     // ¡PARÓN ULTRA REALISTA! (Casi 1.3 segundos congelado en la mitad)
+                { percent: 82, timeFactor: 0.78 },     // Desbloqueo y avance
+                { percent: 96, timeFactor: 0.93 },     // Ralentización de seguridad al final
+                { percent: 100, timeFactor: 1.0 }      // Desborde final al completarse
+            ];
+
+            let currentStageIndex = 0;
+            let startTime = performance.now();
+
+            function updateFakeProgress() {
+                const currentTime = performance.now() - startTime;
+                
+                // Si expira el tiempo total, saltamos obligatoriamente al 100%
+                if (currentTime >= TOTAL_TIME) {
+                    percentageText.innerHTML = `100%`;
+                    showIframe();
+                    return;
+                }
+
+                // Localizar el tramo de animación actual
+                while (currentStageIndex < progressStages.length - 1 && currentTime > progressStages[currentStageIndex + 1].timeFactor * TOTAL_TIME) {
+                    currentStageIndex++;
+                }
+
+                if (currentStageIndex < progressStages.length - 1) {
+                    const currentStage = progressStages[currentStageIndex];
+                    const nextStage = progressStages[currentStageIndex + 1];
+
+                    const stageDuration = (nextStage.timeFactor - currentStage.timeFactor) * TOTAL_TIME;
+                    const timeInStage = currentTime - (currentStage.timeFactor * TOTAL_TIME);
+                    
+                    let stageProgress = timeInStage / stageDuration;
+                    
+                    // Añadimos micro-ruido aleatorio para evitar fluidez artificial en los números
+                    const noise = (Math.random() - 0.5) * 0.015;
+                    stageProgress = Math.max(0, Math.min(1, stageProgress + noise));
+
+                    // Interpolación entera del porcentaje
+                    const currentPercent = Math.floor(currentStage.percent + (stageProgress * (nextStage.percent - currentStage.percent)));
+                    
+                    // Mostramos en pantalla (nunca toca 100% antes del tiempo límite real)
+                    percentageText.innerHTML = `${Math.min(99, currentPercent)}%`;
+
+                    requestAnimationFrame(updateFakeProgress);
+                }
+            }
+
+            // --- FUNCIÓN DE DESPLIEGUE DEL JUEGO ---
+            function showIframe() {
+                setTimeout(() => {
+                    iframeContainer.style.display = 'block';
+                    loadingScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 400); // Remueve el elemento tras la transición
+                }, 150); // Pausa dramática final con el 100% visible
+            }
+
+            // Arrancar el bucle de renderizado animado
+            requestAnimationFrame(updateFakeProgress);
+        });
+    </script>
+</body>
+</html>

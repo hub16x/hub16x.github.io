@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Backflip Dive 3D</title>
+    <link rel="shortcut icon" href="https://4texas4.github.io/backflip-dive-3d/style/favicon.ico">
+    <link rel="stylesheet" href="https://4texas4.github.io/backflip-dive-3d/style/style.css">
+    <script src="https://4texas4.github.io/backflip-dive-3d/UnityLoader.js"></script>
+    
+    <style>
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            overflow: hidden;
+            background: #0d0e15;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        #gameContainer {
+            width: 100vw !important;
+            height: 100vh !important;
+            margin: 0 !important;
+        }
+
+        /* --- NUEVO LOADING OVERLAY MEJORADO --- */
+        #custom-loader {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* Fondo cyberpunk oscuro con profundidad */
+            background: radial-gradient(circle, #1a1c29 0%, #08090c 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.6s;
+            overflow: hidden;
+        }
+
+        /* Efecto de rejilla de fondo futurista */
+        #custom-loader::before {
+            content: "";
+            position: absolute;
+            width: 200%; height: 200%;
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center;
+            transform: perspective(500px) rotateX(60deg);
+            top: -50%;
+            animation: gridMove 8s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 320px; }
+        }
+
+        /* Contenedor del contenido para quedar por encima de la rejilla */
+        .loader-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Logo flotante con sombra neón y efecto Backflip aleatorio */
+        .loader-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 24px;
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.4);
+            border: 3px solid #00f2fe;
+            margin-bottom: 25px;
+            object-fit: cover;
+            animation: floatAndFlip 4s ease-in-out infinite;
+        }
+
+        @keyframes floatAndFlip {
+            0% { transform: translateY(0) rotate(0deg); }
+            40% { transform: translateY(-15px) rotate(0deg); }
+            65% { transform: translateY(-15px) rotate(-360deg); } /* ¡Hace un Backflip! */
+            85% { transform: translateY(5px) rotate(-360deg); }
+            100% { transform: translateY(0) rotate(-360deg); }
+        }
+
+        /* Texto con estilo Neon Gamer */
+        .loading-text {
+            color: #ffffff;
+            font-weight: 900;
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.6), 0 0 20px rgba(127, 0, 255, 0.3);
+            animation: textPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes textPulse {
+            0%, 100% { opacity: 0.9; text-shadow: 0 0 10px rgba(0, 242, 254, 0.6); }
+            50% { opacity: 1; text-shadow: 0 0 20px rgba(0, 242, 254, 0.9), 0 0 30px rgba(127, 0, 255, 0.6); }
+        }
+
+        /* Envoltura de la barra de progreso */
+        #progress-wrap {
+            width: 280px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 3px;
+            box-shadow: inset 0 1px 5px rgba(0,0,0,0.5), 0 0 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Relleno con degradado animado Premium */
+        #progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #7f00ff, #00f2fe);
+            background-size: 200% 200%;
+            border-radius: 20px;
+            box-shadow: 0 0 15px #00f2fe;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: gradientShift 2s linear infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Texto del porcentaje */
+        #pct-text {
+            color: #00f2fe;
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: 800;
+            font-family: monospace;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="custom-loader">
+        <div class="loader-content">
+            <img class="loader-avatar" src="https://4texas4.github.io/backflip-dive-3d/icon.jpeg" alt="BACKFLIP DIVE 3D - QUICK PLAY NOW IN CLASSROOM 16X">
+            <div class="loading-text">Backflip Dive 3D</div>
+            <div id="progress-wrap">
+                <div id="progress-fill"></div>
+            </div>
+            <div id="pct-text">0%</div>
+        </div>
+    </div>
+
+    <div id="gameContainer"></div>
+
+    <script>
+        const fill = document.getElementById('progress-fill');
+        const pct = document.getElementById('pct-text');
+        const loader = document.getElementById('custom-loader');
+        const container = document.getElementById("gameContainer");
+
+        // SPACE BAR EMULATION
+        let h=0;
+        const down = () => {
+            if(!h) {
+                h=1;
+                const canvas = container.querySelector("canvas");
+                if(canvas) canvas.dispatchEvent(new MouseEvent("mousedown", {bubbles:true, buttons:1}));
+            }
+        };
+        const up = () => {
+            if(h) {
+                h=0;
+                const canvas = container.querySelector("canvas");
+                if(canvas) canvas.dispatchEvent(new MouseEvent("mouseup", {bubbles:true}));
+            }
+        };
+
+        window.addEventListener("keydown", e => {
+            if(e.code === "Space") { e.preventDefault(); down(); }
+        }, {passive: false});
+
+        window.addEventListener("keyup", e => {
+            if(e.code === "Space") { e.preventDefault(); up(); }
+        }, {passive: false});
+
+        // UNITY INITIALIZATION
+        function handleProgress(instance, progress) {
+            let p = Math.min(Math.round(progress * 100), 100);
+            fill.style.width = p + "%";
+            pct.innerText = p + "%";
+            
+            if (progress === 1) {
+                loader.style.opacity = "0";
+                setTimeout(() => {
+                    loader.style.display = "none";
+                }, 600);
+            }
+        }
+
+        var gameInstance = UnityLoader.instantiate("gameContainer", "https://4texas4.github.io/backflip-dive-3d/build.json", {
+            onProgress: handleProgress,
+            Module: {
+                onRuntimeInitialized: function() {
+                    handleProgress(gameInstance, 1);
+                }
+            }
+        });
+
+        if (typeof getAdinDomain !== 'undefined') {
+            const bodyTag = document.getElementsByTagName('body')[0];
+            let addAdinPreroll = document.createElement('script');
+            addAdinPreroll.src = getAdinDomain;
+            bodyTag.appendChild(addAdinPreroll);
+        }
+        window.alert = function() {};
+    </script>
+</body>
+</html>
