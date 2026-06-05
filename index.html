@@ -759,7 +759,7 @@
             display: block;
         }
 
-        pagination-container {
+        .pagination-container {
             display: flex;
             gap: 16px;
         }
@@ -957,6 +957,7 @@
     border: 2px solid #0f1aab; background: white; color: #0f1aab; 
     font-weight: bold; transition: 0.3s;">
                     🌙 Dark Mode
+                </button>
             </div>
 
             <!-- Buscador alineado responsivamente con clases Flex de Bootstrap -->
@@ -988,7 +989,7 @@
                     <h1 id="main-title-element">classroom 16x - unƅlocked gаmes ez</h1>
                 </div>
 
-                <!-- Rejilla de Tarjetas de Juegos -->
+                <!-- Rejilla de Tarjetas de Juegos (PÁGINA 1) -->
                 <div class="card-masonry pagina-juegos" id="pagina-1">
                     <!-- Juego: BIG TOWER TINY SQUARE -->
                     <div onclick="abrirJuego('/games/big-tower-tiny-square/')" class="card large"
@@ -1001,8 +1002,8 @@
                     </div>
 
                     <!-- Juego: DRIVE MAD -->
-                    <div onclick="abrirJuego('/games/drive-mad/')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <div onclick="abrirJuego('/games/drive-mad/')" class="card" style="cursor: pointer;" role="button"
+                        tabindex="0">
                         <img src="/images/drive-mad.webp" alt="DRIVE MAD, play now unblocked for free"
                             class="img-fluid">
                         <div class="card-body">
@@ -1087,8 +1088,8 @@
                     </div>
 
                     <!-- Juego: BACKFLIP DIVE 3D -->
-                    <div onclick="abrirJuego('/games/backflip-dive-3d/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <div onclick="abrirJuego('/games/backflip-dive-3d/')" class="card" style="cursor: pointer;"
+                        role="button" tabindex="0">
                         <img src="/images/backflip-dive-3d.webp" alt="BACKFLIP DIVE 3D, play now unblocked for free"
                             class="img-fluid">
                         <div class="card-body">
@@ -1146,8 +1147,8 @@
                     </div>
 
                     <!-- Juego: LEVEL DEVIL -->
-                    <div onclick="abrirJuego('/games/level-devil/')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <div onclick="abrirJuego('/games/level-devil/')" class="card" style="cursor: pointer;" role="button"
+                        tabindex="0">
                         <img src="/images/level-devil.webp" alt="LEVEL DEVIL, play now unblocked for free"
                             class="img-fluid">
                         <div class="card-body">
@@ -1465,39 +1466,42 @@
                             <span>DOODLE JUMP</span>
                         </div>
                     </div>
-                </div> <!-- Fin de card-masonry -->
-                <!-- PÁGINA 2 -->
-                <div class="card-masonry pagina-juegos" id="pagina-2" style="display: none !important;">
+                </div> <!-- Fin de card-masonry (Página 1) -->
 
+                <!-- PÁGINA 2 -->
+                <div class="card-masonry pagina-juegos" id="pagina-2" style="display: none;">
                     <!-- Juego: BITLIFE -->
                     <div onclick="abrirJuego('https://bitlifeonline.github.io/class/index.html')" class="card large"
                         style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/bitlife.webp" alt="BITLIFE, play now unblocked for free"
-                            class="img-fluid">
+                        <img src="/images/bitlife.webp" alt="BITLIFE, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>BITLIFE</span>
                         </div>
                     </div>
-
-                    <h3
-                        style="grid-column: 1 / -1; color: gray; text-align: center; padding: 50px; font-family: 'Inter', sans-serif;">
-                        More games coming soon...</h3>
+                    <!-- Juego: SUPER MEET BOY -->
+                    <div onclick="abrirJuego('https://www.archive.play-games.com/games/ruffle/?swf=archive/5/meatboyv2.swf')"
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/super-meet-boy.webp" alt="SUPER MEET BOY, play now unblocked for free"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>SUPER MEET BOY</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- PÁGINA 3 -->
-                <div class="card-masonry pagina-juegos" id="pagina-3" style="display: none !important;">
+                <div class="card-masonry pagina-juegos" id="pagina-3" style="display: none;">
                     <h3
                         style="grid-column: 1 / -1; color: gray; text-align: center; padding: 50px; font-family: 'Inter', sans-serif;">
                         More games coming soon...</h3>
                 </div>
 
                 <!-- BOTONES DE PAGINACIÓN -->
-                <div class="pagination-container" style="display: flex; justify-content: center; gap: 8px;">
+                <div class="pagination-container" id="pags" style="display: flex; justify-content: center; gap: 8px;">
                     <button class="page-item active">1</button>
                     <button class="page-item inactive">2</button>
                     <button class="page-item inactive">3</button>
                 </div>
-
 
             </div> <!-- Fin de contenedor-menu -->
         </div> <!-- Fin de container-fluid -->
@@ -1519,7 +1523,6 @@
                         sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-top-navigation allow-top-navigation-by-user-activation allow-downloads"
                         scrolling="no">
                     </iframe>
-
                 </div>
 
                 <!-- Lateral Derecho (Grid de 2 columnas con Scroll Independiente) -->
@@ -1590,7 +1593,6 @@
                 font-size: 18px;
             }
         </style>
-
     </noscript>
 
     <!-- ──────── BLOQUE ÚNICO DE SCRIPTS INTEGRADOS ──────── -->
@@ -1611,6 +1613,7 @@
 
             const contenedorMenu = document.getElementById('contenedor-menu');
             const texto = document.getElementById('text-area');
+            const botones = document.getElementById('pags');
             const pantallaJuego = document.getElementById('pantalla-juego');
             const visorJuego = document.getElementById('visor-juego');
 
@@ -1624,6 +1627,7 @@
 
             if (contenedorMenu && pantallaJuego && visorJuego) {
                 contenedorMenu.style.display = 'none';
+                botones.style.display = 'none';
                 pantallaJuego.style.display = 'block';
                 if (texto) texto.style.display = 'none';
                 visorJuego.src = urlFinal;
@@ -1645,6 +1649,7 @@
         function cerrarJuego() {
             document.getElementById('pantalla-juego').style.display = 'none';
             document.getElementById('contenedor-menu').style.display = 'block';
+            document.getElementById('pags').style.display = 'flex';
             const texto = document.getElementById('text-area');
             if (texto) texto.style.display = 'block';
             document.getElementById('visor-juego').src = '';
@@ -1665,58 +1670,6 @@
             }
         }
 
-        // --- BUSCADOR COMPATIBLE CON PAGINACIÓN Y TEXTOS ---
-        function filtrarJuegos() {
-            const input = document.getElementById('buscador');
-            const filtro = input.value.toLowerCase();
-            const paginas = document.querySelectorAll('.pagina-juegos');
-            const paginacion = document.querySelector('.pagination-container');
-
-            if (filtro === "") {
-                paginacion.style.display = 'flex';
-
-                // Limpiar estilos de las tarjetas
-                document.querySelectorAll('.pagina-juegos .card').forEach(tarjeta => {
-                    tarjeta.style.setProperty('display', '', 'important');
-                });
-
-                // Volver a mostrar los textos "More games coming soon..."
-                document.querySelectorAll('.pagina-juegos h3').forEach(texto => {
-                    texto.style.setProperty('display', '', 'important');
-                });
-
-                cambiarPagina(paginaActual);
-                return;
-            }
-
-            // Ocultar botones y buscar en todo
-            paginacion.style.display = 'none';
-
-            paginas.forEach(pagina => {
-                pagina.style.setProperty('display', 'grid', 'important'); // Desbloquear página para buscar
-
-                // NUEVO: Ocultar los textos "More games coming soon" durante la búsqueda
-                const textosVacio = pagina.querySelectorAll('h3');
-                textosVacio.forEach(texto => {
-                    texto.style.setProperty('display', 'none', 'important');
-                });
-
-                // Filtrar solo las tarjetas de los juegos
-                const tarjetas = pagina.getElementsByClassName('card');
-
-                for (let i = 0; i < tarjetas.length; i++) {
-                    const nombreJuego = tarjetas[i].querySelector('.card-body span');
-                    if (nombreJuego) {
-                        const texto = nombreJuego.textContent || nombreJuego.innerText;
-                        if (texto.toLowerCase().indexOf(filtro) > -1) {
-                            tarjetas[i].style.setProperty('display', '', 'important');
-                        } else {
-                            tarjetas[i].style.setProperty('display', 'none', 'important');
-                        }
-                    }
-                }
-            });
-        }
         function openInAboutBlank() {
             const iframe = document.getElementById('visor-juego');
             if (!iframe || !iframe.src) return;
@@ -1761,12 +1714,9 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            // 1. Título y estado inicial (para el robot mierda de google)
+            // 1. Título y estado inicial (para el robot de google)
             document.title = "Classroom 16x - Unblocked games EZ";
             iniciarPaginacion();
-
-            // Guardamos el favicon original de tu web por si quieres mantenerlo antes de la interacción
-            // O puedes dejar que use el por defecto de tu servidor.
 
             // Diccionario de traducciones para el camuflaje
             const titles = {
@@ -1884,7 +1834,8 @@
                 updateFavicon(presetIcon);
             }
         }
-        // --- SISTEMA DE PAGINACIÓN POR CONTENEDORES (FORZADO) ---
+
+        // --- SISTEMA DE PAGINACIÓN POR CONTENEDORES ---
         let paginaActual = 1;
 
         function iniciarPaginacion() {
@@ -1905,16 +1856,16 @@
             const paginas = document.querySelectorAll('.pagina-juegos');
             const botones = document.querySelectorAll('.pagination-container .page-item');
 
-            // 1. Mostrar/Ocultar páginas forzando la regla CSS
+            // 1. Mostrar la página seleccionada y ocultar las demás
             paginas.forEach((pagina, index) => {
                 if (index + 1 === numeroPagina) {
-                    pagina.style.setProperty('display', 'grid', 'important'); // Mostrar
+                    pagina.style.display = 'grid'; // Usamos grid porque tu CSS card-masonry es un grid
                 } else {
-                    pagina.style.setProperty('display', 'none', 'important'); // Ocultar
+                    pagina.style.display = 'none';
                 }
             });
 
-            // 2. Colores de los botones
+            // 2. Actualizar los colores de los botones (azul para activo, gris para inactivo)
             botones.forEach((boton, index) => {
                 if (index + 1 === numeroPagina) {
                     boton.classList.add('active');
@@ -1925,6 +1876,7 @@
                 }
             });
 
+            // Deslizar la vista hacia el principio de la lista de juegos
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -2013,34 +1965,6 @@
                     pagina.style.setProperty('display', 'none', 'important');
                 }
             });
-        }
-        function cambiarPagina(numeroPagina) {
-            paginaActual = numeroPagina;
-            const paginas = document.querySelectorAll('.pagina-juegos');
-            const botones = document.querySelectorAll('.pagination-container .page-item');
-
-            // 1. Mostrar la página seleccionada y ocultar las demás
-            paginas.forEach((pagina, index) => {
-                if (index + 1 === numeroPagina) {
-                    pagina.style.display = 'grid'; // Usamos grid porque tu CSS card-masonry es un grid
-                } else {
-                    pagina.style.display = 'none';
-                }
-            });
-
-            // 2. Actualizar los colores de los botones (azul para activo, gris para inactivo)
-            botones.forEach((boton, index) => {
-                if (index + 1 === numeroPagina) {
-                    boton.classList.add('active');
-                    boton.classList.remove('inactive');
-                } else {
-                    boton.classList.add('inactive');
-                    boton.classList.remove('active');
-                }
-            });
-
-            // Deslizar la vista hacia el principio de la lista de juegos
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // --- SISTEMA DE REPORTE INTEGRADO EN JS ---
