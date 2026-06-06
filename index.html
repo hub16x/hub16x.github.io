@@ -754,6 +754,121 @@
             background-color: var(--xp-color);
         }
 
+        /* ──────── MODAL DEV TOOLS (HACKER STYLE) - VERSIÓN ARRASTRABLE ──────── */
+        .hacker-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            /* Permite hacer clic en la web de fondo */
+            font-family: 'Courier New', Courier, monospace;
+            color: #00ff00;
+        }
+
+        .hacker-content {
+            background-color: #0a0a0a;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 25px rgba(0, 255, 0, 0.6);
+            position: absolute;
+            top: 80px;
+            /* Posición inicial vertical */
+            left: 80px;
+            /* Posición inicial horizontal */
+            width: 90%;
+            max-width: 550px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border-radius: 10px;
+            padding: 20px;
+            pointer-events: auto;
+            /* Restablece la interacción dentro del panel */
+            box-sizing: border-box;
+        }
+
+        .hacker-header {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-shadow: 0 0 5px #00ff00;
+            border-bottom: 1px solid #00ff00;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
+            /* Indica que la cabecera es arrastrable */
+            user-select: none;
+            /* Evita que se seleccione texto al arrastrar */
+        }
+
+        .hacker-close {
+            cursor: pointer;
+            color: #00ff00;
+            font-size: 1.5rem;
+        }
+
+        .hacker-close:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px #ff0000;
+        }
+
+        .hacker-section {
+            border: 1px solid #005500;
+            padding: 10px;
+            margin-bottom: 15px;
+            background-color: #020202;
+        }
+
+        .hacker-section-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #88ff88;
+        }
+
+        .hacker-input {
+            width: 100%;
+            background-color: #000;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            padding: 8px;
+            font-family: inherit;
+            box-sizing: border-box;
+            margin-bottom: 8px;
+        }
+
+        .hacker-btn {
+            background-color: #002200;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .hacker-btn:hover {
+            background-color: #00ff00;
+            color: #000;
+            box-shadow: 0 0 8px #00ff00;
+        }
+
+        .hacker-output {
+            background-color: #000;
+            border: 1px dashed #005500;
+            color: #00ff00;
+            padding: 8px;
+            min-height: 40px;
+            max-height: 180px;
+            overflow-y: auto;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
         img {
             color: #0531f7;
             background-color: #f8f9fa;
@@ -1559,9 +1674,19 @@
                     <!-- Juego: FLAPPY BIRD -->
                     <div onclick="abrirJuego('/games/flappy-bird')" class="card" style="cursor: pointer;" role="button"
                         tabindex="0">
-                        <img src="/images/flappy-bird.webp" alt="FLAPPY BIRD, play now unblocked for free" class="img-fluid">
+                        <img src="/images/flappy-bird.webp" alt="FLAPPY BIRD, play now unblocked for free"
+                            class="img-fluid">
                         <div class="card-body">
                             <span>FLAPPY BIRD</span>
+                        </div>
+                    </div>
+                    <!-- Juego: BLUMGI BALL -->
+                    <div onclick="abrirJuego('https://abinbins.github.io/a2/blumgi-ball/')" class="card" style="cursor: pointer;" role="button"
+                        tabindex="0">
+                        <img src="/images/blumgi-ball.webp" alt="BLUMGI BALL, play now unblocked for free"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>BLUMGI BALL</span>
                         </div>
                     </div>
                 </div>
@@ -1615,7 +1740,8 @@
                 style="font-family: 'Inter-SemiBold', sans-serif; text-transform: none; color: var(--theme-color);">Why
                 choose classroom 16x?</h2>
             <p class="mb-3" style="font-size: 0.95rem; line-height: 1.6;">
-                © 2026 <strong>Classroom 16x</strong>.
+                <span id="copyright-trigger" style="cursor: pointer; user-select: none;">©</span> 2026 <strong>Classroom
+                    16x</strong>.
                 Based on the original code/images from <a target="_blank" style="color: #080808;"
                     href="https://ezclasswork.com">ez
                     classwork</a>, <a target="_blank" style="color: #080808;"
@@ -1671,6 +1797,54 @@
             }
         </style>
     </noscript>
+    <!-- ──────── CONTAINER DEL PANEL DEV TOOLS (HACKER STYLE) ──────── -->
+    <div id="hackerDevModal" class="hacker-modal">
+        <div class="hacker-content">
+            <div class="hacker-header">
+                <span>Dev tools</span>
+                <span class="hacker-close" onclick="toggleHackerModal()">&times;</span>
+            </div>
+
+            <!-- Sección: Información General -->
+            <div class="hacker-section">
+                <div class="hacker-section-title">> STATUS_REPORT</div>
+                <div id="hackerStatusInfo" style="font-size: 0.85rem; line-height: 1.4;"></div>
+            </div>
+
+            <!-- Sección: Control del Visor de Juegos -->
+            <div class="hacker-section">
+                <div class="hacker-section-title">> IFRAME_CONTROLLER</div>
+                <div style="margin-bottom: 5px; font-size: 0.85rem;">Active Game URL:</div>
+                <input type="text" id="hackerGameUrlInput" class="hacker-input"
+                    placeholder="No active game iframe loading.">
+                <button class="hacker-btn" onclick="hackerUpdateIframeSrc()">Inject URL</button>
+            </div>
+
+            <!-- Sección: Consola de Javascript / Ejecución de Código -->
+            <div class="hacker-section">
+                <div class="hacker-section-title">> JS_CONSOLE_INJECTOR</div>
+                <textarea id="hackerConsoleInput" class="hacker-input" rows="3"
+                    placeholder="console.log('Execute JS inside page context...');"
+                    style="resize: vertical;"></textarea>
+                <div style="display: flex; gap: 10px;">
+                    <button class="hacker-btn" onclick="hackerExecuteMainJS()">Run in Main Page</button>
+                    <button class="hacker-btn" onclick="hackerExecuteIframeJS()">Run in Game IFrame</button>
+                </div>
+                <div style="margin-top: 8px; font-size: 0.8rem; color: #88ff88;">Console Output:</div>
+                <div id="hackerConsoleOutput" class="hacker-output">Waiting for commands...</div>
+            </div>
+
+            <!-- Sección: Utilidades de Bypass -->
+            <div class="hacker-section">
+                <div class="hacker-section-title">> BYPASS_SYSTEM_UTILITIES</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <button class="hacker-btn" onclick="hackerToggleScrollLock()">Toggle Main Scroll Lock</button>
+                    <button class="hacker-btn" onclick="hackerBypassCloak()">Reset Cloak Tab Settings</button>
+                    <button class="hacker-btn" onclick="hackerDumpJSON()">Dump Games Database JSON</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- ──────── BLOQUE ÚNICO DE SCRIPTS INTEGRADOS ──────── -->
     <script>
@@ -2311,6 +2485,273 @@
                     rightCol.appendChild(clone);
                 }
             });
+        }
+        // ─── CONTROLADOR DE DEV TOOLS ───
+        let copyrightClicks = 0;
+        let copyrightTimer = null;
+
+        // Listener en el copyright de carga
+        // Listener en el copyright de carga
+        document.addEventListener("DOMContentLoaded", () => {
+            const trigger = document.getElementById('copyright-trigger');
+            if (trigger) {
+                trigger.addEventListener('click', () => {
+                    copyrightClicks++;
+
+                    clearTimeout(copyrightTimer);
+                    copyrightTimer = setTimeout(() => {
+                        copyrightClicks = 0;
+                    }, 2000); // Resetea la cuenta si pasan más de 2 segundos sin presionar
+
+                    if (copyrightClicks >= 5) {
+                        copyrightClicks = 0;
+                        const key = prompt("┌──[ENTER_AUTHORIZATION_KEY]\n└─> ");
+                        if (key !== null) {
+                            if (verificarHackerClave(key)) {
+                                toggleHackerModal();
+                            } else {
+                                alert("❌ AUTHORIZATION_DENIED");
+                            }
+                        }
+                    }
+                });
+            }
+
+            // ─── NUEVO: Inicializa el arrastre del panel al cargar la web ───
+            const hackerWindow = document.querySelector('.hacker-content');
+            const hackerHeader = document.querySelector('.hacker-header');
+            if (hackerWindow && hackerHeader) {
+                makeElementDraggable(hackerWindow, hackerHeader);
+            }
+        });
+
+        // Verificador seguro basado en XOR con clave 42 y cifrado de firma Base64
+        function verificarHackerClave(input) {
+            try {
+                const xored = input.split('').map(c => String.fromCharCode(c.charCodeAt(0) ^ 42)).join('');
+                return btoa(xored) === "Y2d+ZlwZ";
+            } catch (e) {
+                return false;
+            }
+        }
+
+        function toggleHackerModal() {
+            const modal = document.getElementById('hackerDevModal');
+            if (!modal) return;
+
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+                hackerInitStats();
+            }
+        }
+
+        // Carga los estados internos del sistema en tiempo real
+        function hackerInitStats() {
+            const statusInfo = document.getElementById('hackerStatusInfo');
+            const urlInput = document.getElementById('hackerGameUrlInput');
+            const iframe = document.getElementById('visor-juego');
+
+            if (statusInfo) {
+                const totalGames = document.querySelectorAll('#contenedor-menu .card').length;
+                const activePage = document.querySelector('.pagina-juegos[style*="grid"]') ?
+                    Array.from(document.querySelectorAll('.pagina-juegos')).findIndex(p => p.style.display !== 'none') + 1 : 1;
+                const darkMode = document.body.classList.contains('modo-oscuro') ? "ENABLED" : "DISABLED";
+
+                statusInfo.innerHTML = `
+                    • CLIENT_SCREEN: ${window.innerWidth}x${window.innerHeight}px<br>
+                    • DARK_MODE_STATE: ${darkMode}<br>
+                    • DB_TOTAL_GAMES: ${totalGames}<br>
+                    • PAGINATION_ACTIVE_PAGE: Page ${activePage}<br>
+                    • USER_AGENT: ${navigator.userAgent.slice(0, 60)}...
+                `;
+            }
+
+            if (urlInput && iframe) {
+                urlInput.value = iframe.src || "";
+            }
+        }
+
+        // Inyecta o modifica manualmente la URL en el visor del juego
+        function hackerUpdateIframeSrc() {
+            const input = document.getElementById('hackerGameUrlInput');
+            const iframe = document.getElementById('visor-juego');
+            const url = input ? input.value.trim() : "";
+
+            if (url && iframe) {
+                const pantallaJuego = document.getElementById('pantalla-juego');
+
+                // Si el visor de juego está oculto, usamos la función formal abrirJuego
+                // para asegurar que se carguen los laterales, se oculte el menú y se bloquee el scroll.
+                if (!pantallaJuego || pantallaJuego.style.display === 'none') {
+                    abrirJuego(url);
+                } else {
+                    // Si ya estamos dentro del visor de juego, solo actualizamos el src y los laterales
+                    iframe.src = url;
+                    generarLateralesAleatorios(url);
+                }
+
+                const output = document.getElementById('hackerConsoleOutput');
+                if (output) {
+                    output.innerText = "Injected URL successfully: " + url;
+                    output.style.color = "#00ff00";
+                }
+            } else {
+                const output = document.getElementById('hackerConsoleOutput');
+                if (output) {
+                    output.innerText = "[ERROR]: URL input is empty or iframe elements not found.";
+                    output.style.color = "#ff3333";
+                }
+            }
+        }
+
+        // Consola JS: Ejecución sobre el contexto de la página principal
+        function hackerExecuteMainJS() {
+            const input = document.getElementById('hackerConsoleInput').value;
+            const output = document.getElementById('hackerConsoleOutput');
+            if (!input) return;
+
+            try {
+                // Interceptamos temporalmente el console.log para mostrarlo en el visor
+                let logs = [];
+                const originalLog = console.log;
+                console.log = (...args) => {
+                    logs.push(args.join(' '));
+                    originalLog(...args);
+                };
+
+                const result = eval(input);
+                console.log = originalLog; // Restauramos la consola original
+
+                output.innerText = (logs.length ? "[CONSOLE LOGS]:\n" + logs.join('\n') + "\n\n" : "") + "[RETURN VALUE]: " + result;
+                output.style.color = "#00ff00";
+            } catch (err) {
+                output.innerText = "[SCRIPT RUNTIME ERROR]:\n" + err.message;
+                output.style.color = "#ff3333";
+            }
+        }
+
+        // Consola JS: Ejecución interna orientada al Frame del juego
+        function hackerExecuteIframeJS() {
+            const input = document.getElementById('hackerConsoleInput').value;
+            const output = document.getElementById('hackerConsoleOutput');
+            const iframe = document.getElementById('visor-juego');
+            if (!input || !iframe) return;
+
+            try {
+                const iframeWindow = iframe.contentWindow;
+                const result = iframeWindow.eval(input);
+                output.innerText = "[IFRAME RETURN VALUE]: " + result;
+                output.style.color = "#00ff00";
+            } catch (err) {
+                output.innerText = "[CROSS-ORIGIN BROWSER NOTICE]:\n" + err.message +
+                    "\n\n(Nota: Si el juego está alojado en un dominio externo, las políticas CORS del navegador impiden manipular internamente el iframe por seguridad escolar. Ejecuta el script sobre 'Main Page' en su lugar.)";
+                output.style.color = "#ffaa00";
+            }
+        }
+
+        // Bypass: Forzar el desbloqueo o bloqueo de scroll
+        function hackerToggleScrollLock() {
+            const isLocked = document.documentElement.style.overflow === 'hidden';
+            if (isLocked) {
+                document.documentElement.style.overflow = '';
+                document.body.style.overflow = '';
+                document.getElementById('hackerConsoleOutput').innerText = "Scroll Lock: DISABLED (Scroll de la página principal liberado)";
+            } else {
+                document.documentElement.style.overflow = 'hidden';
+                document.body.style.overflow = 'hidden';
+                document.getElementById('hackerConsoleOutput').innerText = "Scroll Lock: ENABLED (Scroll de la página principal bloqueado)";
+            }
+        }
+
+        // Bypass: Deshacer el camuflaje inmediatamente
+        function hackerBypassCloak() {
+            document.title = "Classroom 16x - Unblocked games EZ";
+            let link = document.querySelector("link[rel~='icon']");
+            if (link) {
+                link.href = "/assets/favicons/default/favicon.png";
+            }
+            document.getElementById('hackerConsoleOutput').innerText = "Configuraciones de pestaña restablecidas a su estado normal (Uncloaked).";
+        }
+
+        // Utilidad: Exportar JSON de la base de datos de cartas/juegos cargada
+        function hackerDumpJSON() {
+            const output = document.getElementById('hackerConsoleOutput');
+            const cards = document.querySelectorAll('#contenedor-menu .card');
+            let data = [];
+            cards.forEach(card => {
+                const title = card.querySelector('.card-body span')?.innerText || "Unknown";
+                const img = card.querySelector('img')?.src || "No Image";
+                const action = card.getAttribute('onclick') || "No Click Action";
+                data.push({ title, img, action });
+            });
+            output.innerText = JSON.stringify(data, null, 2);
+            output.style.color = "#00ff00";
+        }
+        // Función para permitir arrastrar cualquier elemento usando un anclaje (cabecera)
+        function makeElementDraggable(elmnt, dragAnchor) {
+            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+            if (dragAnchor) {
+                dragAnchor.onmousedown = dragMouseDown;
+                dragAnchor.ontouchstart = dragTouchStart;
+            } else {
+                elmnt.onmousedown = dragMouseDown;
+                elmnt.ontouchstart = dragTouchStart;
+            }
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                // No arrastrar si se hace clic en inputs, botones o el botón de cierre
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'BUTTON' || e.target.classList.contains('hacker-close')) {
+                    return;
+                }
+                e.preventDefault();
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+            }
+
+            function dragTouchStart(e) {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'BUTTON' || e.target.classList.contains('hacker-close')) {
+                    return;
+                }
+                pos3 = e.touches[0].clientX;
+                pos4 = e.touches[0].clientY;
+                document.ontouchend = closeDragElement;
+                document.ontouchmove = elementTouchDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function elementTouchDrag(e) {
+                pos1 = pos3 - e.touches[0].clientX;
+                pos2 = pos4 - e.touches[0].clientY;
+                pos3 = e.touches[0].clientX;
+                pos4 = e.touches[0].clientY;
+
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+                document.ontouchend = null;
+                document.ontouchmove = null;
+            }
         }
     </script>
 </body>
