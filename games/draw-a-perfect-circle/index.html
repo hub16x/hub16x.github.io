@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRAW A PERFECT CIRCLE - Quick play now - CLASSROOM16X.VERCEL.APP</title>
+    <meta name="description" content="Test your skills in Draw a Perfect Circle! Draw freehand and see your accuracy score from 0% to 100%. Can you draw a truly perfect circle?">
+    <style>
+        :root {
+            --bg-color: #1a1a1a;
+            --canvas-bg: #242424;
+            --accent-color: #00ffcc;
+            --text-color: #ffffff;
+            --dot-color: #ff4757;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        h1 {
+            margin: 10px 0 5px 0;
+            font-size: 2.2rem;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+            font-weight: 700;
+        }
+
+        p {
+            margin: 0 0 15px 0;
+            color: #aaa;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        /* UI Mantenida: Ahora es un panel libre, no una forma circular limitante */
+        #game-container {
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-radius: 20px; 
+            overflow: hidden;
+            background-color: var(--canvas-bg);
+            border: 4px solid #333;
+            transition: border-color 0.3s ease;
+        }
+
+        #game-container.drawing {
+            border-color: var(--accent-color);
+        }
+
+        canvas {
+            display: block;
+            cursor: crosshair;
+            touch-action: none;
+        }
+
+        #ui-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        #score-display {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.85);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+            transition: transform 0.1s ease;
+        }
+
+        #message {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 10px;
+            color: var(--accent-color);
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+            height: 24px;
+        }
+
+        /* El punto central requerido se mantiene intacto */
+        #center-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 12px;
+            height: 12px;
+            background-color: var(--dot-color);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 12px var(--dot-color);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        #hint {
+            position: absolute;
+            bottom: 40px;
+            font-size: 0.9rem;
+            color: #666;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Draw a Perfect Circle</h1>
+    <p>Unleash your inner compass! Draw smoothly around the center dot.</p>
+
+    <div id="game-container">
+        <div id="center-dot"></div>
+        <canvas id="circleCanvas" width="500" height="500"></canvas>
+        <div id="ui-overlay">
+            <div id="score-display">0.0%</div>
+            <div id="message"></div>
+        </div>
+    </div>
+
+    <div id="hint">Press & Hold to Draw</div>
+
+    <script>
+        const canvas = document.getElementById('circleCanvas');
+        const ctx = canvas.getContext('2d');
+        const container = document.getElementById('game-container');
+        const scoreDisplay = document.getElementById('score-display');
+        const messageDisplay = document.getElementById('message');
+
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+
+        let isDrawing = false;
+        let points = [];
+        let distances = [];
+        let anglesCovered = new Set();
+
+        ctx.lineWidth = 5;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        window.addEventListener('mouseup', stopDrawing);
+
+        canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startDrawing(e.touches[0]); });
+        canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e.touches[0]); });
+        window.addEventListener('touchend', stopDrawing);
+
+        function startDrawing(e) {
+            isDrawing = true;
+            points = [];
+            distances = [];
+            anglesCovered.clear();
+            container.classList.add('drawing');
+            messageDisplay.textContent = "Drawing...";
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const pos = getMousePos(e);
+            addPoint(pos.x, pos.y);
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+
+            const pos = getMousePos(e);
+            const lastPoint = points[points.length - 1];
+
+            if (lastPoint) {
+                const distFromLast = Math.hypot(pos.x - lastPoint.x, pos.y - lastPoint.y);
+                if (distFromLast < 3) return;
+            }
+
+            addPoint(pos.x, pos.y);
+
+            ctx.beginPath();
+            ctx.strokeStyle = '#00ffcc';
+            ctx.shadowBlur = 4;
+            ctx.shadowColor = '#00ffcc';
+            
+            if (points.length > 1) {
+                ctx.moveTo(points[points.length - 2].x, points[points.length - 2].y);
+                ctx.lineTo(pos.x, pos.y);
+                ctx.stroke();
+            }
+
+            const currentScore = calculateSmoothScore();
+            scoreDisplay.textContent = currentScore.toFixed(1) + '%';
+            
+            scoreDisplay.style.transform = `scale(${1 + currentScore/500})`;
+        }
+
+        function stopDrawing() {
+            if (!isDrawing) return;
+            isDrawing = false;
+            container.classList.remove('drawing');
+            scoreDisplay.style.transform = 'scale(1)';
+
+            const finalScore = calculateSmoothScore();
+            
+            if (anglesCovered.size < 20) {
+                messageDisplay.textContent = "Close the loop to finish!";
+                scoreDisplay.textContent = "0.0%";
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            } else {
+                if (finalScore >= 95) {
+                    messageDisplay.textContent = "Absolute Perfection! 👑";
+                } else if (finalScore >= 85) {
+                    messageDisplay.textContent = "Excellent Circle! 🔥";
+                } else if (finalScore >= 70) {
+                    messageDisplay.textContent = "Pretty Good! 👍";
+                } else {
+                    messageDisplay.textContent = "Try again! You got this.";
+                }
+            }
+        }
+
+        function getMousePos(e) {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            };
+        }
+
+        function addPoint(x, y) {
+            points.push({ x, y });
+            
+            const dist = Math.hypot(x - centerX, y - centerY);
+            distances.push(dist);
+
+            const angle = Math.atan2(y - centerY, x - centerX);
+            const sector = Math.floor(((angle + Math.PI) / (Math.PI * 2)) * 24);
+            anglesCovered.add(sector);
+        }
+
+        function calculateSmoothScore() {
+            if (distances.length < 3) return 100.0;
+
+            const sum = distances.reduce((a, b) => a + b, 0);
+            const mean = sum / distances.length;
+
+            if (mean < 15) return 0.0;
+
+            // 1. Calculamos la Varianza y Desviación Estándar para medir la dispersión real de los puntos
+            let varianceSum = 0;
+            for (let i = 0; i < distances.length; i++) {
+                varianceSum += Math.pow(distances[i] - mean, 2);
+            }
+            const variance = varianceSum / distances.length;
+            const stdDev = Math.sqrt(variance);
+
+            // 2. Coeficiente de variación (dispersión relativa al tamaño del círculo)
+            const cv = stdDev / mean; 
+
+            // 3. Curva de penalización no lineal:
+            // - Si el trazo es muy bueno (cv < 0.05), la penalización es casi invisible (fácil de sacar buena nota).
+            // - Si el trazo empieza a ser un "truño" (cv > 0.15), el término cuadrático (cv * cv) castiga severamente el score, hundiéndolo por debajo del 80%.
+            let score = 100 - (cv * 150) - (cv * cv * 450);
+
+            if (score < 0) score = 0;
+            if (score > 100) score = 100;
+
+            return score;
+        }
+    </script>
+</body>
+</html>

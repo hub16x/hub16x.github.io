@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Favicon de Classroom -->
-    <link rel="icon" type="image/png" href="/assets/favicons/classroom.webp">
+    <!-- Favicon de 16X -->
+    <link rel="icon" type="image/png" href="/assets/favicons/default/favicon.png">
     <!-- Ponemos "Classroom 16x - Unblocked games EZ" porque así cuando Google lo indexe salga como ese resultado -->
     <title>Classroom 16x - Unblocked games EZ</title>
     <!-- Para cuando Google lo indexe -->
@@ -229,6 +229,7 @@
         [type="button"],
         [type="reset"],
         [type="submit"] {
+            appearance: button;
             -webkit-appearance: button;
         }
 
@@ -1487,6 +1488,82 @@
                             <span>SUPER MEET BOY</span>
                         </div>
                     </div>
+                    <!-- Juego: DRAW A PERFECT CIRCLE -->
+                    <div onclick="abrirJuego('/games/draw-a-perfect-circle/')" class="card" style="cursor: pointer;"
+                        role="button" tabindex="0">
+                        <img src="/images/draw-a-perfect-circle.webp"
+                            alt="DRAW A PERFECT CIRCLE, play now unblocked for free" class="img-fluid">
+                        <div class="card-body">
+                            <span>DRAW A PERFECT CIRCLE</span>
+                        </div>
+                    </div>
+                    <!-- Juego: SOCCER BROS -->
+                    <div onclick="abrirJuego('https://soccerbros.gg')" class="card" style="cursor: pointer;"
+                        role="button" tabindex="0">
+                        <img src="/images/soccer-bros.webp" alt="SOCCER BROS, play now unblocked for free"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>SOCCER BROS</span>
+                        </div>
+                    </div>
+                    <!-- OvO 3D -->
+                    <div onclick="abrirJuego('https://freetoplayz.github.io/ovo-dimensions/')" class="card large"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/OvO-3D.webp" alt="OvO 3D, play now unblocked for free" class="img-fluid">
+                        <div class="card-body">
+                            <span>OvO 3D</span>
+                        </div>
+                    </div>
+                    <!-- Juego: BOXING RANDOM -->
+                    <div onclick="abrirJuego('https://unblocked-games-786.github.io/Boxing-Random/')" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/boxing-random.webp" alt="BOXING RANDOM, play now unblocked for free"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>BOXING RANDOM</span>
+                        </div>
+                    </div>
+                    <!-- Juego: 1v1 LOL -->
+                    <div onclick="abrirJuego('https://1v1lol.me/1v1lol/')" class="card" style="cursor: pointer;"
+                        role="button" tabindex="0">
+                        <img src="/images/1v1-lol.webp" alt="1v1 LOL, play now unblocked for free" class="img-fluid">
+                        <div class="card-body">
+                            <span>1v1 LOL</span>
+                        </div>
+                    </div>
+                    <!-- Juego: MOTO X3M -->
+                    <div onclick="abrirJuego('https://www.friv.com/z/games/motox3m/index-x.html')" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/moto-x3m.webp" alt="MOTO X3M, play now unblocked for free" class="img-fluid">
+                        <div class="card-body">
+                            <span>MOTO X3M</span>
+                        </div>
+                    </div>
+                    <!-- Juego: RETRO BOWL -->
+                    <div onclick="abrirJuego('https://www.friv.com/z/games/motox3m/index-x.html')" class="card large"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/retro-bowl.webp" alt="RETRO BOWL, play now unblocked for free"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>RETRO BOWL</span>
+                        </div>
+                    </div>
+                    <!-- Juego: 0h h1 -->
+                    <div onclick="abrirJuego('https://0hh1.com/')" class="card" style="cursor: pointer;" role="button"
+                        tabindex="0">
+                        <img src="/images/0h-h1.webp" alt="0h h1, play now unblocked for free" class="img-fluid">
+                        <div class="card-body">
+                            <span>0h h1</span>
+                        </div>
+                    </div>
+                    <!-- Juego: FLAPPY BIRD -->
+                    <div onclick="abrirJuego('/games/flappy-bird')" class="card" style="cursor: pointer;" role="button"
+                        tabindex="0">
+                        <img src="/images/flappy-bird.webp" alt="FLAPPY BIRD, play now unblocked for free" class="img-fluid">
+                        <div class="card-body">
+                            <span>FLAPPY BIRD</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- PÁGINA 3 -->
@@ -1713,6 +1790,24 @@
             }
         }
 
+        // Función robusta para forzar el cambio del favicon y burlar la caché del navegador
+        function cambiarFavicon(src) {
+            // 1. Buscamos y eliminamos cualquier etiqueta de favicon anterior
+            const linksExistentes = document.querySelectorAll("link[rel*='icon']");
+            linksExistentes.forEach(link => link.remove());
+
+            // 2. Creamos un elemento <link> nuevo
+            const nuevoLink = document.createElement("link");
+            nuevoLink.rel = "icon";
+            nuevoLink.type = "image/png";
+
+            // 3. Añadimos un timestamp para obligar al navegador a recargarlo de cero
+            nuevoLink.href = src + "?v=" + Date.now();
+
+            // 4. Lo inyectamos en la cabecera
+            document.head.appendChild(nuevoLink);
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
             // 1. Título y estado inicial (para el robot de google)
             document.title = "Classroom 16x - Unblocked games EZ";
@@ -1738,6 +1833,9 @@
 
                 // Cambiar al título falso de Classroom según idioma
                 document.title = titles[langCode] || "Home - Classroom";
+
+                // Cambiamos el favicon usando el método robusto libre de caché
+                cambiarFavicon("/assets/favicons/classroom.webp");
 
                 console.log("🎮 Humano detectado mediante interacción. Pestaña camuflada exitosamente.");
 
@@ -1810,15 +1908,9 @@
                 document.title = newTitle;
             }
 
+            // REEMPLAZAR ESTA SUB-FUNCIÓN INTERNA:
             const updateFavicon = (iconSrc) => {
-                let link = document.querySelector("link[rel~='icon']");
-                if (!link) {
-                    link = document.createElement('link');
-                    link.rel = 'icon';
-                    link.type = 'image/png';
-                    document.head.appendChild(link);
-                }
-                link.href = iconSrc;
+                cambiarFavicon(iconSrc);
                 toggleCloakMenu();
             };
 
@@ -1855,6 +1947,7 @@
             paginaActual = numeroPagina;
             const paginas = document.querySelectorAll('.pagina-juegos');
             const botones = document.querySelectorAll('.pagination-container .page-item');
+            const titulo = document.getElementById('main-title-element'); // <--- Seleccionamos el H1
 
             // 1. Mostrar la página seleccionada y ocultar las demás
             paginas.forEach((pagina, index) => {
@@ -1875,6 +1968,24 @@
                     boton.classList.remove('active');
                 }
             });
+
+            // 3. Modificar el H1 dinámicamente según la página
+            if (titulo) {
+                if (numeroPagina === 2 || numeroPagina === 3) {
+                    // Contamos todos los juegos (.card) dentro del menú para obtener el número real
+                    const juegosActuales = document.querySelectorAll('#contenedor-menu .card').length;
+
+                    // Desactivamos el "lowercase" del CSS para respetar las mayúsculas de "New CLASSROOM 16X"
+                    titulo.style.textTransform = 'none';
+
+                    // Asignamos el nuevo título estructurado con un salto de línea
+                    titulo.innerHTML = `New CLASSROOM 16X:<br><span style="font-size: 17px; font-weight: normal; color: #7e8299; display: block; margin-top: 8px;">${juegosActuales} games in our unblocked games database.</span>`;
+                } else {
+                    // En la página 1 restauramos el título original y el comportamiento de minúsculas de tu CSS
+                    titulo.style.textTransform = '';
+                    titulo.innerHTML = 'classroom 16x - unƅlocked gаmes ez';
+                }
+            }
 
             // Deslizar la vista hacia el principio de la lista de juegos
             window.scrollTo({ top: 0, behavior: 'smooth' });
