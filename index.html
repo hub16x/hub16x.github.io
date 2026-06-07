@@ -4,17 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Favicon de 16X -->
-    <link rel="icon" type="image/png" href="/assets/favicons/default/favicon.png">
-    <!-- Ponemos "Classroom 16x - Unblocked games EZ" porque así cuando Google lo indexe salga como ese resultado -->
-    <title>Classroom 16x - Unblocked games EZ</title>
-    <!-- Para cuando Google lo indexe -->
-    <meta property="og:title" content="Classroom 16x - Unblocked games EZ" />
-    <meta name="twitter:title" content="Classroom 16x - Unblocked games EZ" />
+    <title>Hub 16x - Unblocked Games</title>
+    <meta property="og:title" content="Hub 16x - Unblocked Games" />
+    <meta name="twitter:title" content="Hub 16x - Unblocked Games" />
     <meta name="description"
-        content="Classroom 16x is a free website that offers quick plays, in school or work, NO ADS! Play quick now!">
+        content="Hub 16x is a free website that offers quick plays, in school or work, NO ADS! Play quick now!">
     <meta name="google-site-verification" content="cV1CSTdfgWO6O6DRk3wWbY_94nXT6P3_13SNT_zs5jQ" />
-    <!-- Estilos Personalizados e Integración CSS -->
     <style>
         :root {
             --theme-color: #0f1aab;
@@ -654,221 +649,6 @@
             color: #ffffff !important;
         }
 
-        /* Secret Cloak Menu Styles (Alt + Z) */
-        .cloak-modal {
-            display: none;
-            position: fixed;
-            z-index: 99999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            font-family: 'Inter', sans-serif;
-        }
-
-        .cloak-content {
-            background-color: #ffffff;
-            margin: 10% auto;
-            padding: 25px;
-            border-radius: 1.2rem;
-            width: 90%;
-            max-width: 450px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 2px solid var(--theme-color);
-            transition: all 0.3s ease;
-            max-height: 85vh;
-            overflow-y: auto;
-            margin-top: 0px;
-        }
-
-        [data-theme="dark"] .cloak-content {
-            background-color: #1e1e1e;
-            border-color: var(--xp-color);
-            color: #f0f0f0;
-        }
-
-        .cloak-header {
-            font-family: 'Inter-Bold', sans-serif;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cloak-close {
-            cursor: pointer;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #999;
-        }
-
-        .cloak-close:hover {
-            color: #f44336;
-        }
-
-        .cloak-field {
-            margin-bottom: 15px;
-        }
-
-        .cloak-field label {
-            display: block;
-            font-family: 'Inter-SemiBold', sans-serif;
-            margin-bottom: 6px;
-            font-size: 0.9rem;
-        }
-
-        .cloak-select,
-        .cloak-input {
-            width: 100%;
-            padding: 10px;
-            border-radius: 0.5rem;
-            border: 1px solid #ccc;
-            background: transparent;
-            color: inherit;
-            font-family: 'Inter', sans-serif;
-            box-sizing: border-box;
-        }
-
-        [data-theme="dark"] .cloak-select,
-        [data-theme="dark"] .cloak-input {
-            border-color: #444;
-            background: #2a2a2a;
-        }
-
-        .cloak-btn-save {
-            background-color: var(--theme-color);
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 12px;
-            border-radius: 0.5rem;
-            font-family: 'Inter-Bold', sans-serif;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .cloak-btn-save:hover {
-            background-color: var(--xp-color);
-        }
-
-        /* ──────── MODAL DEV TOOLS (HACKER STYLE) - VERSIÓN ARRASTRABLE ──────── */
-        .hacker-modal {
-            display: none;
-            position: fixed;
-            z-index: 1000000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            /* Permite hacer clic en la web de fondo */
-            font-family: 'Courier New', Courier, monospace;
-            color: #00ff00;
-        }
-
-        .hacker-content {
-            background-color: #0a0a0a;
-            border: 2px solid #00ff00;
-            box-shadow: 0 0 25px rgba(0, 255, 0, 0.6);
-            position: absolute;
-            top: 80px;
-            /* Posición inicial vertical */
-            left: 80px;
-            /* Posición inicial horizontal */
-            width: 90%;
-            max-width: 550px;
-            max-height: 80vh;
-            overflow-y: auto;
-            border-radius: 10px;
-            padding: 20px;
-            pointer-events: auto;
-            /* Restablece la interacción dentro del panel */
-            box-sizing: border-box;
-        }
-
-        .hacker-header {
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-shadow: 0 0 5px #00ff00;
-            border-bottom: 1px solid #00ff00;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: move;
-            /* Indica que la cabecera es arrastrable */
-            user-select: none;
-            /* Evita que se seleccione texto al arrastrar */
-        }
-
-        .hacker-close {
-            cursor: pointer;
-            color: #00ff00;
-            font-size: 1.5rem;
-        }
-
-        .hacker-close:hover {
-            color: #ffffff;
-            text-shadow: 0 0 10px #ff0000;
-        }
-
-        .hacker-section {
-            border: 1px solid #005500;
-            padding: 10px;
-            margin-bottom: 15px;
-            background-color: #020202;
-        }
-
-        .hacker-section-title {
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: #88ff88;
-        }
-
-        .hacker-input {
-            width: 100%;
-            background-color: #000;
-            border: 1px solid #00ff00;
-            color: #00ff00;
-            padding: 8px;
-            font-family: inherit;
-            box-sizing: border-box;
-            margin-bottom: 8px;
-        }
-
-        .hacker-btn {
-            background-color: #002200;
-            color: #00ff00;
-            border: 1px solid #00ff00;
-            padding: 6px 12px;
-            cursor: pointer;
-            font-family: inherit;
-            transition: all 0.2s;
-        }
-
-        .hacker-btn:hover {
-            background-color: #00ff00;
-            color: #000;
-            box-shadow: 0 0 8px #00ff00;
-        }
-
-        .hacker-output {
-            background-color: #000;
-            border: 1px dashed #005500;
-            color: #00ff00;
-            padding: 8px;
-            min-height: 40px;
-            max-height: 180px;
-            overflow-y: auto;
-            font-size: 0.85rem;
-            white-space: pre-wrap;
-            word-break: break-all;
-        }
-
         img {
             color: #0531f7;
             background-color: #f8f9fa;
@@ -931,7 +711,7 @@
             text-align: center;
         }
 
-        /* 💻 Lateral con Scroll Independiente */
+        /* Lateral con Scroll Independiente */
         .visor-lateral.card-masonry {
             width: 280px !important;
             flex-shrink: 0;
@@ -944,7 +724,6 @@
             max-height: 82vh !important;
             overflow-y: auto !important;
             padding-right: 0px;
-            /* Reducido a 0 porque no hay barra visible */
 
             /* Ocultar scroll en Firefox e Internet Explorer/Edge antiguo */
             scrollbar-width: none;
@@ -1002,65 +781,6 @@
 </head>
 
 <body class="min-vh-100 layout d-flex flex-column">
-    <!-- Pestaña de editor de título -->
-    <div id="secretCloakModal" class="cloak-modal">
-        <div class="cloak-content">
-            <div class="cloak-header">
-                <span>Tab Disguise Settings</span>
-                <span class="cloak-close" onclick="toggleCloakMenu()">&times;</span>
-            </div>
-
-            <!-- Campo del Título Personalizado -->
-            <div class="cloak-field">
-                <label for="cloakCustomTitle">Custom Tab Title</label>
-                <input type="text" id="cloakCustomTitle" class="cloak-input" placeholder="Enter custom title...">
-            </div>
-
-            <div class="cloak-field">
-                <label for="cloakPresetLang">Preset Language Title</label>
-                <select id="cloakPresetLang" class="cloak-select" onchange="applyPresetLang(this.value)">
-                    <option value="">-- Choose a language --</option>
-                    <option value="en">English (Home - Classroom)</option>
-                    <option value="es">Español (Inicio - Classroom)</option>
-                    <option value="fr">Français (Accueil - Classroom)</option>
-                    <option value="de">Deutsch (Startseite - Classroom)</option>
-                    <option value="it">Italiano (Home page - Classroom)</option>
-                    <option value="pt">Português (Início - Classroom)</option>
-                    <option value="ru">Русский (Главная страница - Classroom)</option>
-                    <option value="zh">中文 (首页 - Classroom)</option>
-                    <option value="ja">日本語 (ホーム - Classroom)</option>
-                </select>
-            </div>
-
-            <div class="cloak-field">
-                <label for="cloakIconSelect">Page Icon (Favicon Preset)</label>
-                <select id="cloakIconSelect" class="cloak-select">
-                    <option value="/assets/favicons/classroom.webp">Google Classroom (Default)</option>
-                    <option value="/assets/favicons/google-drive.webp">
-                        Google Drive</option>
-                    <option value="/assets/favicons/google.webp">Google Search
-                    </option>
-                    <option value="https://www.clever.com/wp-content/uploads/2023/06/cropped-Favicon-512px-270x270.png">
-                        Clever</option>
-                    <option value="https://www.blinklearning.com/favicon.ico">Blink Learning</option>
-                </select>
-            </div>
-
-            <div class="cloak-field">
-                <label for="cloakIconUrl">Or Paste Icon URL</label>
-                <input type="text" id="cloakIconUrl" class="cloak-input" placeholder="https://example.com/image.png">
-            </div>
-
-            <div class="cloak-field">
-                <label
-                    style="display: block; font-family: 'Inter-SemiBold', sans-serif; margin-bottom: 6px; font-size: 0.9rem;">Or
-                    Upload Image File</label>
-                <input type="file" id="cloakIconFile" accept="image/*" class="cloak-input" style="padding: 5px;">
-            </div>
-
-            <button class="cloak-btn-save" onclick="saveCloakSettings()">Apply Changes</button>
-        </div>
-    </div>
 
     <!-- Barra de Navegación -->
     <nav class="navbar navbar-expand-lg layout-header navbar-light px-3">
@@ -1068,7 +788,7 @@
             <!-- Logo que actúa como botón de inicio -->
             <div class="navbar-brand m-0" style="cursor: pointer; display: flex; align-items: center; gap: 10px;"
                 onclick="cerrarJuego()">
-                <img src="/assets/logo/logo.png" height="40" alt="CLASSROOM 16X">
+                <img src="/assets/logo/logo.png" height="40" alt="HUB 16X">
                 <button id="mi-boton-tema" aria-label="Toggle dark mode" onclick="cambiarTema()" style="padding: 8px 15px; cursor: pointer; border-radius: 8px; 
     border: 2px solid #0f1aab; background: white; color: #0f1aab; 
     font-weight: bold; transition: 0.3s;">
@@ -1076,11 +796,10 @@
                 </button>
             </div>
 
-            <!-- Buscador alineado responsivamente con clases Flex de Bootstrap -->
+            <!-- Buscador alineado responsivamente -->
             <div class="flex-grow-1 max-width-search mx-3" style="max-width: 400px;">
                 <div class="input-group input-group-inline shadow-none">
                     <span class="input-group-text bg-transparent border-0 text-gray-500 shadow-none ps-0 pe-2">
-                        <!-- SVG Lupa moderno y ligero -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="11" cy="11" r="8"></circle>
@@ -1099,10 +818,10 @@
     <main class="layout-section" id="main-content">
         <div class="container-fluid">
 
-            <!-- ──────── CONTAINER DEL MENÚ PRINCIPAL ──────── -->
+            <!-- CONTAINER DEL MENÚ PRINCIPAL -->
             <div id="contenedor-menu">
                 <div class="titulo mb-4">
-                    <h1 id="main-title-element">classroom 16x - unƅlocked gаmes ez</h1>
+                    <h1 id="main-title-element">hub 16x - unblocked games</h1>
                 </div>
 
                 <!-- Rejilla de Tarjetas de Juegos (PÁGINA 1) -->
@@ -1681,12 +1400,21 @@
                         </div>
                     </div>
                     <!-- Juego: BLUMGI BALL -->
-                    <div onclick="abrirJuego('https://abinbins.github.io/a2/blumgi-ball/')" class="card" style="cursor: pointer;" role="button"
-                        tabindex="0">
+                    <div onclick="abrirJuego('https://abinbins.github.io/a2/blumgi-ball/')" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
                         <img src="/images/blumgi-ball.webp" alt="BLUMGI BALL, play now unblocked for free"
                             class="img-fluid">
                         <div class="card-body">
                             <span>BLUMGI BALL</span>
+                        </div>
+                    </div>
+                    <!-- Juego: LINE RIDER -->
+                    <div onclick="abrirJuego('https://www.linerider.com')" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/line-rider.webp" alt="LINE RIDER, play now unblocked for free"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>LINE RIDER</span>
                         </div>
                     </div>
                 </div>
@@ -1708,7 +1436,7 @@
             </div> <!-- Fin de contenedor-menu -->
         </div> <!-- Fin de container-fluid -->
 
-        <!-- ──────── CONTAINER DEL VISOR DE JUEGOS MODIFICADO ──────── -->
+        <!-- CONTAINER DEL VISOR DE JUEGOS MODIFICADO -->
         <div id="pantalla-juego" style="display: none;">
             <div class="visor-layout-container">
                 <!-- Lateral Izquierdo (Grid de 2 columnas con Scroll Independiente) -->
@@ -1738,10 +1466,9 @@
             style="font-family: 'Inter', sans-serif; color: #555; max-width: 900px; margin: 0 auto;">
             <h2 class="h4 mb-3"
                 style="font-family: 'Inter-SemiBold', sans-serif; text-transform: none; color: var(--theme-color);">Why
-                choose classroom 16x?</h2>
+                choose hub 16x?</h2>
             <p class="mb-3" style="font-size: 0.95rem; line-height: 1.6;">
-                <span id="copyright-trigger" style="cursor: pointer; user-select: none;">©</span> 2026 <strong>Classroom
-                    16x</strong>.
+                <span>©</span> 2026 <strong>Hub 16x</strong>.
                 Based on the original code/images from <a target="_blank" style="color: #080808;"
                     href="https://ezclasswork.com">ez
                     classwork</a>, <a target="_blank" style="color: #080808;"
@@ -1753,15 +1480,15 @@
 
             <p class="mb-3" style="font-size: 0.95rem; line-height: 1.6;">
                 In modern educational environments, finding a reliable platform for quick, high-quality brain breaks can
-                be a challenge due to strict network restrictions. <strong>Classroom 16x</strong> is specifically
-                designed to provide an optimized hub for <strong>unblocked games ez</strong> to access during free
+                be a challenge due to strict network restrictions. <strong>Hub 16x</strong> is specifically
+                designed to provide an optimized platform for <strong>unblocked games</strong> to access during free
                 periods, lunch breaks, or after completing assignments. Our platform ensures that students and educators
                 have a safe, smooth, and lightweight interface that bypasses common performance issues.
             </p>
 
             <p class="mb-3" style="font-size: 0.95rem; line-height: 1.6;">
-                Unlike traditional gaming sites that overload your browser with heavy scripts, <strong>Classroom 16x -
-                    Unblocked games EZ</strong> focuses on speed and minimalism. Every single game is carefully
+                Unlike traditional gaming sites that overload your browser with heavy scripts, <strong>Hub 16x -
+                    Unblocked Games</strong> focuses on speed and minimalism. Every single game is carefully
                 integrated via lightweight structures to guarantee maximum performance with <strong>NO ADS</strong>
                 disrupting your session. This makes it the perfect alternative for quick, hassle-free gaming on school
                 or work computers without experiencing lag.
@@ -1774,13 +1501,10 @@
                 clean, unblocked student entertainment!
             </p>
             <br>
-            <p class="mb-3" style="font-size: 0.95rem; line-height: 1.6;">
-                <strong>Alt+Z</strong> to change tab settings.
-            </p>
             <a href="/">
                 <div style="display: flex; justify-content: center;">
-                    <img src="/assets/logo/logo-1.png"
-                        alt="CLASSROOM 16X - PLAY NOW, UNBANNED UNBLOCKED GAMES FREE! NO ADS!" width="720">
+                    <img src="/assets/logo/logo-1.png" alt="HUB 16X - PLAY NOW, UNBLOCKED GAMES FREE! NO ADS!"
+                        width="720">
                 </div>
             </a>
         </div>
@@ -1788,7 +1512,7 @@
     <noscript>
         <style>
             html::before {
-                content: "To use Classroom 16x, enable Javascript in your browser. More information in https://enable-javascript.com";
+                content: "To use Hub 16x, enable Javascript in your browser. More information in https://enable-javascript.com";
                 display: block;
                 text-align: center;
                 padding: 50px 20px;
@@ -1797,56 +1521,8 @@
             }
         </style>
     </noscript>
-    <!-- ──────── CONTAINER DEL PANEL DEV TOOLS (HACKER STYLE) ──────── -->
-    <div id="hackerDevModal" class="hacker-modal">
-        <div class="hacker-content">
-            <div class="hacker-header">
-                <span>Dev tools</span>
-                <span class="hacker-close" onclick="toggleHackerModal()">&times;</span>
-            </div>
 
-            <!-- Sección: Información General -->
-            <div class="hacker-section">
-                <div class="hacker-section-title">> STATUS_REPORT</div>
-                <div id="hackerStatusInfo" style="font-size: 0.85rem; line-height: 1.4;"></div>
-            </div>
-
-            <!-- Sección: Control del Visor de Juegos -->
-            <div class="hacker-section">
-                <div class="hacker-section-title">> IFRAME_CONTROLLER</div>
-                <div style="margin-bottom: 5px; font-size: 0.85rem;">Active Game URL:</div>
-                <input type="text" id="hackerGameUrlInput" class="hacker-input"
-                    placeholder="No active game iframe loading.">
-                <button class="hacker-btn" onclick="hackerUpdateIframeSrc()">Inject URL</button>
-            </div>
-
-            <!-- Sección: Consola de Javascript / Ejecución de Código -->
-            <div class="hacker-section">
-                <div class="hacker-section-title">> JS_CONSOLE_INJECTOR</div>
-                <textarea id="hackerConsoleInput" class="hacker-input" rows="3"
-                    placeholder="console.log('Execute JS inside page context...');"
-                    style="resize: vertical;"></textarea>
-                <div style="display: flex; gap: 10px;">
-                    <button class="hacker-btn" onclick="hackerExecuteMainJS()">Run in Main Page</button>
-                    <button class="hacker-btn" onclick="hackerExecuteIframeJS()">Run in Game IFrame</button>
-                </div>
-                <div style="margin-top: 8px; font-size: 0.8rem; color: #88ff88;">Console Output:</div>
-                <div id="hackerConsoleOutput" class="hacker-output">Waiting for commands...</div>
-            </div>
-
-            <!-- Sección: Utilidades de Bypass -->
-            <div class="hacker-section">
-                <div class="hacker-section-title">> BYPASS_SYSTEM_UTILITIES</div>
-                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                    <button class="hacker-btn" onclick="hackerToggleScrollLock()">Toggle Main Scroll Lock</button>
-                    <button class="hacker-btn" onclick="hackerBypassCloak()">Reset Cloak Tab Settings</button>
-                    <button class="hacker-btn" onclick="hackerDumpJSON()">Dump Games Database JSON</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ──────── BLOQUE ÚNICO DE SCRIPTS INTEGRADOS ──────── -->
+    <!-- BLOQUE ÚNICO DE SCRIPTS INTEGRADOS -->
     <script>
         function abrirJuego(urlInput) {
             let urlFinal = "";
@@ -1868,13 +1544,12 @@
             const pantallaJuego = document.getElementById('pantalla-juego');
             const visorJuego = document.getElementById('visor-juego');
 
-            // ──────── NUEVO: Limpiar el buscador y resetear la vista ────────
+            // Limpiar el buscador y resetear la vista
             const buscador = document.getElementById('buscador');
             if (buscador) {
-                buscador.value = ""; // Borramos el texto escrito
-                filtrarJuegos();     // Ejecutamos el filtro vacío para restaurar la paginación normal
+                buscador.value = "";
+                filtrarJuegos();
             }
-            // ────────────────────────────────────────────────────────────────
 
             if (contenedorMenu && pantallaJuego && visorJuego) {
                 contenedorMenu.style.display = 'none';
@@ -1883,10 +1558,10 @@
                 if (texto) texto.style.display = 'none';
                 visorJuego.src = urlFinal;
 
-                // Le pasamos la URL del juego activo a los laterales
+                // Cargar laterales dinámicos con el resto de juegos
                 generarLateralesAleatorios(urlInput);
 
-                // Mover al inicio y bloquear físicamente el scroll en la página principal
+                // Mover al inicio y bloquear scroll principal
                 window.scrollTo(0, 0);
                 document.documentElement.style.overflow = 'hidden';
                 document.body.style.overflow = 'hidden';
@@ -1905,7 +1580,7 @@
             if (texto) texto.style.display = 'block';
             document.getElementById('visor-juego').src = '';
 
-            // Reactivar el scroll en la página principal al salir del juego
+            // Reactivar el scroll
             document.documentElement.style.overflow = '';
             document.body.style.overflow = '';
         }
@@ -1964,144 +1639,11 @@
             }
         }
 
-        // Función robusta para forzar el cambio del favicon y burlar la caché del navegador
-        function cambiarFavicon(src) {
-            // 1. Buscamos y eliminamos cualquier etiqueta de favicon anterior
-            const linksExistentes = document.querySelectorAll("link[rel*='icon']");
-            linksExistentes.forEach(link => link.remove());
-
-            // 2. Creamos un elemento <link> nuevo
-            const nuevoLink = document.createElement("link");
-            nuevoLink.rel = "icon";
-            nuevoLink.type = "image/png";
-
-            // 3. Añadimos un timestamp para obligar al navegador a recargarlo de cero
-            nuevoLink.href = src + "?v=" + Date.now();
-
-            // 4. Lo inyectamos en la cabecera
-            document.head.appendChild(nuevoLink);
-        }
-
         document.addEventListener("DOMContentLoaded", () => {
-            // 1. Título y estado inicial (para el robot de google)
-            document.title = "Classroom 16x - Unblocked games EZ";
             iniciarPaginacion();
-
-            // Diccionario de traducciones para el camuflaje
-            const titles = {
-                es: "Inicio - Classroom", en: "Home - Classroom", fr: "Accueil - Classroom",
-                ca: "Inici - Classroom", eu: "Hasiera - Classroom", gl: "Inicio - Classroom",
-                de: "Startseite - Classroom", it: "Home page - Classroom", pt: "Início - Classroom",
-                nl: "Home - Classroom", pl: "Strona główna - Classroom", sv: "Startsida - Classroom",
-                fi: "Aloitussivu - Classroom", no: "Startside - Classroom", da: "Startside - Classroom",
-                el: "Αρχική σελίδα - Classroom", ru: "Главная страница - Classroom", ja: "ホーム - Classroom",
-                ko: "홈 - Classroom", zh: "首页 - Classroom", vi: "Trang chủ - Classroom",
-                th: "หน้าแรก - Classroom", hi: "홈 - Classroom", ar: "الصفحة الرئيسية - Classroom",
-                he: "דף הבית - Classroom", tr: "Ana Sayfa - Classroom", sw: "Mwanzo - Classroom"
-            };
-
-            // 2. Función que activa el camuflaje (Solo se ejecuta ante actividad humana)
-            function activarCamuflaje() {
-                const userLang = navigator.language || navigator.userLanguage;
-                const langCode = userLang.slice(0, 2);
-
-                // Cambiar al título falso de Classroom según idioma
-                document.title = titles[langCode] || "Home - Classroom";
-
-                // Cambiamos el favicon usando el método robusto libre de caché
-                cambiarFavicon("/assets/favicons/classroom.webp");
-
-                console.log("🎮 Humano detectado mediante interacción. Pestaña camuflada exitosamente.");
-
-                // 3. Limpieza: Remover los listeners para que no sigan consumiendo recursos
-                window.removeEventListener('mousemove', activarCamuflaje);
-                window.removeEventListener('keydown', activarCamuflaje);
-                window.removeEventListener('scroll', activarCamuflaje);
-                window.removeEventListener('touchstart', activarCamuflaje);
-                window.removeEventListener('click', activarCamuflaje);
-            }
-
-            // 4. Escuchar interacciones físicas exclusivas de un usuario real
-            window.addEventListener('mousemove', activarCamuflaje); // Mover el ratón
-            window.addEventListener('keydown', activarCamuflaje);   // Presionar una tecla
-            window.addEventListener('scroll', activarCamuflaje);    // Hacer scroll
-            window.addEventListener('touchstart', activarCamuflaje);// Tocar la pantalla (Móviles)
-            window.addEventListener('click', activarCamuflaje);     // Hacer un clic
         });
 
-        window.addEventListener('keydown', (e) => {
-            if (e.altKey && e.key.toLowerCase() === 'z') {
-                e.preventDefault();
-                toggleCloakMenu();
-            }
-        });
-
-        function toggleCloakMenu() {
-            const modal = document.getElementById('secretCloakModal');
-            if (!modal) return;
-
-            if (modal.style.display === 'block') {
-                modal.style.display = 'none';
-            } else {
-                modal.style.display = 'block';
-
-                const customTitleInput = document.getElementById('cloakCustomTitle');
-                if (customTitleInput) {
-                    customTitleInput.value = document.title;
-                }
-
-                let currentIcon = document.querySelector("link[rel~='icon']");
-                if (currentIcon && currentIcon.href.indexOf('data:image') === -1) {
-                    const iconSelect = document.getElementById('cloakIconSelect');
-                    if (iconSelect) iconSelect.value = currentIcon.href;
-                }
-            }
-        }
-
-        const cloakLanguages = {
-            en: "Home - Classroom", es: "Inicio - Classroom", fr: "Accueil - Classroom",
-            de: "Startseite - Classroom", it: "Home page - Classroom", pt: "Início - Classroom",
-            ru: "Главная página - Classroom", zh: "首页 - Classroom", ja: "ホーム - Classroom"
-        };
-
-        function applyPresetLang(langCode) {
-            if (langCode && cloakLanguages[langCode]) {
-                const titleInput = document.getElementById('cloakCustomTitle');
-                if (titleInput) titleInput.value = cloakLanguages[langCode];
-            }
-        }
-
-        function saveCloakSettings() {
-            const titleInput = document.getElementById('cloakCustomTitle');
-            const newTitle = titleInput ? titleInput.value.trim() : "";
-            const presetIcon = document.getElementById('cloakIconSelect').value;
-            const urlIcon = document.getElementById('cloakIconUrl').value.trim();
-            const fileInput = document.getElementById('cloakIconFile');
-
-            if (newTitle) {
-                document.title = newTitle;
-            }
-
-            // REEMPLAZAR ESTA SUB-FUNCIÓN INTERNA:
-            const updateFavicon = (iconSrc) => {
-                cambiarFavicon(iconSrc);
-                toggleCloakMenu();
-            };
-
-            if (fileInput && fileInput.files && fileInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    updateFavicon(e.target.result);
-                };
-                reader.readAsDataURL(fileInput.files[0]);
-            } else if (urlIcon) {
-                updateFavicon(urlIcon);
-            } else {
-                updateFavicon(presetIcon);
-            }
-        }
-
-        // --- SISTEMA DE PAGINACIÓN POR CONTENEDORES ---
+        // --- SISTEMA DE PAGINACIÓN ---
         let paginaActual = 1;
 
         function iniciarPaginacion() {
@@ -2113,7 +1655,6 @@
                 });
             });
 
-            // Iniciar página 1
             cambiarPagina(1);
         }
 
@@ -2121,18 +1662,16 @@
             paginaActual = numeroPagina;
             const paginas = document.querySelectorAll('.pagina-juegos');
             const botones = document.querySelectorAll('.pagination-container .page-item');
-            const titulo = document.getElementById('main-title-element'); // <--- Seleccionamos el H1
+            const titulo = document.getElementById('main-title-element');
 
-            // 1. Mostrar la página seleccionada y ocultar las demás
             paginas.forEach((pagina, index) => {
                 if (index + 1 === numeroPagina) {
-                    pagina.style.display = 'grid'; // Usamos grid porque tu CSS card-masonry es un grid
+                    pagina.style.display = 'grid';
                 } else {
                     pagina.style.display = 'none';
                 }
             });
 
-            // 2. Actualizar los colores de los botones (azul para activo, gris para inactivo)
             botones.forEach((boton, index) => {
                 if (index + 1 === numeroPagina) {
                     boton.classList.add('active');
@@ -2143,29 +1682,21 @@
                 }
             });
 
-            // 3. Modificar el H1 dinámicamente según la página
             if (titulo) {
                 if (numeroPagina === 2 || numeroPagina === 3) {
-                    // Contamos todos los juegos (.card) dentro del menú para obtener el número real
                     const juegosActuales = document.querySelectorAll('#contenedor-menu .card').length;
-
-                    // Desactivamos el "lowercase" del CSS para respetar las mayúsculas de "New CLASSROOM 16X"
                     titulo.style.textTransform = 'none';
-
-                    // Asignamos el nuevo título estructurado con un salto de línea
-                    titulo.innerHTML = `New CLASSROOM 16X:<br><span style="font-size: 17px; font-weight: normal; color: #7e8299; display: block; margin-top: 8px;">${juegosActuales} games in our unblocked games database.</span>`;
+                    titulo.innerHTML = `New HUB 16X:<br><span style="font-size: 17px; font-weight: normal; color: #7e8299; display: block; margin-top: 8px;">${juegosActuales} games in our unblocked games database.</span>`;
                 } else {
-                    // En la página 1 restauramos el título original y el comportamiento de minúsculas de tu CSS
                     titulo.style.textTransform = '';
-                    titulo.innerHTML = 'classroom 16x - unƅlocked gаmes ez';
+                    titulo.innerHTML = 'hub 16x - unblocked games';
                 }
             }
 
-            // Deslizar la vista hacia el principio de la lista de juegos
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // --- BUSCADOR COMPATIBLE CON PAGINACIÓN Y PRIMER RESULTADO "LARGE" ---
+        // --- BUSCADOR ---
         function filtrarJuegos() {
             const input = document.getElementById('buscador');
             const filtro = input.value.toLowerCase();
@@ -2173,22 +1704,18 @@
             const paginacion = document.querySelector('.pagination-container');
             const todasLasTarjetas = document.querySelectorAll('.pagina-juegos .card');
 
-            // 1. Guardar el tamaño original de TODAS las tarjetas la primera vez que se usa el buscador
             todasLasTarjetas.forEach(tarjeta => {
                 if (!tarjeta.hasAttribute('data-large-original')) {
-                    // Guardamos "true" si era grande, "false" si era normal
                     tarjeta.setAttribute('data-large-original', tarjeta.classList.contains('large') ? 'true' : 'false');
                 }
             });
 
-            // 2. Si el buscador está vacío, restaurar todo a la normalidad
             if (filtro === "") {
-                paginacion.style.display = 'flex'; // Mostrar botones de páginas
+                paginacion.style.display = 'flex';
 
                 todasLasTarjetas.forEach(tarjeta => {
-                    tarjeta.style.setProperty('display', '', 'important'); // Mostrar tarjeta
+                    tarjeta.style.setProperty('display', '', 'important');
 
-                    // Restaurar su tamaño original (devolverle el "large" solo a las que lo tenían)
                     if (tarjeta.getAttribute('data-large-original') === 'true') {
                         tarjeta.classList.add('large');
                     } else {
@@ -2196,25 +1723,21 @@
                     }
                 });
 
-                // Mostrar textos "More games coming soon..."
                 document.querySelectorAll('.pagina-juegos h3').forEach(texto => {
                     texto.style.setProperty('display', '', 'important');
                 });
 
-                // Volver a la página activa
                 cambiarPagina(paginaActual);
                 return;
             }
 
-            // 3. Si el usuario está buscando algo...
-            paginacion.style.display = 'none'; // Ocultar botones
-            let primerResultadoEncontrado = false; // Variable para rastrear el primer juego visible
+            paginacion.style.display = 'none';
+            let primerResultadoEncontrado = false;
 
             paginas.forEach(pagina => {
                 let juegosEncontrados = 0;
                 const tarjetas = pagina.getElementsByClassName('card');
 
-                // Ocultar los textos <h3>
                 pagina.querySelectorAll('h3').forEach(texto => {
                     texto.style.setProperty('display', 'none', 'important');
                 });
@@ -2230,12 +1753,11 @@
                             tarjeta.style.setProperty('display', '', 'important');
                             juegosEncontrados++;
 
-                            // MAGIA: El primer resultado se hace grande, los demás se hacen normales
                             if (!primerResultadoEncontrado) {
-                                tarjeta.classList.add('large'); // Hacer grande al primer resultado
-                                primerResultadoEncontrado = true; // Cambiamos la bandera
+                                tarjeta.classList.add('large');
+                                primerResultadoEncontrado = true;
                             } else {
-                                tarjeta.classList.remove('large'); // Los siguientes se hacen pequeños
+                                tarjeta.classList.remove('large');
                             }
                         } else {
                             tarjeta.style.setProperty('display', 'none', 'important');
@@ -2243,7 +1765,6 @@
                     }
                 }
 
-                // Mostrar u ocultar página entera
                 if (juegosEncontrados > 0) {
                     pagina.style.setProperty('display', 'grid', 'important');
                 } else {
@@ -2252,7 +1773,7 @@
             });
         }
 
-        // --- SISTEMA DE REPORTE INTEGRADO EN JS ---
+        // --- SISTEMA DE REPORTE INTEGRADO ---
         function injectReportModal() {
             const style = document.createElement('style');
             style.innerHTML = `
@@ -2378,7 +1899,7 @@
                         
                         <div class="report-field">
                             <label for="reportIssue">What is the issue?</label>
-                            <textarea id="reportIssue" name="Issue Description" class="report-textarea" required placeholder="Describe the problem (e.g., black screen, doesn't load)..."></textarea>
+                            <textarea id="reportIssue" name="Issue Description" class="report-textarea" required placeholder="Describe the problem..."></textarea>
                         </div>
                         
                         <button type="submit" class="report-btn-submit" id="reportSubmitBtn">Send Report</button>
@@ -2437,11 +1958,11 @@
                         closeReportModal();
                     }, 2500);
                 } else {
-                    statusDiv.textContent = "Error: Please check your configuration.";
+                    statusDiv.textContent = "Error during submission.";
                     statusDiv.style.color = "#e74c3c";
                 }
             } catch (error) {
-                statusDiv.textContent = "Failed to send. Please check your connection.";
+                statusDiv.textContent = "Failed to send. Check connection.";
                 statusDiv.style.color = "#e74c3c";
             } finally {
                 submitBtn.disabled = false;
@@ -2485,273 +2006,6 @@
                     rightCol.appendChild(clone);
                 }
             });
-        }
-        // ─── CONTROLADOR DE DEV TOOLS ───
-        let copyrightClicks = 0;
-        let copyrightTimer = null;
-
-        // Listener en el copyright de carga
-        // Listener en el copyright de carga
-        document.addEventListener("DOMContentLoaded", () => {
-            const trigger = document.getElementById('copyright-trigger');
-            if (trigger) {
-                trigger.addEventListener('click', () => {
-                    copyrightClicks++;
-
-                    clearTimeout(copyrightTimer);
-                    copyrightTimer = setTimeout(() => {
-                        copyrightClicks = 0;
-                    }, 2000); // Resetea la cuenta si pasan más de 2 segundos sin presionar
-
-                    if (copyrightClicks >= 5) {
-                        copyrightClicks = 0;
-                        const key = prompt("┌──[ENTER_AUTHORIZATION_KEY]\n└─> ");
-                        if (key !== null) {
-                            if (verificarHackerClave(key)) {
-                                toggleHackerModal();
-                            } else {
-                                alert("❌ AUTHORIZATION_DENIED");
-                            }
-                        }
-                    }
-                });
-            }
-
-            // ─── NUEVO: Inicializa el arrastre del panel al cargar la web ───
-            const hackerWindow = document.querySelector('.hacker-content');
-            const hackerHeader = document.querySelector('.hacker-header');
-            if (hackerWindow && hackerHeader) {
-                makeElementDraggable(hackerWindow, hackerHeader);
-            }
-        });
-
-        // Verificador seguro basado en XOR con clave 42 y cifrado de firma Base64
-        function verificarHackerClave(input) {
-            try {
-                const xored = input.split('').map(c => String.fromCharCode(c.charCodeAt(0) ^ 42)).join('');
-                return btoa(xored) === "Y2d+ZlwZ";
-            } catch (e) {
-                return false;
-            }
-        }
-
-        function toggleHackerModal() {
-            const modal = document.getElementById('hackerDevModal');
-            if (!modal) return;
-
-            if (modal.style.display === 'block') {
-                modal.style.display = 'none';
-            } else {
-                modal.style.display = 'block';
-                hackerInitStats();
-            }
-        }
-
-        // Carga los estados internos del sistema en tiempo real
-        function hackerInitStats() {
-            const statusInfo = document.getElementById('hackerStatusInfo');
-            const urlInput = document.getElementById('hackerGameUrlInput');
-            const iframe = document.getElementById('visor-juego');
-
-            if (statusInfo) {
-                const totalGames = document.querySelectorAll('#contenedor-menu .card').length;
-                const activePage = document.querySelector('.pagina-juegos[style*="grid"]') ?
-                    Array.from(document.querySelectorAll('.pagina-juegos')).findIndex(p => p.style.display !== 'none') + 1 : 1;
-                const darkMode = document.body.classList.contains('modo-oscuro') ? "ENABLED" : "DISABLED";
-
-                statusInfo.innerHTML = `
-                    • CLIENT_SCREEN: ${window.innerWidth}x${window.innerHeight}px<br>
-                    • DARK_MODE_STATE: ${darkMode}<br>
-                    • DB_TOTAL_GAMES: ${totalGames}<br>
-                    • PAGINATION_ACTIVE_PAGE: Page ${activePage}<br>
-                    • USER_AGENT: ${navigator.userAgent.slice(0, 60)}...
-                `;
-            }
-
-            if (urlInput && iframe) {
-                urlInput.value = iframe.src || "";
-            }
-        }
-
-        // Inyecta o modifica manualmente la URL en el visor del juego
-        function hackerUpdateIframeSrc() {
-            const input = document.getElementById('hackerGameUrlInput');
-            const iframe = document.getElementById('visor-juego');
-            const url = input ? input.value.trim() : "";
-
-            if (url && iframe) {
-                const pantallaJuego = document.getElementById('pantalla-juego');
-
-                // Si el visor de juego está oculto, usamos la función formal abrirJuego
-                // para asegurar que se carguen los laterales, se oculte el menú y se bloquee el scroll.
-                if (!pantallaJuego || pantallaJuego.style.display === 'none') {
-                    abrirJuego(url);
-                } else {
-                    // Si ya estamos dentro del visor de juego, solo actualizamos el src y los laterales
-                    iframe.src = url;
-                    generarLateralesAleatorios(url);
-                }
-
-                const output = document.getElementById('hackerConsoleOutput');
-                if (output) {
-                    output.innerText = "Injected URL successfully: " + url;
-                    output.style.color = "#00ff00";
-                }
-            } else {
-                const output = document.getElementById('hackerConsoleOutput');
-                if (output) {
-                    output.innerText = "[ERROR]: URL input is empty or iframe elements not found.";
-                    output.style.color = "#ff3333";
-                }
-            }
-        }
-
-        // Consola JS: Ejecución sobre el contexto de la página principal
-        function hackerExecuteMainJS() {
-            const input = document.getElementById('hackerConsoleInput').value;
-            const output = document.getElementById('hackerConsoleOutput');
-            if (!input) return;
-
-            try {
-                // Interceptamos temporalmente el console.log para mostrarlo en el visor
-                let logs = [];
-                const originalLog = console.log;
-                console.log = (...args) => {
-                    logs.push(args.join(' '));
-                    originalLog(...args);
-                };
-
-                const result = eval(input);
-                console.log = originalLog; // Restauramos la consola original
-
-                output.innerText = (logs.length ? "[CONSOLE LOGS]:\n" + logs.join('\n') + "\n\n" : "") + "[RETURN VALUE]: " + result;
-                output.style.color = "#00ff00";
-            } catch (err) {
-                output.innerText = "[SCRIPT RUNTIME ERROR]:\n" + err.message;
-                output.style.color = "#ff3333";
-            }
-        }
-
-        // Consola JS: Ejecución interna orientada al Frame del juego
-        function hackerExecuteIframeJS() {
-            const input = document.getElementById('hackerConsoleInput').value;
-            const output = document.getElementById('hackerConsoleOutput');
-            const iframe = document.getElementById('visor-juego');
-            if (!input || !iframe) return;
-
-            try {
-                const iframeWindow = iframe.contentWindow;
-                const result = iframeWindow.eval(input);
-                output.innerText = "[IFRAME RETURN VALUE]: " + result;
-                output.style.color = "#00ff00";
-            } catch (err) {
-                output.innerText = "[CROSS-ORIGIN BROWSER NOTICE]:\n" + err.message +
-                    "\n\n(Nota: Si el juego está alojado en un dominio externo, las políticas CORS del navegador impiden manipular internamente el iframe por seguridad escolar. Ejecuta el script sobre 'Main Page' en su lugar.)";
-                output.style.color = "#ffaa00";
-            }
-        }
-
-        // Bypass: Forzar el desbloqueo o bloqueo de scroll
-        function hackerToggleScrollLock() {
-            const isLocked = document.documentElement.style.overflow === 'hidden';
-            if (isLocked) {
-                document.documentElement.style.overflow = '';
-                document.body.style.overflow = '';
-                document.getElementById('hackerConsoleOutput').innerText = "Scroll Lock: DISABLED (Scroll de la página principal liberado)";
-            } else {
-                document.documentElement.style.overflow = 'hidden';
-                document.body.style.overflow = 'hidden';
-                document.getElementById('hackerConsoleOutput').innerText = "Scroll Lock: ENABLED (Scroll de la página principal bloqueado)";
-            }
-        }
-
-        // Bypass: Deshacer el camuflaje inmediatamente
-        function hackerBypassCloak() {
-            document.title = "Classroom 16x - Unblocked games EZ";
-            let link = document.querySelector("link[rel~='icon']");
-            if (link) {
-                link.href = "/assets/favicons/default/favicon.png";
-            }
-            document.getElementById('hackerConsoleOutput').innerText = "Configuraciones de pestaña restablecidas a su estado normal (Uncloaked).";
-        }
-
-        // Utilidad: Exportar JSON de la base de datos de cartas/juegos cargada
-        function hackerDumpJSON() {
-            const output = document.getElementById('hackerConsoleOutput');
-            const cards = document.querySelectorAll('#contenedor-menu .card');
-            let data = [];
-            cards.forEach(card => {
-                const title = card.querySelector('.card-body span')?.innerText || "Unknown";
-                const img = card.querySelector('img')?.src || "No Image";
-                const action = card.getAttribute('onclick') || "No Click Action";
-                data.push({ title, img, action });
-            });
-            output.innerText = JSON.stringify(data, null, 2);
-            output.style.color = "#00ff00";
-        }
-        // Función para permitir arrastrar cualquier elemento usando un anclaje (cabecera)
-        function makeElementDraggable(elmnt, dragAnchor) {
-            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-
-            if (dragAnchor) {
-                dragAnchor.onmousedown = dragMouseDown;
-                dragAnchor.ontouchstart = dragTouchStart;
-            } else {
-                elmnt.onmousedown = dragMouseDown;
-                elmnt.ontouchstart = dragTouchStart;
-            }
-
-            function dragMouseDown(e) {
-                e = e || window.event;
-                // No arrastrar si se hace clic en inputs, botones o el botón de cierre
-                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'BUTTON' || e.target.classList.contains('hacker-close')) {
-                    return;
-                }
-                e.preventDefault();
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                document.onmouseup = closeDragElement;
-                document.onmousemove = elementDrag;
-            }
-
-            function dragTouchStart(e) {
-                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'BUTTON' || e.target.classList.contains('hacker-close')) {
-                    return;
-                }
-                pos3 = e.touches[0].clientX;
-                pos4 = e.touches[0].clientY;
-                document.ontouchend = closeDragElement;
-                document.ontouchmove = elementTouchDrag;
-            }
-
-            function elementDrag(e) {
-                e = e || window.event;
-                e.preventDefault();
-                pos1 = pos3 - e.clientX;
-                pos2 = pos4 - e.clientY;
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-
-                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function elementTouchDrag(e) {
-                pos1 = pos3 - e.touches[0].clientX;
-                pos2 = pos4 - e.touches[0].clientY;
-                pos3 = e.touches[0].clientX;
-                pos4 = e.touches[0].clientY;
-
-                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-                document.onmouseup = null;
-                document.onmousemove = null;
-                document.ontouchend = null;
-                document.ontouchmove = null;
-            }
         }
     </script>
 </body>

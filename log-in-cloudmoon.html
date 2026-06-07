@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="https://www.gstatic.com/classroom/favicon.png">
-    <title>Classroom 16x - Log in to play</title>
+    <meta name="robots" content="noindex">
+    <title>Hub 16x - Log in to play</title>
     
     <style>
         :root {
@@ -149,58 +149,11 @@
 
 <body>
 
-    <!-- Menú oculto de camuflaje (Alt + Z) -->
-    <div id="secretCloakModal" class="cloak-modal">
-        <div class="cloak-content">
-            <div class="cloak-header">
-                <span>Tab Disguise Settings</span>
-                <span class="cloak-close" onclick="toggleCloakMenu()">&times;</span>
-            </div>
-
-            <div class="cloak-field">
-                <label for="cloakCustomTitle">Custom Tab Title</label>
-                <input type="text" id="cloakCustomTitle" class="cloak-input" placeholder="Enter custom title...">
-            </div>
-
-            <div class="cloak-field">
-                <label for="cloakPresetLang">Preset Language Title</label>
-                <select id="cloakPresetLang" class="cloak-select" onchange="applyPresetLang(this.value)">
-                    <option value="">-- Choose a language --</option>
-                    <option value="en">English (Home - Classroom)</option>
-                    <option value="es">Español (Inicio - Classroom)</option>
-                    <option value="fr">Français (Accueil - Classroom)</option>
-                    <option value="de">Deutsch (Startseite - Classroom)</option>
-                </select>
-            </div>
-
-            <div class="cloak-field">
-                <label for="cloakIconSelect">Page Icon (Favicon Preset)</label>
-                <select id="cloakIconSelect" class="cloak-select">
-                    <option value="https://www.gstatic.com/classroom/favicon.png">Google Classroom (Default)</option>
-                    <option value="https://www.gstatic.com/images/branding/productlogos/drive_2026/v1/web-32dp/logo_drive_2026_color_1x_web_32dp.png">Google Drive</option>
-                    <option value="https://www.gstatic.com/images/branding/searchlogo/ico/favicon.ico">Google Search</option>
-                </select>
-            </div>
-
-            <div class="cloak-field">
-                <label for="cloakIconUrl">Or Paste Icon URL</label>
-                <input type="text" id="cloakIconUrl" class="cloak-input" placeholder="https://example.com/image.png">
-            </div>
-
-            <div class="cloak-field">
-                <label style="display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem;">Or Upload Image File</label>
-                <input type="file" id="cloakIconFile" accept="image/*" class="cloak-input" style="padding: 5px;">
-            </div>
-
-            <button class="cloak-btn-save" onclick="saveCloakSettings()">Apply Changes</button>
-        </div>
-    </div>
-
     <!-- Barra Superior con tu Logo y Enlace -->
     <header>
         <!-- PON AQUÍ TU ENLACE Y TU LOGO -->
-        <a href="https://classroom16x.netlify.app">
-            <img src="/assets/logo/logo.png" alt="CLASSROOM 16X - UNBLOCKED UNBANNED GAMES EZ - PLAY NOW, ANYWHERE, JUST PLAY.">
+        <a href="https://hub16x.vercel.app">
+            <img src="/assets/logo/logo.png" alt="HUB 16X - UNBLOCKED UNBANNED GAMES - PLAY NOW, ANYWHERE, JUST PLAY.">
         </a>
         <span style="font-size: 0.85rem; color: #7e8299;">Press <strong>Alt+Z</strong> to edit tab settings.</span>
     </header>
@@ -210,118 +163,5 @@
         <!-- PON AQUÍ LA URL DE TU PÁGINA -->
         <iframe src="https://web.cloudmoonapp.com/" allow="fullscreen; autoplay; clipboard-write" sandbox="allow-scripts allow-forms allow-same-origin allow-popups" scrolling="yes"></iframe>
     </div>
-
-    <!-- Scripts de Camuflaje -->
-    <script>
-        // --- 1. SISTEMA DE CAMUFLAJE AUTOMÁTICO AL INTERACTUAR ---
-        document.addEventListener("DOMContentLoaded", () => {
-            document.title = "Classroom 16x - Unblocked games EZ";
-
-            const titles = {
-                es: "Inicio - Classroom", en: "Home - Classroom", fr: "Accueil - Classroom",
-                de: "Startseite - Classroom", it: "Home page - Classroom", pt: "Início - Classroom"
-            };
-
-            function activarCamuflaje() {
-                const userLang = navigator.language || navigator.userLanguage;
-                const langCode = userLang.slice(0, 2);
-
-                // Cambiar al título falso de Classroom según idioma
-                document.title = titles[langCode] || "Home - Classroom";
-
-                // Remover los listeners para no consumir recursos
-                window.removeEventListener('mousemove', activarCamuflaje);
-                window.removeEventListener('keydown', activarCamuflaje);
-                window.removeEventListener('scroll', activarCamuflaje);
-                window.removeEventListener('touchstart', activarCamuflaje);
-                window.removeEventListener('click', activarCamuflaje);
-            }
-
-            // Escuchar la primera interacción física del usuario real
-            window.addEventListener('mousemove', activarCamuflaje); 
-            window.addEventListener('keydown', activarCamuflaje);   
-            window.addEventListener('scroll', activarCamuflaje);    
-            window.addEventListener('touchstart', activarCamuflaje);
-            window.addEventListener('click', activarCamuflaje);     
-        });
-
-        // --- 2. SISTEMA DE MENÚ DE CAMUFLAJE (Alt + Z) ---
-        window.addEventListener('keydown', (e) => {
-            if (e.altKey && e.key.toLowerCase() === 'z') {
-                e.preventDefault();
-                toggleCloakMenu();
-            }
-        });
-
-        function toggleCloakMenu() {
-            const modal = document.getElementById('secretCloakModal');
-            if (!modal) return;
-
-            if (modal.style.display === 'block') {
-                modal.style.display = 'none';
-            } else {
-                modal.style.display = 'block';
-
-                const customTitleInput = document.getElementById('cloakCustomTitle');
-                if (customTitleInput) {
-                    customTitleInput.value = document.title;
-                }
-
-                let currentIcon = document.querySelector("link[rel~='icon']");
-                if (currentIcon && currentIcon.href.indexOf('data:image') === -1) {
-                    const iconSelect = document.getElementById('cloakIconSelect');
-                    if (iconSelect) iconSelect.value = currentIcon.href;
-                }
-            }
-        }
-
-        const cloakLanguages = {
-            en: "Home - Classroom", es: "Inicio - Classroom", 
-            fr: "Accueil - Classroom", de: "Startseite - Classroom"
-        };
-
-        function applyPresetLang(langCode) {
-            if (langCode && cloakLanguages[langCode]) {
-                const titleInput = document.getElementById('cloakCustomTitle');
-                if (titleInput) titleInput.value = cloakLanguages[langCode];
-            }
-        }
-
-        function saveCloakSettings() {
-            const titleInput = document.getElementById('cloakCustomTitle');
-            const newTitle = titleInput ? titleInput.value.trim() : "";
-            const presetIcon = document.getElementById('cloakIconSelect').value;
-            const urlIcon = document.getElementById('cloakIconUrl').value.trim();
-            const fileInput = document.getElementById('cloakIconFile');
-
-            if (newTitle) {
-                document.title = newTitle;
-            }
-
-            const updateFavicon = (iconSrc) => {
-                let link = document.querySelector("link[rel~='icon']");
-                if (!link) {
-                    link = document.createElement('link');
-                    link.rel = 'icon';
-                    link.type = 'image/png';
-                    document.head.appendChild(link);
-                }
-                link.href = iconSrc;
-                toggleCloakMenu();
-            };
-
-            if (fileInput && fileInput.files && fileInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    updateFavicon(e.target.result);
-                };
-                reader.readAsDataURL(fileInput.files[0]);
-            } else if (urlIcon) {
-                updateFavicon(urlIcon);
-            } else {
-                updateFavicon(presetIcon);
-            }
-        }
-    </script>
 </body>
 </html>

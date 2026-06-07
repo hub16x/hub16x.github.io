@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>BACKFLIP DIVE 3D - Quick play now - CLASSROOM16X.VERCEL.APP</title>
-    <meta name="description" content="Do epic flips in Backflip Dive 3D! Jump from huge heights, spin in the air, and land on your feet. Play for free now and master the backflip!">
-    <link rel="shortcut icon" href="https://4texas4.github.io/backflip-dive-3d/style/favicon.ico">
+    <title>BACKFLIP DIVE 3D - Quick play now - HUB16X.vercel.app</title>
+    <meta name="description"
+        content="Do epic flips in Backflip Dive 3D! Jump from huge heights, spin in the air, and land on your feet. Play for free now and master the backflip!">
     <link rel="stylesheet" href="https://4texas4.github.io/backflip-dive-3d/style/style.css">
     <script src="https://4texas4.github.io/backflip-dive-3d/UnityLoader.js"></script>
-    
+
     <style>
-        body, html {
-            margin: 0; padding: 0;
-            width: 100%; height: 100%;
+        @font-face {
+            font-family: 'Inter-Bold';
+            src: url('/assets/fonts/Inter-Bold.woff2') format('woff2');
+            font-display: swap;
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
             overflow: hidden;
             background: #0d0e15;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter-Bold', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
-        
+
         #gameContainer {
             width: 100vw !important;
             height: 100vh !important;
@@ -27,7 +37,10 @@
         /* --- NUEVO LOADING OVERLAY MEJORADO --- */
         #custom-loader {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             /* Fondo cyberpunk oscuro con profundidad */
             background: radial-gradient(circle, #1a1c29 0%, #08090c 100%);
             display: flex;
@@ -43,9 +56,10 @@
         #custom-loader::before {
             content: "";
             position: absolute;
-            width: 200%; height: 200%;
-            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), 
-                              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            width: 200%;
+            height: 200%;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 40px 40px;
             background-position: center;
             transform: perspective(500px) rotateX(60deg);
@@ -54,8 +68,13 @@
         }
 
         @keyframes gridMove {
-            0% { background-position: 0 0; }
-            100% { background-position: 0 320px; }
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 0 320px;
+            }
         }
 
         /* Contenedor del contenido para quedar por encima de la rejilla */
@@ -80,11 +99,26 @@
         }
 
         @keyframes floatAndFlip {
-            0% { transform: translateY(0) rotate(0deg); }
-            40% { transform: translateY(-15px) rotate(0deg); }
-            65% { transform: translateY(-15px) rotate(-360deg); } /* ¡Hace un Backflip! */
-            85% { transform: translateY(5px) rotate(-360deg); }
-            100% { transform: translateY(0) rotate(-360deg); }
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            40% {
+                transform: translateY(-15px) rotate(0deg);
+            }
+
+            65% {
+                transform: translateY(-15px) rotate(-360deg);
+            }
+
+            /* ¡Hace un Backflip! */
+            85% {
+                transform: translateY(5px) rotate(-360deg);
+            }
+
+            100% {
+                transform: translateY(0) rotate(-360deg);
+            }
         }
 
         /* Texto con estilo Neon Gamer */
@@ -100,8 +134,17 @@
         }
 
         @keyframes textPulse {
-            0%, 100% { opacity: 0.9; text-shadow: 0 0 10px rgba(0, 242, 254, 0.6); }
-            50% { opacity: 1; text-shadow: 0 0 20px rgba(0, 242, 254, 0.9), 0 0 30px rgba(127, 0, 255, 0.6); }
+
+            0%,
+            100% {
+                opacity: 0.9;
+                text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+            }
+
+            50% {
+                opacity: 1;
+                text-shadow: 0 0 20px rgba(0, 242, 254, 0.9), 0 0 30px rgba(127, 0, 255, 0.6);
+            }
         }
 
         /* Envoltura de la barra de progreso */
@@ -111,8 +154,8 @@
             background: rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             padding: 3px;
-            box-shadow: inset 0 1px 5px rgba(0,0,0,0.5), 0 0 15px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         /* Relleno con degradado animado Premium */
@@ -128,9 +171,17 @@
         }
 
         @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* Texto del porcentaje */
@@ -149,7 +200,8 @@
 <body>
     <div id="custom-loader">
         <div class="loader-content">
-            <img class="loader-avatar" src="https://4texas4.github.io/backflip-dive-3d/icon.jpeg" alt="BACKFLIP DIVE 3D - QUICK PLAY NOW IN CLASSROOM 16X">
+            <img class="loader-avatar" src="https://4texas4.github.io/backflip-dive-3d/icon.jpeg"
+                alt="BACKFLIP DIVE 3D - QUICK PLAY NOW IN CLASSROOM 16X">
             <div class="loading-text">Backflip Dive 3D</div>
             <div id="progress-wrap">
                 <div id="progress-fill"></div>
@@ -167,36 +219,36 @@
         const container = document.getElementById("gameContainer");
 
         // SPACE BAR EMULATION
-        let h=0;
+        let h = 0;
         const down = () => {
-            if(!h) {
-                h=1;
+            if (!h) {
+                h = 1;
                 const canvas = container.querySelector("canvas");
-                if(canvas) canvas.dispatchEvent(new MouseEvent("mousedown", {bubbles:true, buttons:1}));
+                if (canvas) canvas.dispatchEvent(new MouseEvent("mousedown", { bubbles: true, buttons: 1 }));
             }
         };
         const up = () => {
-            if(h) {
-                h=0;
+            if (h) {
+                h = 0;
                 const canvas = container.querySelector("canvas");
-                if(canvas) canvas.dispatchEvent(new MouseEvent("mouseup", {bubbles:true}));
+                if (canvas) canvas.dispatchEvent(new MouseEvent("mouseup", { bubbles: true }));
             }
         };
 
         window.addEventListener("keydown", e => {
-            if(e.code === "Space") { e.preventDefault(); down(); }
-        }, {passive: false});
+            if (e.code === "Space") { e.preventDefault(); down(); }
+        }, { passive: false });
 
         window.addEventListener("keyup", e => {
-            if(e.code === "Space") { e.preventDefault(); up(); }
-        }, {passive: false});
+            if (e.code === "Space") { e.preventDefault(); up(); }
+        }, { passive: false });
 
         // UNITY INITIALIZATION
         function handleProgress(instance, progress) {
             let p = Math.min(Math.round(progress * 100), 100);
             fill.style.width = p + "%";
             pct.innerText = p + "%";
-            
+
             if (progress === 1) {
                 loader.style.opacity = "0";
                 setTimeout(() => {
@@ -208,7 +260,7 @@
         var gameInstance = UnityLoader.instantiate("gameContainer", "https://4texas4.github.io/backflip-dive-3d/build.json", {
             onProgress: handleProgress,
             Module: {
-                onRuntimeInitialized: function() {
+                onRuntimeInitialized: function () {
                     handleProgress(gameInstance, 1);
                 }
             }
@@ -220,7 +272,8 @@
             addAdinPreroll.src = getAdinDomain;
             bodyTag.appendChild(addAdinPreroll);
         }
-        window.alert = function() {};
+        window.alert = function () { };
     </script>
 </body>
+
 </html>
