@@ -108,6 +108,17 @@
             font-display: swap;
         }
 
+        html,
+        body {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
         body {
             margin: 0;
             font-family: var(--bs-body-font-family);
@@ -551,6 +562,7 @@
             border: 3px solid var(--theme-color);
             border-radius: 1em;
             background: #000;
+            transition: all 0.2s ease-in-out;
         }
 
         /* Definición del modo oscuro forzado */
@@ -711,7 +723,7 @@
             text-align: center;
         }
 
-        /* Lateral con Scroll Independiente */
+        /* Lateral sin Scroll (Se expande con el scroll general de la página) */
         .visor-lateral.card-masonry {
             width: 280px !important;
             flex-shrink: 0;
@@ -719,33 +731,7 @@
             grid-template-columns: repeat(2, 1fr) !important;
             gap: 16px !important;
             font-family: 'Inter', sans-serif !important;
-
-            /* Ajustes para Scroll Independiente */
-            max-height: 82vh !important;
-            overflow-y: auto !important;
             padding-right: 0px;
-
-            /* Ocultar scroll en Firefox e Internet Explorer/Edge antiguo */
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        /* Ocultar scroll en navegadores basados en WebKit (Chrome, Safari, Edge moderno, Opera) */
-        .visor-lateral.card-masonry::-webkit-scrollbar {
-            display: none;
-        }
-
-        .visor-lateral.card-masonry::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .visor-lateral.card-masonry::-webkit-scrollbar-thumb {
-            background-color: rgba(155, 155, 155, 0.4);
-            border-radius: 10px;
-        }
-
-        .visor-lateral.card-masonry::-webkit-scrollbar-thumb:hover {
-            background-color: rgba(155, 155, 155, 0.7);
         }
 
         /* Desactiva el formato grande de las tarjetas ".large" solo para las columnas laterales */
@@ -777,40 +763,166 @@
                 display: none !important;
             }
         }
+
+        /* --- NUEVO: ESTILOS PARA PANTALLA COMPLETA ALTERNATIVA POR CSS --- */
+        .iframe-css-fullscreen {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            max-width: 100vw !important;
+            max-height: 100vh !important;
+            z-index: 999998 !important;
+            border: none !important;
+            border-radius: 0 !important;
+        }
+
+        /* --- NUEVO: ESTILOS PARA FAVORITOS Y BOTONES FILTRO --- */
+        .nav-filter-btn {
+            background-color: var(--btn-bg, #f1f3f5);
+            color: var(--btn-text, #5c5f62);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            box-sizing: border-box;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .nav-filter-btn:hover {
+            background-color: #0019b3 !important;
+            color: #ffffff !important;
+        }
+
+        .nav-filter-btn.active-filter {
+            background-color: #0019b3 !important;
+            color: #ffffff !important;
+        }
+
+        /* Añade esto dentro de tu etiqueta <style> */
+        .btn-fav-visor {
+            background-color: #f1c40f;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 0.5em;
+            cursor: pointer;
+            font-family: 'Inter-Bold', sans-serif;
+            margin-bottom: 20px;
+            margin-left: 10px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-fav-visor:hover {
+            background-color: #f39c12;
+        }
+
+        .btn-fav-visor.is-fav {
+            background-color: #2c3e50;
+            color: #fff;
+        }
     </style>
 </head>
 
 <body class="min-vh-100 layout d-flex flex-column">
+    <div class="popup-study">
+
+    </div>
+    <div style="
+    background-color: #d1e2cb; 
+    padding: 20px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    position: fixed; 
+    top: 20px; /* <- ESTO ES LO QUE CAMBIÓ */
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 500px; 
+    width: 90%;
+    font-family: 'Inter-SemiBold', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+" role="region" aria-labelledby="i1" tabindex="0" id="alertBox">
+
+        <!-- Texto centrado -->
+        <p style="
+        color: #1c3d18; 
+        margin: 0; 
+        padding-right: 25px; 
+        font-weight: bold; 
+        font-size: 16px; 
+        text-align: center;
+        width: 100%;
+    " id="i1">
+            ⏰ Please play only during breaks or after school - learning comes first! 📚
+        </p>
+
+        <!-- Botón de cerrar -->
+        <button onclick="document.getElementById('alertBox').style.display='none'" style="
+        position: absolute; 
+        right: 15px; 
+        top: 50%; 
+        transform: translateY(-50%); 
+        background: none; 
+        border: none; 
+        font-size: 22px; 
+        cursor: pointer; 
+        color: #1c3d18;
+        line-height: 1;
+        padding: 5px;
+        opacity: 0.7;
+    " aria-label="Cerrar">
+            &times;
+        </button>
+    </div>
+
+
+
 
     <!-- Barra de Navegación -->
     <nav class="navbar navbar-expand-lg layout-header navbar-light px-3">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-            <!-- Logo que actúa como botón de inicio -->
-            <div class="navbar-brand m-0" style="cursor: pointer; display: flex; align-items: center; gap: 10px;"
-                onclick="cerrarJuego()">
-                <img src="/assets/logo/logo.png" height="40" alt="HUB 16X">
-                <button id="mi-boton-tema" aria-label="Toggle dark mode" onclick="cambiarTema()" style="padding: 8px 15px; cursor: pointer; border-radius: 8px; 
-    border: 2px solid #0f1aab; background: white; color: #0f1aab; 
-    font-weight: bold; transition: 0.3s;">
-                    🌙 Dark Mode
+        <div class="container-fluid d-flex justify-content-start align-items-center" style="gap: 20px;">
+
+            <!-- Contenedor del Logo y Botón de Tema -->
+            <div class="navbar-brand m-0" style="display: flex; align-items: center; gap: 10px;">
+                <img src="/assets/logo/logo.png" height="40" alt="HUB 16X" onclick="clickLogo()"
+                    style="cursor: pointer;">
+                <button id="mi-boton-tema" aria-label="Toggle dark mode" onclick="cambiarTema()"
+                    style="padding: 8px 15px; cursor: pointer; border-radius: 8px; border: 2px solid #0f1aab; background: white; color: #0f1aab; font-weight: bold; transition: 0.3s;">
+                    🌙 Dark Mode </button>
+            </div>
+            <!-- Botones de Favoritos y Recientes ahora pegados aquí -->
+            <div style="display: flex; gap: 12px; font-family: 'Inter', sans-serif; padding: 10px;">
+                <button id="btn-favoritos" class="nav-filter-btn" onclick="mostrarFavoritos()">
+                    Favorites
+                </button>
+                <button id="btn-recientes" class="nav-filter-btn" onclick="mostrarRecientes()">
+                    Most Recent
                 </button>
             </div>
+        </div>
 
-            <!-- Buscador alineado responsivamente -->
-            <div class="flex-grow-1 max-width-search mx-3" style="max-width: 400px;">
-                <div class="input-group input-group-inline shadow-none">
-                    <span class="input-group-text bg-transparent border-0 text-gray-500 shadow-none ps-0 pe-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                    </span>
-                    <input type="text" class="form-control form-control-flush bg-transparent border-0 ps-0"
-                        id="buscador" placeholder="Search .." aria-label="Search games" onkeyup="filtrarJuegos()"
-                        style="font-family: Inter;">
-                </div>
+
+        <!-- Buscador alineado responsivamente -->
+        <div class="flex-grow-1 max-width-search mx-3" style="max-width: 400px;">
+            <div class="input-group input-group-inline shadow-none">
+                <span class="input-group-text bg-transparent border-0 text-gray-500 shadow-none ps-0 pe-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </span>
+                <input type="text" class="form-control form-control-flush bg-transparent border-0 ps-0" id="buscador"
+                    placeholder="Search .." aria-label="Search games" onkeyup="filtrarJuegos()"
+                    style="font-family: Inter;">
             </div>
+        </div>
         </div>
     </nav>
 
@@ -867,7 +979,7 @@
                     </div>
 
                     <!-- Juego: COOKIE CLICKER -->
-                    <div onclick="abrirJuego('https://script.google.com/macros/s/AKfycbxGM35J29NkO-2LYjxWj_cA9IUaaXypkUy-LqXyLRbGTz0R6lXmAEapz1STN1jlTIRavw/exec')"
+                    <div onclick="abrirJuego('https://script.google.com/macros/s/AKfycbxGM35J29NkO-2LYjxWj_cA9IUaaXypkUy-LqXyLRbGTz0R6lXmAEapz1STN1jlTIRavw/exec', false, false, true)"
                         class="card large" style="cursor: pointer;" role="button" tabindex="0">
                         <img src="/images/cookie-clicker.webp" alt="COOKIE CLICKER, play now unblocked for free"
                             class="img-fluid">
@@ -1036,8 +1148,8 @@
                         </div>
                     </div>
                     <!-- Juego: 2048 -->
-                    <div onclick=" alert('ALERT: To ensure the game looks right, please set it to fullscreen mode.'); abrirJuego('https://2048unblocked.bitbucket.io/file/')"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <div onclick="abrirJuego('https://2048unblocked.bitbucket.io/file/', true)" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
                         <img src="/images/2048.webp" alt="2048, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>2048</span>
@@ -1258,13 +1370,13 @@
                             <span>YOHOHO PIRATE BATTLE ROYALE</span>
                         </div>
                     </div>
-                    <!-- Juego: FIREBOY AND WATERGIRL CRYSTAL TEMPLE -->
-                    <div onclick="abrirJuego('/games/fireboy-and-watergirl-crystal-temple/index.html')" class="card"
+                    <!-- Juego: FIREBOY & WATERGIRL CRYSTAL TEMPLE -->
+                    <div onclick="abrirJuego('/games/fireboy-and-watergirl-crystal-temple/')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
                         <img src="/images/fireboy.webp"
-                            alt="FIREBOY AND WATERGIRL CRYSTAL TEMPLE, play now unblocked for free" class="img-fluid">
+                            alt="FIREBOY & WATERGIRL CRYSTAL TEMPLE, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
-                            <span>FIREBOY AND WATERGIRL CRYSTAL TEMPLE</span>
+                            <span>FIREBOY & WATERGIRL CRYSTAL TEMPLE</span>
                         </div>
                     </div>
                     <!-- Juego: SNOW RIDER 3D -->
@@ -1323,8 +1435,8 @@
                         </div>
                     </div>
                     <!-- Juego: DRAW A PERFECT CIRCLE -->
-                    <div onclick="abrirJuego('/games/draw-a-perfect-circle/')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <div onclick="abrirJuego('https://testyourdraw.com/draw-perfect-circle', true)" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
                         <img src="/images/draw-a-perfect-circle.webp"
                             alt="DRAW A PERFECT CIRCLE, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
@@ -1358,8 +1470,8 @@
                         </div>
                     </div>
                     <!-- Juego: 1v1 LOL -->
-                    <div onclick="abrirJuego('https://1v1lol.me/1v1lol/')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <div onclick="abrirJuego('https://1v1-lol.gitlab.io/file/', false, false, true)" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
                         <img src="/images/1v1-lol.webp" alt="1v1 LOL, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>1v1 LOL</span>
@@ -1409,15 +1521,87 @@
                         </div>
                     </div>
                     <!-- Juego: LINE RIDER -->
-                    <div onclick="abrirJuego('https://www.linerider.com')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <div onclick="abrirJuego('https://www.linerider.com')" class="card" style="cursor: pointer;"
+                        role="button" tabindex="0">
                         <img src="/images/line-rider.webp" alt="LINE RIDER, play now unblocked for free"
                             class="img-fluid">
                         <div class="card-body">
                             <span>LINE RIDER</span>
                         </div>
                     </div>
+                    <!-- Juego: THE IMPOSIBLE GAME -->
+                    <div onclick="abrirJuego('https://the-impossible-game.game-files.crazygames.com/ruffle/theimpossiblegame.html?czySeasonWorldCup=false&czySeasonWorldCupKeyMatch=false&isNewUser=false&__nextLocale=es&v=2.2')"
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/the-imposible-game.webp" alt="THE IMPOSIBLE GAME, play now unblocked for free"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>THE IMPOSIBLE GAME</span>
+                        </div>
+                    </div>
+                    <!-- Juego: 2048 MULTITASKING -->
+                    <div onclick="abrirJuego('https://calculatorgames.github.io/simplegimes/2048-multitask/index.html', true)"
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/2048-multitasking.webp" alt="2048 MULTITASKING, play now unblocked for free"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>2048 MULTITASKING</span>
+                        </div>
+                    </div>
+                    <!-- Juego: BASKET BROS -->
+                    <div onclick="abrirJuego('https://basketbros.io/')" class="card large" style="cursor: pointer;"
+                        role="button" tabindex="0">
+                        <img src="/images/basket-bros.webp" alt="BASKET BROS, play now unblocked for free"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>BASKET BROS</span>
+                        </div>
+                    </div>
+                    <!-- Juego: EGGY CAR -->
+                    <div onclick="abrirJuego('https://eggy-car-unblocked.github.io/eggycar/')" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/eggy-car.webp" alt="EGGY CAR, play now unblocked for free" class="img-fluid">
+                        <div class="card-body">
+                            <span>EGGY CAR</span>
+                        </div>
+                    </div>
+                    <!-- Juego: AQUAPARK -->
+                    <div onclick="alert('In this game, the fullscreen button does NOT work (sometimes yes). Use OPEN IN about:blank.'); abrirJuego('https://rogoogle.github.io/aquapark/')"
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/aquapark.webp" alt="AQUAPARK, play now unblocked for free" class="img-fluid">
+                        <div class="card-body">
+                            <span>AQUAPARK</span>
+                        </div>
+                    </div>
+                    <!-- Juego: GULPER.IO -->
+                    <div onclick="abrirJuego('https://gulper.io')" class="card" style="cursor: pointer;" role="button"
+                        tabindex="0">
+                        <img src="/images/gulper-io.webp" alt="GULPER.IO, play now unblocked for free"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>GULPER.IO</span>
+                        </div>
+                    </div>
+                    <!-- Juego: DUNKERS -->
+                    <div onclick="abrirJuego('https://ubg98.io/science/dunkers/')" class="card" style="cursor: pointer;"
+                        role="button" tabindex="0">
+                        <img src="/images/dunkers.webp" alt="DUNKERS, play now unblocked for free" class="img-fluid">
+                        <div class="card-body">
+                            <span>DUNKERS</span>
+                        </div>
+                    </div>
+                    <!-- Juego: DRIVE MAD 2 -->
+                    <div onclick="abrirJuego('https://play.fancade.com/63BA239C20C40BF3')" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/drive-mad-2.webp" alt="DRIVE MAD 2, play now unblocked for free"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>DRIVE MAD 2</span>
+                        </div>
+                    </div>
                 </div>
+                <center>
+
+                </center>
 
                 <!-- PÁGINA 3 -->
                 <div class="card-masonry pagina-juegos" id="pagina-3" style="display: none;">
@@ -1439,13 +1623,15 @@
         <!-- CONTAINER DEL VISOR DE JUEGOS MODIFICADO -->
         <div id="pantalla-juego" style="display: none;">
             <div class="visor-layout-container">
-                <!-- Lateral Izquierdo (Grid de 2 columnas con Scroll Independiente) -->
+                <!-- Lateral Izquierdo (Grid de 2 columnas sin Scroll) -->
                 <div class="visor-lateral card-masonry" id="lateral-izquierdo"></div>
 
                 <!-- Columna Central -->
                 <div class="visor-central">
                     <button class="btn-back" onclick="cerrarJuego()">HOME</button>
                     <button class="btn-fullscreen" onclick="toggleFullscreen()">FULLSCREEN</button>
+                    <button id="btn-favorito-visor" class="btn-fav-visor" onclick="toggleFavoriteVisor()">⭐ ADD TO
+                        FAVORITES</button>
                     <button class="btn-report" onclick="reportProblem()">REPORT ISSUE</button>
                     <button class="btn-blank" onclick="openInAboutBlank()">OPEN IN about:blank</button>
                     <br>
@@ -1453,9 +1639,23 @@
                         sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-top-navigation allow-top-navigation-by-user-activation allow-downloads"
                         scrolling="no">
                     </iframe>
+                    <h3 id="titulo-juego-visor"
+                        style="margin-top: 20px; font-family: 'Inter-SemiBold', sans-serif; font-size: 1.5rem; color: #080808; font-weight: 700; text-align: left;">
+                        play now unblocked for free
+                    </h3>
+                    <img src="/assets/static/images/stars.png" alt="">
+                    <h3 id="text-category"
+                        style="margin-top: 20px; font-family: 'Inter', sans-serif; font-size: 1.0rem; color: #080808; font-weight: 700; text-align: left;">
+                        Game Category:
+                    </h3>
+                    <p id="texto-unblocked"
+                        style="margin-top: 20px; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 700; text-align: left;">
+                        <a style="color: #838080;" href="https://www.google.com/search?q=unblocked+games"
+                            target="_blank">UNBLOCKED GAMES</a>
+                    </p>
                 </div>
 
-                <!-- Lateral Derecho (Grid de 2 columnas con Scroll Independiente) -->
+                <!-- Lateral Derecho (Grid de 2 columnas sin Scroll) -->
                 <div class="visor-lateral card-masonry" id="lateral-derecho"></div>
             </div>
         </div>
@@ -1468,15 +1668,16 @@
                 style="font-family: 'Inter-SemiBold', sans-serif; text-transform: none; color: var(--theme-color);">Why
                 choose hub 16x?</h2>
             <p class="mb-3" style="font-size: 0.95rem; line-height: 1.6;">
-                <span>©</span> 2026 <strong>Hub 16x</strong>.
-                Based on the original code/images from <a target="_blank" style="color: #080808;"
-                    href="https://ezclasswork.com">ez
-                    classwork</a>, <a target="_blank" style="color: #080808;"
-                    href="https://classroom20x.com">classroom20x</a>, <a target="_blank" style="color: #080808;"
-                    href="https://classroom10x.com">classroom10x</a> and <a target="_blank" style="color: #080808;"
-                    href="https://classroomunblockedgames.com">classroom unblocked games</a>,
-                modified under [educational / personal / development] licenses.
+                <span>©</span> 2026 <strong>Hub 16x</strong>. Based on the original code/images from
+                <span id="enlaces">
+                    <a target="_blank" style="color: #080808;" href="https://ezclasswork.com">ez classwork</a>,
+                    <a target="_blank" style="color: #080808;" href="https://classroom20x.com">classroom20x</a>,
+                    <a target="_blank" style="color: #080808;" href="https://classroom10x.com">classroom10x</a> and
+                    <a target="_blank" style="color: #080808;" href="https://classroomunblockedgames.com">classroom
+                        unblocked games</a>,
+                </span> modified under [educational / personal / development] licenses.
             </p>
+
 
             <p class="mb-3" style="font-size: 0.95rem; line-height: 1.6;">
                 In modern educational environments, finding a reliable platform for quick, high-quality brain breaks can
@@ -1509,23 +1710,55 @@
             </a>
         </div>
     </div>
+    <div id="copyright"
+        style="position: relative; margin-bottom: 15px; width: 100%; margin: 0; padding: 0; clear: both;">
+        <img src="/assets/static/images/down.png" alt="" style="width: 100%; display: block; margin: 0; padding: 0;">
+        <div
+            style="color: #838080; font-size: 0.85rem; position: absolute; top: 50%; left: 20px; transform: translateY(-50%); font-family: 'Inter-SemiBold', sans-serif; white-space: nowrap; margin: 0; padding: 0; text-align: left;">
+            Copyright © 2026 <a href="/" style="color: #080808; text-decoration: none;"
+                target="_blank">hub16x</a>.vercel.app
+            <div style="margin-top: 19px;">
+                <a href="/" style="color: #080808; text-decoration: none;" target="_blank">HUB 16X</a> is a safe app to
+                use in a school or home environment and play fast and free games
+            </div>
+        </div>
+    </div>
+
+    </div>
     <noscript>
         <style>
+            /* Oculta todo el contenido principal */
+            body {
+                display: none;
+            }
+
+            /* Muestra el mensaje de aviso */
             html::before {
                 content: "To use Hub 16x, enable Javascript in your browser. More information in https://enable-javascript.com";
                 display: block;
                 text-align: center;
                 padding: 50px 20px;
-                font-family: 'Inter-SemiBold' sans-serif;
+                font-family: 'Inter-SemiBold', sans-serif;
                 font-size: 18px;
             }
         </style>
     </noscript>
 
+
+    <!-- BLOQUE ÚNICO DE SCRIPTS INTEGRADOS -->
     <!-- BLOQUE ÚNICO DE SCRIPTS INTEGRADOS -->
     <script>
-        function abrirJuego(urlInput) {
+        let nombreJuegoActivo = "";
+        // Variables globales para el manejo del estado de pantalla completa por CSS
+        let prefiereCssFullscreen = false;
+        let modoCssFullscreenActivo = false;
+        let vistaActual = 'all'; // Modos posibles: 'all', 'favorites', 'recents'
+        let permitePopupsActivo = false;
+
+        function abrirJuego(urlInput, permitirScroll = false, cssFullscreen = false, permitirPopups = false) {
             let urlFinal = "";
+            prefiereCssFullscreen = !!cssFullscreen;
+            permitePopupsActivo = !!permitirPopups; // Guarda el estado de forma global
 
             if (typeof urlInput === 'object' && urlInput !== null) {
                 const idioma = (navigator.language || navigator.userLanguage).toLowerCase().slice(0, 2);
@@ -1538,13 +1771,48 @@
                 urlFinal = urlInput;
             }
 
+            // --- BUSCAR NOMBRE DEL JUEGO DINÁMICAMENTE ---
+            let nombreJuego = "Game";
+            let searchString = typeof urlInput === 'object' ? (urlInput.en || urlInput.es) : urlInput;
+            const cards = document.querySelectorAll('#contenedor-menu .card');
+
+            for (let card of cards) {
+                const onclickAttr = card.getAttribute('onclick') || '';
+                if (onclickAttr.includes(searchString)) {
+                    const span = card.querySelector('.card-body span');
+                    if (span) {
+                        nombreJuego = span.textContent.trim();
+                        break;
+                    }
+                }
+            }
+
+            // Guardar el nombre del juego activo y actualizar el botón del visor
+            nombreJuegoActivo = nombreJuego;
+            actualizarBotonFavoritoVisor();
+
+            // Registrar en "Most Recent"
+            if (nombreJuego && nombreJuego !== "Game") {
+                let recents = JSON.parse(localStorage.getItem('h16x_recents')) || [];
+                recents = recents.filter(item => item !== nombreJuego);
+                recents.unshift(nombreJuego);
+                if (recents.length > 24) {
+                    recents.pop();
+                }
+                localStorage.setItem('h16x_recents', JSON.stringify(recents));
+            }
+
+            const tituloVisor = document.getElementById('titulo-juego-visor');
+            if (tituloVisor) {
+                tituloVisor.innerText = `${nombreJuego} play now online unblocked for free`;
+            }
+
             const contenedorMenu = document.getElementById('contenedor-menu');
             const texto = document.getElementById('text-area');
             const botones = document.getElementById('pags');
             const pantallaJuego = document.getElementById('pantalla-juego');
             const visorJuego = document.getElementById('visor-juego');
 
-            // Limpiar el buscador y resetear la vista
             const buscador = document.getElementById('buscador');
             if (buscador) {
                 buscador.value = "";
@@ -1556,43 +1824,99 @@
                 botones.style.display = 'none';
                 pantallaJuego.style.display = 'block';
                 if (texto) texto.style.display = 'none';
+
+                if (permitirScroll) {
+                    visorJuego.setAttribute('scrolling', 'yes');
+                    visorJuego.style.overflow = 'auto';
+                } else {
+                    visorJuego.setAttribute('scrolling', 'no');
+                    visorJuego.style.overflow = 'hidden';
+                }
+
+                // --- ASIGNACIÓN DINÁMICA DE SANDBOX ---
+                const sandboxBase = "allow-scripts allow-same-origin allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-top-navigation allow-top-navigation-by-user-activation allow-downloads";
+                if (permitePopupsActivo) {
+                    visorJuego.setAttribute('sandbox', sandboxBase + ' allow-popups allow-popups-to-escape-sandbox');
+                } else {
+                    visorJuego.setAttribute('sandbox', sandboxBase);
+                }
+
                 visorJuego.src = urlFinal;
-
-                // Cargar laterales dinámicos con el resto de juegos
                 generarLateralesAleatorios(urlInput);
-
-                // Mover al inicio y bloquear scroll principal
-                window.scrollTo(0, 0);
-                document.documentElement.style.overflow = 'hidden';
-                document.body.style.overflow = 'hidden';
-
-                setTimeout(() => {
-                    visorJuego.focus();
-                }, 100);
             }
         }
 
         function cerrarJuego() {
+            if (modoCssFullscreenActivo) {
+                toggleCssFullscreen();
+            }
+            prefiereCssFullscreen = false;
+            permitePopupsActivo = false; // <-- Restablecer variable
+
             document.getElementById('pantalla-juego').style.display = 'none';
             document.getElementById('contenedor-menu').style.display = 'block';
-            document.getElementById('pags').style.display = 'flex';
+
+            if (vistaActual === 'favorites') {
+                mostrarFavoritos();
+            } else if (vistaActual === 'recents') {
+                mostrarRecientes();
+            } else {
+                restablecerVistaPrincipal();
+            }
+
             const texto = document.getElementById('text-area');
             if (texto) texto.style.display = 'block';
-            document.getElementById('visor-juego').src = '';
 
-            // Reactivar el scroll
+            const visorJuego = document.getElementById('visor-juego');
+            visorJuego.src = '';
+
+            // Restablecer el sandbox base por defecto
+            const sandboxBase = "allow-scripts allow-same-origin allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-top-navigation allow-top-navigation-by-user-activation allow-downloads";
+            visorJuego.setAttribute('sandbox', sandboxBase);
+
+            visorJuego.setAttribute('scrolling', 'no');
+            visorJuego.style.overflow = 'hidden';
+
             document.documentElement.style.overflow = '';
             document.body.style.overflow = '';
         }
 
         function toggleFullscreen() {
             const juegoIframe = document.getElementById('visor-juego');
+
+            // Si el juego prefiere la alternativa CSS, omitimos la API nativa
+            if (prefiereCssFullscreen) {
+                toggleCssFullscreen();
+                return;
+            }
+
+            // De lo contrario, usamos el método nativo por defecto
             if (juegoIframe.requestFullscreen) {
                 juegoIframe.requestFullscreen();
             } else if (juegoIframe.webkitRequestFullscreen) {
                 juegoIframe.webkitRequestFullscreen();
             } else if (juegoIframe.msRequestFullscreen) {
                 juegoIframe.msRequestFullscreen();
+            }
+        }
+
+        // --- SISTEMA INTERNO DE PANTALLA COMPLETA CSS ---
+        function toggleCssFullscreen() {
+            const juegoIframe = document.getElementById('visor-juego');
+            const botonSalir = document.getElementById('btn-salir-css-fullscreen');
+
+            if (!modoCssFullscreenActivo) {
+                juegoIframe.classList.add('iframe-css-fullscreen');
+                if (botonSalir) botonSalir.style.display = 'block';
+                document.documentElement.style.overflow = 'hidden';
+                document.body.style.overflow = 'hidden';
+                modoCssFullscreenActivo = true;
+            } else {
+                juegoIframe.classList.remove('iframe-css-fullscreen');
+                if (botonSalir) botonSalir.style.display = 'none';
+                document.documentElement.style.overflow = '';
+                document.body.style.overflow = '';
+                modoCssFullscreenActivo = false;
             }
         }
 
@@ -1606,8 +1930,16 @@
 
             let newIframe = win.document.createElement('iframe');
             newIframe.src = iframe.src;
-            newIframe.allow = 'autoplay; gamepad; fullscreen; keyboard-hub'
-            newIframe.sandbox = 'allow-scripts allow-same-origin allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-top-navigation allow-top-navigation-by-user-activation allow-downloads';
+            newIframe.allow = 'autoplay; gamepad; fullscreen; keyboard-hub';
+
+            // Asignación de Sandbox heredada en about:blank
+            const sandboxBase = "allow-scripts allow-same-origin allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-top-navigation allow-top-navigation-by-user-activation allow-downloads";
+            if (permitePopupsActivo) {
+                newIframe.sandbox = sandboxBase + ' allow-popups allow-popups-to-escape-sandbox';
+            } else {
+                newIframe.sandbox = sandboxBase;
+            }
+
             newIframe.style.width = '100vw';
             newIframe.style.height = '100vh';
             newIframe.style.border = 'none';
@@ -1620,6 +1952,8 @@
             const body = document.body;
             const html = document.documentElement;
             const boton = document.getElementById('mi-boton-tema');
+            const titulojuego = document.getElementById('titulo-juego-visor');
+            const categoria = document.getElementById('text-category');
             const titulo = document.getElementById('main-title-element');
 
             body.classList.toggle('modo-oscuro');
@@ -1629,19 +1963,364 @@
                 boton.innerHTML = '☀️ Light Mode';
                 boton.style.background = '#0f1aab';
                 boton.style.color = 'white';
+                categoria.style.color = 'white';
+                titulojuego.style.color = 'white';
                 if (titulo) titulo.style.color = 'white';
+                localStorage.setItem('temaPreferido', 'dark');
             } else {
                 html.setAttribute('data-theme', 'light');
                 boton.innerHTML = '🌙 Dark Mode';
                 boton.style.background = 'white';
                 boton.style.color = '#0f1aab';
+                categoria.style.color = '';
+                titulojuego.style.color = '';
                 if (titulo) titulo.style.color = '';
+                localStorage.setItem('temaPreferido', 'light');
             }
         }
 
         document.addEventListener("DOMContentLoaded", () => {
+            // Permitir que los elementos con rol de botón reaccionen a las teclas Enter y Espacio
+            document.addEventListener("keydown", function (event) {
+                const elementoActivo = document.activeElement;
+
+                // Verificamos si el elemento enfocado actualmente tiene el rol de botón
+                if (elementoActivo && elementoActivo.getAttribute("role") === "button") {
+                    // Detectamos si se presionó "Enter" (código 13) o "Espacio" (código 32)
+                    if (event.key === "Enter" || event.key === " " || event.keyCode === 13 || event.keyCode === 32) {
+
+                        // Evitamos el comportamiento por defecto (por ejemplo, que el espacio haga scroll en la página)
+                        event.preventDefault();
+
+                        // Simulamos un clic en el elemento enfocado
+                        elementoActivo.click();
+                    }
+                }
+            });
+            // Aplicar tema guardado al cargar la página
+            const temaGuardado = localStorage.getItem('temaPreferido');
+            if (temaGuardado === 'dark') {
+                document.body.classList.add('modo-oscuro');
+                document.documentElement.setAttribute('data-theme', 'dark');
+                const boton = document.getElementById('mi-boton-tema');
+                if (boton) {
+                    boton.innerHTML = '☀️ Light Mode';
+                    boton.style.background = '#0f1aab';
+                    boton.style.color = 'white';
+                }
+                const titulo = document.getElementById('main-title-element');
+                if (titulo) titulo.style.color = 'white';
+            }
             iniciarPaginacion();
+
+            const visorJuego = document.getElementById('visor-juego');
+            if (visorJuego) {
+                visorJuego.addEventListener('mouseenter', () => {
+                    const pantallaJuego = document.getElementById('pantalla-juego');
+                    if (pantallaJuego && pantallaJuego.style.display === 'block') {
+                        document.documentElement.style.overflow = 'hidden';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+
+                visorJuego.addEventListener('mouseleave', () => {
+                    document.documentElement.style.overflow = '';
+                    document.body.style.overflow = '';
+                });
+            }
         });
+
+        // --- GESTIÓN INTERNA DE FAVORITOS (OBJETOS, ORDEN Y TAMAÑO) ---
+        function obtenerFavoritosObject() {
+            let favorites = JSON.parse(localStorage.getItem('h16x_favorites')) || [];
+            let migrado = false;
+            let resultado = favorites.map(item => {
+                if (typeof item === 'string') {
+                    migrado = true;
+                    return { title: item, large: false };
+                }
+                return item;
+            });
+            if (migrado) {
+                localStorage.setItem('h16x_favorites', JSON.stringify(resultado));
+            }
+            return resultado;
+        }
+
+        function guardarFavoritosObject(favorites) {
+            localStorage.setItem('h16x_favorites', JSON.stringify(favorites));
+        }
+
+        function cambiarTamanoFav(title) {
+            let favorites = obtenerFavoritosObject();
+            favorites = favorites.map(fav => {
+                if (fav.title === title) {
+                    return { ...fav, large: !fav.large };
+                }
+                return fav;
+            });
+            guardarFavoritosObject(favorites);
+            mostrarFavoritos(true, true); // Recarga interna sin saltar ni alterar scroll
+        }
+
+        function moverFav(index, direction) {
+            let favorites = obtenerFavoritosObject();
+            const targetIndex = index + direction;
+            if (targetIndex >= 0 && targetIndex < favorites.length) {
+                const temp = favorites[index];
+                favorites[index] = favorites[targetIndex];
+                favorites[targetIndex] = temp;
+                guardarFavoritosObject(favorites);
+                mostrarFavoritos(true, true); // Recarga interna sin saltar ni alterar scroll
+            }
+        }
+
+        function toggleFavorite(title, starElement) {
+            let favorites = obtenerFavoritosObject();
+            const index = favorites.findIndex(fav => fav.title === title);
+            if (index > -1) {
+                favorites.splice(index, 1);
+                starElement.classList.remove('is-fav');
+            } else {
+                favorites.push({ title: title, large: false });
+                starElement.classList.add('is-fav');
+            }
+            guardarFavoritosObject(favorites);
+
+            if (vistaActual === 'favorites') {
+                mostrarFavoritos(true, true);
+            }
+        }
+
+        function toggleFavoriteVisor() {
+            if (!nombreJuegoActivo || nombreJuegoActivo === "Game") return;
+
+            let favorites = obtenerFavoritosObject();
+            const index = favorites.findIndex(fav => fav.title === nombreJuegoActivo);
+            if (index > -1) {
+                favorites.splice(index, 1);
+            } else {
+                let esGrande = false;
+                const originalCards = document.querySelectorAll('#contenedor-menu .card');
+                for (let card of originalCards) {
+                    const span = card.querySelector('.card-body span');
+                    if (span && span.innerText.trim() === nombreJuegoActivo) {
+                        esGrande = card.classList.contains('large');
+                        break;
+                    }
+                }
+                favorites.push({ title: nombreJuegoActivo, large: esGrande });
+            }
+            guardarFavoritosObject(favorites);
+            actualizarBotonFavoritoVisor();
+        }
+
+        function actualizarBotonFavoritoVisor() {
+            const btn = document.getElementById('btn-favorito-visor');
+            if (!btn || !nombreJuegoActivo || nombreJuegoActivo === "Game") return;
+
+            let favorites = obtenerFavoritosObject();
+            const existe = favorites.some(fav => fav.title === nombreJuegoActivo);
+            if (existe) {
+                btn.innerHTML = "⭐ REMOVE FAVORITE";
+                btn.classList.add('is-fav');
+            } else {
+                btn.innerHTML = "⭐ ADD TO FAVORITES";
+                btn.classList.remove('is-fav');
+            }
+        }
+
+        // --- SISTEMA DE FILTRADO Y PANTALLAS ---
+        function actualizarBotonesFiltro() {
+            const btnFav = document.getElementById('btn-favoritos');
+            const btnRec = document.getElementById('btn-recientes');
+
+            btnFav.classList.remove('active-filter');
+            btnRec.classList.remove('active-filter');
+
+            if (vistaActual === 'favorites') {
+                btnFav.classList.add('active-filter');
+            } else if (vistaActual === 'recents') {
+                btnRec.classList.add('active-filter');
+            }
+        }
+
+        function restablecerVistaPrincipal() {
+            vistaActual = 'all';
+            const pagFiltrada = document.getElementById('pagina-filtrada');
+            if (pagFiltrada) pagFiltrada.style.display = 'none';
+
+            document.getElementById('pags').style.display = 'flex';
+            actualizarBotonesFiltro();
+            cambiarPagina(paginaActual);
+        }
+
+        function clickLogo() {
+            cerrarJuego();
+            restablecerVistaPrincipal();
+        }
+
+        function prepararContenedorFiltrado() {
+            let pagFiltrada = document.getElementById('pagina-filtrada');
+            if (!pagFiltrada) {
+                pagFiltrada = document.createElement('div');
+                pagFiltrada.id = 'pagina-filtrada';
+                pagFiltrada.className = 'card-masonry';
+                const pagsCont = document.getElementById('pags');
+                pagsCont.parentNode.insertBefore(pagFiltrada, pagsCont);
+            }
+            pagFiltrada.innerHTML = '';
+            pagFiltrada.style.display = 'grid';
+            return pagFiltrada;
+        }
+        function mostrarFavoritos(force = false, preventScroll = false) {
+            if (!force && vistaActual === 'favorites' && document.getElementById('pagina-filtrada') && document.getElementById('pagina-filtrada').style.display === 'grid') {
+                restablecerVistaPrincipal();
+                return;
+            }
+
+            vistaActual = 'favorites';
+            actualizarBotonesFiltro();
+
+            document.querySelectorAll('.pagina-juegos').forEach(p => p.style.display = 'none');
+            document.getElementById('pags').style.display = 'none';
+
+            const pagFiltrada = prepararContenedorFiltrado();
+            const favorites = obtenerFavoritosObject();
+
+            if (favorites.length === 0) {
+                pagFiltrada.innerHTML = `<h3 style="grid-column: 1 / -1; color: gray; text-align: center; padding: 50px; font-family: 'Inter', sans-serif;">You haven't added any favorites yet. Open a game and click the favorite button!</h3>`;
+            } else {
+                const allCards = Array.from(document.querySelectorAll('#contenedor-menu .pagina-juegos .card'));
+                let foundAny = false;
+
+                favorites.forEach((fav, index) => {
+                    const card = allCards.find(c => {
+                        const span = c.querySelector('.card-body span');
+                        return span && span.innerText.trim() === fav.title;
+                    });
+                    if (card) {
+                        const clone = card.cloneNode(true);
+
+                        if (fav.large) {
+                            clone.classList.add('large');
+                        } else {
+                            clone.classList.remove('large');
+                        }
+
+                        // Contenedor de controles
+                        const controls = document.createElement('div');
+                        controls.style.cssText = "position: absolute; top: 10px; left: 10px; right: 10px; z-index: 30; display: flex; justify-content: space-between; gap: 5px;";
+                        controls.onclick = function (e) { e.stopPropagation(); };
+
+                        // Botón de tamaño
+                        const sizeBtn = document.createElement('button');
+                        sizeBtn.innerText = fav.large ? "Standard Size" : "Large Size";
+                        sizeBtn.style.cssText = "background: rgba(15, 26, 171, 0.95); color: white; border: none; padding: 5px 10px; border-radius: 6px; font-size: 11px; cursor: pointer; font-family: 'Inter-Bold', sans-serif; transition: 0.2s;";
+                        sizeBtn.onclick = function (e) {
+                            e.stopPropagation();
+                            cambiarTamanoFav(fav.title);
+                        };
+
+                        // Controles de posición
+                        const orderCont = document.createElement('div');
+                        orderCont.style.cssText = "display: flex; gap: 4px;";
+
+                        const leftBtn = document.createElement('button');
+                        leftBtn.innerText = "◀";
+                        leftBtn.style.cssText = "background: rgba(0, 0, 0, 0.85); color: white; border: none; padding: 5px 8px; border-radius: 6px; font-size: 11px; cursor: pointer;";
+                        leftBtn.disabled = index === 0;
+                        if (index === 0) leftBtn.style.opacity = "0.4";
+                        leftBtn.onclick = function (e) {
+                            e.stopPropagation();
+                            moverFav(index, -1);
+                        };
+
+                        const rightBtn = document.createElement('button');
+                        rightBtn.innerText = "▶";
+                        rightBtn.style.cssText = "background: rgba(0, 0, 0, 0.85); color: white; border: none; padding: 5px 8px; border-radius: 6px; font-size: 11px; cursor: pointer;";
+                        rightBtn.disabled = index === favorites.length - 1;
+                        if (index === favorites.length - 1) rightBtn.style.opacity = "0.4";
+                        rightBtn.onclick = function (e) {
+                            e.stopPropagation();
+                            moverFav(index, 1);
+                        };
+
+                        orderCont.appendChild(leftBtn);
+                        orderCont.appendChild(rightBtn);
+
+                        controls.appendChild(sizeBtn);
+                        controls.appendChild(orderCont);
+                        clone.appendChild(controls);
+
+                        pagFiltrada.appendChild(clone);
+                        foundAny = true;
+                    }
+                });
+
+                if (!foundAny) {
+                    pagFiltrada.innerHTML = `<h3 style="grid-column: 1 / -1; color: gray; text-align: center; padding: 50px; font-family: 'Inter', sans-serif;">No matching games found.</h3>`;
+                }
+            }
+
+            const titulo = document.getElementById('main-title-element');
+            if (titulo) {
+                titulo.style.textTransform = 'none';
+                titulo.innerHTML = `Your Favorite Games<br><span style="font-size: 17px; font-weight: normal; color: #7e8299; display: block; margin-top: 8px;">Quick access to your handpicked collection. Customize layout size and order.</span>`;
+            }
+
+            if (!preventScroll) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function mostrarRecientes() {
+            if (vistaActual === 'recents' && document.getElementById('pagina-filtrada') && document.getElementById('pagina-filtrada').style.display === 'grid') {
+                restablecerVistaPrincipal();
+                return;
+            }
+
+            vistaActual = 'recents';
+            actualizarBotonesFiltro();
+
+            document.querySelectorAll('.pagina-juegos').forEach(p => p.style.display = 'none');
+            document.getElementById('pags').style.display = 'none';
+
+            const pagFiltrada = prepararContenedorFiltrado();
+            const recents = JSON.parse(localStorage.getItem('h16x_recents')) || [];
+
+            if (recents.length === 0) {
+                pagFiltrada.innerHTML = `<h3 style="grid-column: 1 / -1; color: gray; text-align: center; padding: 50px; font-family: 'Inter', sans-serif;">You haven't played any games recently. Play some games first!</h3>`;
+            } else {
+                const allCards = Array.from(document.querySelectorAll('#contenedor-menu .pagina-juegos .card'));
+                let foundAny = false;
+
+                recents.forEach(recentTitle => {
+                    const card = allCards.find(c => {
+                        const span = c.querySelector('.card-body span');
+                        return span && span.innerText.trim() === recentTitle;
+                    });
+                    if (card) {
+                        const clone = card.cloneNode(true);
+                        pagFiltrada.appendChild(clone);
+                        foundAny = true;
+                    }
+                });
+
+                if (!foundAny) {
+                    pagFiltrada.innerHTML = `<h3 style="grid-column: 1 / -1; color: gray; text-align: center; padding: 50px; font-family: 'Inter', sans-serif;">No matching games found.</h3>`;
+                }
+            }
+
+            const titulo = document.getElementById('main-title-element');
+            if (titulo) {
+                titulo.style.textTransform = 'none';
+                titulo.innerHTML = `Most Recently Played<br><span style="font-size: 17px; font-weight: normal; color: #7e8299; display: block; margin-top: 8px;">Your recently played titles in chronological order.</span>`;
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
 
         // --- SISTEMA DE PAGINACIÓN ---
         let paginaActual = 1;
@@ -1709,6 +2388,11 @@
                     tarjeta.setAttribute('data-large-original', tarjeta.classList.contains('large') ? 'true' : 'false');
                 }
             });
+
+            // Si está buscando y está en la vista de favoritos o recientes, restablece la vista general
+            if (filtro !== "" && (vistaActual === 'favorites' || vistaActual === 'recents')) {
+                restablecerVistaPrincipal();
+            }
 
             if (filtro === "") {
                 paginacion.style.display = 'flex';
@@ -1931,6 +2615,17 @@
             }
         }
 
+        // Prevenir que las flechas muevan la página principal si el foco está fuera del iframe pero el juego está activo
+        window.addEventListener("keydown", function (event) {
+            const pantallaJuego = document.getElementById('pantalla-juego');
+            if (pantallaJuego && pantallaJuego.style.display === 'block') {
+                // Bloquea Barra espaciadora (32) y Flechas de dirección (37, 38, 39, 40)
+                if ([32, 37, 38, 39, 40].indexOf(event.keyCode) > -1) {
+                    event.preventDefault();
+                }
+            }
+        }, { passive: false });
+
         async function submitReportForm(event) {
             event.preventDefault();
             const form = document.getElementById('reportForm');
@@ -1993,12 +2688,17 @@
                 return !urlsToExclude.some(url => onclickStr.includes(url));
             });
 
+            // Mezcla todos los juegos
             const shuffled = [...filteredCards].sort(() => 0.5 - Math.random());
             const mid = Math.ceil(shuffled.length / 2);
 
             shuffled.forEach((card, index) => {
                 const clone = card.cloneNode(true);
                 clone.removeAttribute('id');
+
+                // Eliminar estrellas de las columnas laterales del visor de juegos para mantener un aspecto minimalista y limpio
+                const cloneStars = clone.querySelectorAll('.star-fav');
+                cloneStars.forEach(star => star.remove());
 
                 if (index < mid) {
                     leftCol.appendChild(clone);
@@ -2007,6 +2707,14 @@
                 }
             });
         }
+
+        // Registro explícito en el objeto Window global para evitar problemas de alcance
+        window.cambiarTamanoFav = cambiarTamanoFav;
+        window.moverFav = moverFav;
+        window.mostrarFavoritos = mostrarFavoritos;
+        window.toggleFavorite = toggleFavorite;
+        window.toggleFavoriteVisor = toggleFavoriteVisor;
+        window.actualizarBotonFavoritoVisor = actualizarBotonFavoritoVisor;
     </script>
 </body>
 
