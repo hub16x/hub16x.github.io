@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Lost in Space</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        @font-face {
+            font-family: 'Inter-SemiBold';
+            src: url('/assets/fonts/Inter-SemiBold.woff2') format('woff2');
+            font-display: swap;
+        }
+
+        body {
+            background-color: #0a0a0c;
+            color: #ffffff;
+            font-family: 'Inter-SemiBold', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+            z-index: 10;
+        }
+
+        /* Efecto de brillo para el número */
+        .error-code {
+            font-size: 8rem;
+            font-weight: 900;
+            line-height: 1;
+            background: linear-gradient(135deg, #0070f3, #ff0080);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #f3f4f6;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #888889;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        /* Botón estilo Vercel / Futurista */
+        .btn {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #000000;
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .btn:hover {
+            background-color: #eaeaea;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(0, 112, 243, 0.4);
+        }
+
+        /* Círculos decorativos de fondo */
+        .bg-glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 112, 243, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            top: 20%;
+            left: 15%;
+            border-radius: 50%;
+            filter: blur(40px);
+            pointer-events: none;
+        }
+
+        .bg-glow-2 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 0, 128, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            bottom: 10%;
+            right: 10%;
+            border-radius: 50%;
+            filter: blur(50px);
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 15px rgba(0, 112, 243, 0.3));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 30px rgba(255, 0, 128, 0.5));
+            }
+        }
+
+        /* Ajuste para pantallas pequeñas */
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 6rem;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <div class="container">
+        <div class="error-code"><b>404</b></div>
+        <h1>Lost in the deep web?</h1>
+        <p>The page you are looking for doesn't exist or has been moved to another universe on hub 16x. Let's get
+            you back on
+            track.</p>
+        <a href="/" class="btn">Take Me Home</a>
+        <br>
+        <img src="/assets/logo/logo-1.png" alt="hub 16X" width="720"
+            style="display: block; margin-left: auto; margin-right: auto; margin-top: 20px; margin-left: -5%;">
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLAPPY BIRD - Quick play now - HUB16X.vercel.app</title>
+    <meta name="description"
+        content="Play Flappy Bird for free in your browser! Tap to fly, dodge the green pipes, and beat your high score in this addictive classic arcade game.">
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .contenedor-iframe {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .contenedor-iframe iframe {
+            width: 100%;
+            height: calc(100vh + 8.5vh);
+            border: none;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor-iframe">
+        <iframe allow="autoplay; fullscreeen; gamepad" src="https://flappybird.io/"></iframe>
+    </div>
+
+</body>
+
+</html>
