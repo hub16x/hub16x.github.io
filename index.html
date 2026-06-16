@@ -794,6 +794,21 @@
             .max-width-search {
                 max-width: 100% !important;
             }
+
+            .logo-1 {
+                display: none;
+                /* Ocultamos el LOGO-1 porque ocupa mucho en pantallas pequeñas */
+            }
+
+            .copyright {
+                display: none;
+            }
+
+            #alertBox {
+                top: 20px !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+            }
         }
 
         @keyframes slideDownMenu {
@@ -967,22 +982,19 @@
 </head>
 
 <body class="min-vh-100 layout d-flex flex-column">
-    <div class="popup-study">
-
-    </div>
     <div style="
     background-color: #d1e2cb; 
     padding: 20px; 
     border-radius: 12px; 
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     position: fixed; 
-    top: 20px; /* <- ESTO ES LO QUE CAMBIÓ */
+    top: 20px; 
     left: 50%;
     transform: translateX(-50%);
     max-width: 500px; 
     width: 90%;
     font-family: 'Inter-SemiBold', sans-serif;
-    display: flex;
+    display: none; /* <- CAMBIADO de 'flex' a 'none' para que empiece oculto */
     justify-content: center;
     align-items: center;
     z-index: 9999;
@@ -1002,7 +1014,8 @@
         </p>
 
         <!-- Botón de cerrar -->
-        <button onclick="document.getElementById('alertBox').style.display='none'" style="
+        <!-- CAMBIADO: Ahora llama a la función cerrarAlertaEstudio() en lugar del estilo directo -->
+        <button onclick="cerrarAlertaEstudio()" style="
         position: absolute; 
         right: 15px; 
         top: 50%; 
@@ -1019,7 +1032,6 @@
             &times;
         </button>
     </div>
-
 
 
 
@@ -1184,7 +1196,7 @@
                     </div>
 
                     <!-- Juego: OH FLIP -->
-                    <div onclick="abrirJuego('https://rogoogle.github.io/oh-flip-?v=1.0')" class="card large"
+                    <div onclick="abrirJuego('https://hub16x.github.io/oh-flip-?v=1.0')" class="card large"
                         style="cursor: pointer;" role="button" tabindex="0">
                         <img src="/images/oh,-flip!.webp" alt="oh, flip, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
@@ -1414,8 +1426,8 @@
                         </div>
                     </div>
                     <!-- Juego: JETPACK JOYRIDE -->
-                    <div onclick="abrirJuego('https://dnrweqffuwjtx.cloudfront.net/games/2024/wix/duck-life-4/index.html')"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <div onclick="abrirJuego('https://abinbins.github.io/a7/jetpack-joyride/')" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
                         <img src="/images/jetpack-joyride.webp" alt="JETPACK JOYRIDE, play now unblocked for free"
                             class="img-fluid">
                         <div class="card-body">
@@ -1439,7 +1451,7 @@
                         </div>
                     </div>
                     <!-- Juego: SOCCER RANDOM -->
-                    <div onclick="abrirJuego('https://soccerrandom.bitbucket.io/file/')" class="card"
+                    <div onclick="abrirJuego('https://hub16x.github.io/soccer-random')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
                         <img src="/images/soccer-random.webp" alt="SOCCER RANDOM, play now unblocked for free"
                             class="img-fluid">
@@ -1466,7 +1478,7 @@
                         </div>
                     </div>
                     <!-- Juego: VOLLEY RANDOM -->
-                    <div onclick="abrirJuego('https://volleyrandom.bitbucket.io/file/')" class="card large"
+                    <div onclick="abrirJuego('https://hub16x.github.io/volley-random/')" class="card large"
                         style="cursor: pointer;" role="button" tabindex="0">
                         <img src="/images/volley-random.webp" alt="VOLLEY RANDOM, play now unblocked for free"
                             class="img-fluid">
@@ -1653,7 +1665,7 @@
                         </div>
                     </div>
                     <!-- Juego: RETRO BOWL -->
-                    <div onclick="abrirJuego('https://www.friv.com/z/games/motox3m/index-x.html')" class="card large"
+                    <div onclick="abrirJuego('https://retro-footballt-105330.gitlab.io/')" class="card large"
                         style="cursor: pointer;" role="button" tabindex="0">
                         <img src="/images/retro-bowl.webp" alt="RETRO BOWL, play now unblocked for free"
                             class="img-fluid">
@@ -1732,7 +1744,7 @@
                         </div>
                     </div>
                     <!-- Juego: AQUAPARK -->
-                    <div onclick="alert('In this game, the fullscreen button does NOT work (sometimes yes). Use OPEN IN about:blank.'); abrirJuego('https://rogoogle.github.io/aquapark/')"
+                    <div onclick="alert('In this game, the fullscreen button does NOT work (sometimes yes). Use OPEN IN about:blank.'); abrirJuego('https://hub16x.github.io/aquapark/')"
                         class="card" style="cursor: pointer;" role="button" tabindex="0">
                         <img src="/images/aquapark.webp" alt="AQUAPARK, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
@@ -1749,8 +1761,8 @@
                         </div>
                     </div>
                     <!-- Juego: DUNKERS -->
-                    <div onclick="abrirJuego('https://ubg98.io/science/dunkers/')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <div onclick="abrirJuego('https://hub16x.github.io/dunkers/')" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
                         <img src="/images/dunkers.webp" alt="DUNKERS, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>DUNKERS</span>
@@ -1766,6 +1778,14 @@
                         </div>
                     </div>
                     <!-- Juegos 'VEX' -->
+                    <!-- Juego: VEX 9 -->
+                    <div onclick="abrirJuego('https://html5.gamedistribution.com/8d034584a63642dcb89fa3d24ed6e1b1/?gd_sdk_referrer_url=https%3A%2F%2Fwww.minijuegos.com')"
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/vex-9.webp" alt="VEX 9, play now unblocked for free" class="img-fluid">
+                        <div class="card-body">
+                            <span>VEX 9</span>
+                        </div>
+                    </div>
                     <!-- Juego: VEX 8 -->
                     <div onclick="abrirJuego('https://ubg98.github.io/Vex8/')" class="card" style="cursor: pointer;"
                         role="button" tabindex="0">
@@ -1783,16 +1803,16 @@
                         </div>
                     </div>
                     <!-- Juego: VEX 6 -->
-                    <div onclick="abrirJuego('https://ubg98.github.io/Vex6/')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <div onclick="abrirJuego('https://ubg98.github.io/Vex6/')" class="card large"
+                        style="cursor: pointer;" role="button" tabindex="0">
                         <img src="/images/vex-6.webp" alt="VEX 6, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>VEX 6</span>
                         </div>
                     </div>
                     <!-- Juego: VEX 5 -->
-                    <div onclick="abrirJuego('https://ubg98.github.io/Vex5/')" class="card large"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <div onclick="abrirJuego('https://ubg98.github.io/Vex5/')" class="card" style="cursor: pointer;"
+                        role="button" tabindex="0">
                         <img src="/images/vex-5.webp" alt="VEX 5, play now unblocked for free" class="img-fluid">
                         <div class="card-body">
                             <span>VEX 5</span>
@@ -1813,7 +1833,23 @@
                         <div class="card-body">
                             <span>VEX 3</span>
                         </div>
-                    </div> <!-- Fin de juegos VEX -->
+                    </div>
+                    <!-- Juego: VEX 2 -->
+                    <div onclick="abrirJuego('https://script.google.com/macros/s/AKfycbw-bG6zR30e-46eH-18-pKhu7UoYer7F-blrfWBWSd9SrSscIYAs3QNtx6BLR61hsEgEw/exec')"
+                        class="card large" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/vex-2.webp" alt="VEX 2, play now unblocked for free" class="img-fluid">
+                        <div class="card-body">
+                            <span>VEX 2</span>
+                        </div>
+                    </div>
+                    <!-- Juego: VEX 1 -->
+                    <div onclick="abrirJuego('https://script.google.com/macros/s/AKfycbxwyDsC49pauwYS59k4k10ptEAWo-6qgJf2nyvPt3i52bikDw98aFuDgvSPRWaIsnr8/exec')"
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/vex-1.webp" alt="VEX 1, play now unblocked for free" class="img-fluid">
+                        <div class="card-body">
+                            <span>VEX 1</span>
+                        </div>
+                    </div>
                     <!-- Juego: DRIFT HUNTERS -->
                     <div onclick="abrirJuego('https://drifthuntersonline.gitlab.io/file/')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
@@ -1824,12 +1860,38 @@
                         </div>
                     </div>
                     <!-- Juego: INFINITE CRAFT -->
-                    <div onclick="abrirJuego('https://infinite-craft.net/')" class="card large"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <div onclick="abrirJuego('https://infinite-craft.net/')" class="card" style="cursor: pointer;"
+                        role="button" tabindex="0">
                         <img src="/images/infinity-craft.webp" alt="INFINITE CRAFT, play now unblocked for free"
                             class="img-fluid">
                         <div class="card-body">
                             <span>INFINITE CRAFT</span>
+                        </div>
+                    </div>
+                    <!-- Juego: 1 (si, literalmente se llama "1") -->
+                    <div onclick="abrirJuego('https://hub16x.github.io/1/', true, false, false)" class="card large"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/1.webp" alt="1, play now unblocked for free" class="img-fluid">
+                        <div class="card-body">
+                            <span>1</span>
+                        </div>
+                    </div>
+                    <!-- Juego: 9007199254740992 (no se quien jugara esto, prometo que esta guapo) -->
+                    <div onclick="abrirJuego('https://hub16x.github.io/9007199254740992/', true, false, false)"
+                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/9007199254740992.webp" alt="9007199254740992, play now unblocked for free"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span style="font-size: 0.8rem;">9007199254740992</span>
+                        </div>
+                    </div>
+                    <!-- Juego: CORE BALL -->
+                    <div onclick="abrirJuego('https://hub16x.github.io/core-ball/', true, false, false)" class="card"
+                        style="cursor: pointer;" role="button" tabindex="0">
+                        <img src="/images/core-ball.webp" alt="CORE BALL, play now unblocked for free"
+                            class="img-fluid">
+                        <div class="card-body">
+                            <span>CORE BALL</span>
                         </div>
                     </div>
                 </div>
@@ -1870,10 +1932,10 @@
                         sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-top-navigation allow-top-navigation-by-user-activation allow-downloads"
                         scrolling="no">
                     </iframe>
-                    <h3 id="titulo-juego-visor"
+                    <h1 class="h3" id="titulo-juego-visor"
                         style="margin-top: 20px; font-family: 'Inter-SemiBold', sans-serif; font-size: 1.5rem; color: #080808; font-weight: 700; text-align: left;">
-                        play now unblocked for free
-                    </h3>
+                         play now unblocked for free
+                    </h1>
                     <!-- Estrellas -->
                     <div style="text-align:left;">
                         <div
@@ -1892,7 +1954,7 @@
                     </h3>
                     <p id="texto-unblocked"
                         style="margin-top: 20px; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 700; text-align: left;">
-                        <a style="color: #838080;" href="https://www.google.com/search?q=unblocked+games"
+                        <a style="color: #838080;" href="https://www.google.com/search?q=unblocked+games&as_eq=sites.google.com"
                             target="_blank">UNBLOCKED GAMES</a>
                     </p>
                 </div>
@@ -1944,7 +2006,12 @@
                 clean, unblocked student entertainment!
             </p>
             <br>
-            <a href="/">
+            <p class="m-0" style="font-size: 0.95rem; line-height: 1.6;">
+                All this is possible thanks to / Credits to <a style="color: #080808; text-decoration: none;"
+                    target="_blank" href="https://3kh0.github.io"><strong><u>3kh0</u></strong></a>.github.io!
+            </p>
+            <br>
+            <a class="logo-1" href="/">
                 <div style="display: flex; justify-content: center;">
                     <img src="/assets/logo/logo-1.png" alt="HUB 16X - PLAY NOW, UNBLOCKED GAMES FREE! NO ADS!"
                         width="720">
@@ -1952,7 +2019,7 @@
             </a>
         </div>
     </div>
-    <div id="copyright"
+    <div class="copyright"
         style="position: relative; margin-bottom: 15px; width: 100%; margin: 0; padding: 0; clear: both;">
         <img src="/assets/static/images/down.png" alt="" style="width: 100%; display: block; margin: 0; padding: 0;">
         <div
@@ -1969,7 +2036,7 @@
     </div>
     <noscript>
         <p>Uh oh, it looks like you don't have JavaScript enabled!<br>To enable JavaScript, visit <a href="/js.html"
-                target="_blank">here.</a> If JavaScript is not enabled, you will <strong><u>NOT</u></strong> be able to
+                target="_blank">here.</a> If JavaScript is not enabled, you will <b><u>NOT</u></b> be able to
             play!</p>
         <style>
             /* Muestra el mensaje de aviso */
@@ -2222,6 +2289,17 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
+            // --- CONTROL TEMPORAL DEL BANNER DE ESTUDIO ---
+            const alertBox = document.getElementById('alertBox');
+            if (alertBox) {
+                const alertClosedAt = localStorage.getItem('h16x_alert_closed_at');
+                const tresDias = 3 * 24 * 60 * 60 * 1000; // Milisegundos en 3 días (259,200,000 ms)
+
+                // Si nunca se ha cerrado, o si ya pasaron más de 3 días desde que se cerró, lo mostramos
+                if (!alertClosedAt || (Date.now() - parseInt(alertClosedAt, 10)) > tresDias) {
+                    alertBox.style.display = 'flex';
+                }
+            }
             // Permitir que los elementos con rol de botón reaccionen a las teclas Enter y Espacio
             document.addEventListener("keydown", function (event) {
                 const elementoActivo = document.activeElement;
@@ -2988,6 +3066,18 @@
                 }, 100);
             }
         }
+        // Función para cerrar el banner de estudio y guardar la marca de tiempo de 3 días
+        function cerrarAlertaEstudio() {
+            const alertBox = document.getElementById('alertBox');
+            if (alertBox) {
+                alertBox.style.display = 'none';
+                // Guardamos el timestamp actual (milisegundos) en el almacenamiento local
+                localStorage.setItem('h16x_alert_closed_at', Date.now().toString());
+            }
+        }
+
+        // Registrar la función globalmente para asegurar su disponibilidad en el atributo onclick
+        window.cerrarAlertaEstudio = cerrarAlertaEstudio;
     </script>
 </body>
 
