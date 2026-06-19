@@ -731,6 +731,48 @@
         }
 
         @media (max-width: 990px) {
+            .visor-layout-container {
+                flex-direction: column !important;
+                align-items: center !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .visor-central {
+                width: 100% !important;
+                max-width: 100% !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+
+            /* Forzamos que el alto dependa matemáticamente del ancho de la pantalla */
+            #visor-juego {
+                width: 90vw !important;
+                /* 90% del ancho de la pantalla */
+                height: 90vw !important;
+                /* 90% del ancho de la pantalla (CUADRADO PERFECTO) */
+                min-height: 90vw !important;
+                /* Bloquea la altura mínima */
+                max-height: 90vw !important;
+                /* Bloquea la altura máxima para evitar que Safari lo estire */
+
+                border: 3px solid var(--theme-color) !important;
+                border-radius: 12px !important;
+                background: #000 !important;
+                display: block !important;
+                margin: 0 auto !important;
+            }
+
+            /* Ajustamos los laterales para que pasen abajo ordenados */
+            .visor-lateral.card-masonry {
+                order: 2 !important;
+                width: 100% !important;
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) !important;
+                padding: 15px !important;
+                margin: 0 !important;
+            }
 
             /* Mostramos la cabecera estilo App */
             .mobile-header {
@@ -1466,8 +1508,8 @@
                         </div>
                     </div>
                     <!-- Juego: CHROME DINO -->
-                    <div onclick="abrirJuego('https://script.google.com/macros/s/AKfycbw52NjEXRvaVQ1ELomMIdmM_zD6JxK1LZVdxc5PxftzqAE00F4GzS15_JRXpyW_qbQz5Q/exec?refrescado=true')"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <div onclick="abrirJuego('/games/dino/')" class="card" style="cursor: pointer;" role="button"
+                        tabindex="0">
                         <img src="/images/chrome-dino.webp" alt="CHROME DINO" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
@@ -1555,13 +1597,13 @@
                             <span>YOHOHO PIRATE BATTLE ROYALE</span>
                         </div>
                     </div>
-                    <!-- Juego: FIREBOY & WATERGIRL CRYSTAL TEMPLE -->
+                    <!-- Juego: FIREBOY AND WATERGIRL CRYSTAL TEMPLE -->
                     <div onclick="abrirJuego('https://labgstore1812.github.io/g177/class-343/')" class="card"
                         style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/fireboy.webp" alt="FIREBOY & WATERGIRL CRYSTAL TEMPLE" class="img-fluid"
+                        <img src="/images/fireboy.webp" alt="FIREBOY AND WATERGIRL CRYSTAL TEMPLE" class="img-fluid"
                             loading="lazy" decoding="async">
                         <div class="card-body">
-                            <span>FIREBOY & WATERGIRL CRYSTAL TEMPLE</span>
+                            <span>FIREBOY AND WATERGIRL CRYSTAL TEMPLE</span>
                         </div>
                     </div>
                     <!-- Juego: SNOW RIDER 3D -->
@@ -1904,19 +1946,11 @@
                         </div>
                     </div>
                     <!-- Juego: RECOIL -->
-                    <div onclick="abrirJuego('/games/recoil/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <div onclick="abrirJuego('/games/recoil/')" class="card" style="cursor: pointer;" role="button"
+                        tabindex="0">
                         <img src="/images/recoil.webp" alt="RECOIL" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>RECOIL</span>
-                        </div>
-                    </div>
-                    <!-- Juego: ROLLER -->
-                    <div onclick="abrirJuego('https://play.fancade.com/60B4E9C2D6CE8B5C')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/roller.webp" alt="ROLLER" class="img-fluid" loading="lazy" decoding="async">
-                        <div class="card-body">
-                            <span>ROLLER</span>
                         </div>
                     </div>
                 </div>
@@ -2050,7 +2084,7 @@
             loading="lazy" decoding="async">
         <div
             style="color: #838080; font-size: 0.85rem; position: absolute; top: 50%; left: 20px; transform: translateY(-50%); font-family: 'Inter-SemiBold', sans-serif; white-space: nowrap; margin: 0; padding: 0; text-align: left;">
-            Copyright © 2026 <a href="/" style="color: #080808; text-decoration: none;"
+            Copyright © 2026 <a id="dynamic-link" href="/" style="color: #080808; text-decoration: none;"
                 target="_blank">hub16x</a>.github.io
             <div style="margin-top: 25px;">
                 <a href="/" style="color: #080808; text-decoration: none;" target="_blank">HUB 16X</a> is a safe app to
@@ -2283,6 +2317,10 @@
             }
 
             nombreJuegoActivo = nombreJuego;
+
+            // --- ACTUALIZACIÓN DEL TÍTULO DE LA PESTAÑA ---
+            document.title = `${nombreJuego} Unblocked - Quick Play Now - HUB16X.github.io`;
+
             actualizarBotonFavoritoVisor();
 
             // Registrar juego reciente
@@ -2325,6 +2363,7 @@
         }
 
         function cerrarJuego() {
+            document.title = "Hub 16x - Unblocked Games";
             if (modoCssFullscreenActivo) toggleCssFullscreen();
             prefiereCssFullscreen = false;
             permitePopupsActivo = false;

@@ -54,7 +54,7 @@
         <loc>https://hub16x.github.io/?game=blumgi-rocket</loc>
     </url>
     <url>
-        <loc>https://hub16x.github.io/?game=apple-knight-mini-dungeons</loc>
+        <loc>https://hub16x.github.io/?game=pac-man</loc>
     </url>
     <url>
         <loc>https://hub16x.github.io/?game=level-devil</loc>
@@ -150,7 +150,7 @@
         <loc>https://hub16x.github.io/?game=yohoho-pirate-battle-royale</loc>
     </url>
     <url>
-        <loc>https://hub16x.github.io/?game=fireboy-watergirl-crystal-temple</loc>
+        <loc>https://hub16x.github.io/?game=fireboy-and-watergirl-crystal-temple</loc>
     </url>
     <url>
         <loc>https://hub16x.github.io/?game=snow-rider-3d</loc>
@@ -270,5 +270,8 @@
     </url>
     <url>
         <loc>https://hub16x.github.io/?game=core-ball</loc>
+    </url>
+    <url>
+        <loc>https://hub16x.github.io/?game=recoil</loc>
     </url>
 </urlset>
