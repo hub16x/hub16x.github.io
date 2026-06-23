@@ -12,6 +12,23 @@
     <meta name="description"
         content="Hub 16x is a free website that offers quick plays, in school or work, NO ADS! Play quick now!">
     <meta name="google-site-verification" content="cV1CSTdfgWO6O6DRk3wWbY_94nXT6P3_13SNT_zs5jQ" />
+
+    <!-- Datos Estructurados para Google (JSON-LD Schema) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Hub 16x",
+      "url": "https://hub16x.github.io/",
+      "description": "Hub 16x is a free website that offers quick plays, in school or work, NO ADS! Play quick now!",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://hub16x.github.io/?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
     <style>
         :root {
             --theme-color: #0f1aab;
@@ -912,13 +929,6 @@
             display: block !important;
         }
 
-        /* Las imágenes ocupan todo el espacio del contenedor cuadrado */
-        .visor-lateral.card-masonry .card img {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: cover !important;
-        }
-
         /* Adaptación del visor de juego para pantallas medianas y pequeñas (< 1367px) */
         @media (max-width: 1367px) {
 
@@ -990,6 +1000,13 @@
         .nav-filter-btn.active-filter {
             background-color: #0019b3 !important;
             color: #ffffff !important;
+        }
+
+        /* Las imágenes ocupan todo el espacio del contenedor cuadrado */
+        .visor-lateral.card-masonry .card img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
         }
 
         /* Añade esto dentro de tu etiqueta <style> */
@@ -1162,318 +1179,347 @@
                 <!-- Rejilla de Tarjetas de Juegos (PÁGINA 1) -->
                 <div class="card-masonry pagina-juegos" id="pagina-1">
                     <!-- Juego: BIG TOWER TINY SQUARE -->
-                    <div onclick="abrirJuego('/games/big-tower-tiny-square/')" class="card large"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=big-tower-tiny-square"
+                        onclick="abrirJuego('/games/big-tower-tiny-square/'); return false;" class="card large"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/big-tower-tiny-square.webp" alt="BIG TOWER TINY SQUARE" class="img-fluid"
                             loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>BIG TOWER TINY SQUARE</span>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Juego: DRIVE MAD -->
-                    <div onclick="abrirJuego('/games/drive-mad/')" class="card" style="cursor: pointer;" role="button"
-                        tabindex="0">
+                    <a href="/?game=drive-mad" onclick="abrirJuego('/games/drive-mad/'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/drive-mad.webp" alt="DRIVE MAD" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>DRIVE MAD</span>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Juego: STICKMAN HOOK -->
-                    <div onclick="abrirJuego('/games/stickman-hook/')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <a href="/?game=stickman-hook" onclick="abrirJuego('/games/stickman-hook/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/stickman-hook.webp" alt="STICKMAN HOOK" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>STICKMAN HOOK</span>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Juego: DREADHEAD PARKOUR -->
-                    <div onclick="abrirJuego('https://hub16x.github.io/dreadhead-parkour')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=dreadhead-parkour"
+                        onclick="abrirJuego('https://hub16x.github.io/dreadhead-parkour'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/dreadhead-parkour.webp" alt="DREADHEAD PARKOUR" class="img-fluid"
                             loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>DREADHEAD PARKOUR</span>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Juego: COOKIE CLICKER -->
-                    <div onclick="abrirJuego('https://hub16x.github.io/cookie-clicker?v=1.0', false, false, true)"
-                        class="card large" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=cookie-clicker"
+                        onclick="abrirJuego('https://hub16x.github.io/cookie-clicker?v=1.0', false, false, true); return false;"
+                        class="card large" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/cookie-clicker.webp" alt="COOKIE CLICKER" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>COOKIE CLICKER</span>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Juego: SURVIVAL RACE -->
-                    <div onclick="abrirJuego('https://racesurvivalgame.com/gg/race-survival/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=survival-race"
+                        onclick="abrirJuego('https://hub16x.github.io/survival-race/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/survival-race.webp" alt="SURVIVAL RACE" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>SURVIVAL RACE</span>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Juego: GUNSPIN -->
-                    <div onclick="abrirJuego('https://marblerun-3d.github.io/game/GunSpin/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=gunspin"
+                        onclick="abrirJuego('https://marblerun-3d.github.io/game/GunSpin/'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/gunspin.webp" alt="GUNSPIN" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>GUNSPIN</span>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Juego: AMONG US -->
-                    <div onclick="abrirJuego('https://amongus-online.gitlab.io/file/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=among-us"
+                        onclick="abrirJuego('https://amongus-online.gitlab.io/file/'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/among-us.webp" alt="AMONG US" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>AMONG US</span>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Juego: OH FLIP -->
-                    <div onclick="abrirJuego('https://hub16x.github.io/oh-flip-?v=1.0')" class="card large"
-                        style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/oh,-flip!.webp" alt="oh, flip" class="img-fluid" loading="lazy"
+                    <a href="/?game=oh-flip"
+                        onclick="abrirJuego('https://hub16x.github.io/oh-flip'); return false;"
+                        class="card large" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
+                        <img src="/images/oh,-flip!.webp" alt="oh, flip!" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>OH FLIP</span>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Juego: OvO -->
-                    <div onclick="abrirJuego('https://hub16x.github.io/OvO')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <a href="/?game=ovo" onclick="abrirJuego('https://hub16x.github.io/OvO'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/OvO.webp" alt="OvO" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>OvO</span>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Juego: BACKFLIP DIVE 3D -->
-                    <div onclick="abrirJuego('/games/backflip-dive-3d/')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <a href="/?game=backflip-dive-3d" onclick="abrirJuego('/games/backflip-dive-3d/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/backflip-dive-3d.webp" alt="BACKFLIP DIVE 3D" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>BACKFLIP DIVE 3D</span>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Juego: BLUMGI BOUNCE -->
-                    <div onclick="abrirJuego('https://pizzaedition.win/assets/allgames/blumgi-bounce/index.html')"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=blumgi-bounce"
+                        onclick="abrirJuego('https://pizzaedition.win/assets/allgames/blumgi-bounce/index.html'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/blumgi-bounce.webp" alt="BLUMGI BOUNCE" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>BLUMGI BOUNCE</span>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Juego: BLUMGI SLIME -->
-                    <div onclick="abrirJuego('https://blumgislime.gitlab.io/file/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=blumgi-slime"
+                        onclick="abrirJuego('https://blumgislime.gitlab.io/file/'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/blumgi-slime.webp" alt="BLUMGI SLIME" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>BLUMGI SLIME</span>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Juego: RED BALL 4 -->
-                    <div onclick="abrirJuego('https://playredball4.com/wp-content/uploads/games/redball4/')"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=red-ball-4"
+                        onclick="abrirJuego('https://playredball4.com/wp-content/uploads/games/redball4/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/red-ball-4.webp" alt="RED BALL 4" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>RED BALL 4</span>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Juego: BLUMGI ROCKET -->
-                    <div onclick="abrirJuego('https://classroom2111.github.io/g16/class-413/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=blumgi-rocket"
+                        onclick="abrirJuego('https://classroom2111.github.io/g16/class-413/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/blumgi-rocket.webp" alt="BLUMGI ROCKET" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>BLUMGI ROCKET</span>
                         </div>
-                    </div>
-                    <!-- Juego: PAC MAN -->
-                    <div onclick="abrirJuego('https://hub16x.github.io/pac-man')" class="card large"
-                        style="cursor: pointer;" role="button" tabindex="0">
-                        <img src="/images/pac-man.webp" alt="PAC MAN" class="img-fluid" loading="lazy" decoding="async">
+                    </a>
+                    <!-- Juego: APPLE KNIGHT MINI DUNGEONS -->
+                    <a href="/?game=apple-knight-mini-dungeons"
+                        onclick="abrirJuego('https://hub16x.github.io/apple-dungeons'); return false;"
+                        class="card large" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
+                        <img src="/images/apple-knight-mini-dungeons.webp" alt="APPLE KNIGHT MINI DUNGEONS"
+                            class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
-                            <span>PAC MAN</span>
+                            <span>APPLE KNIGHT MINI DUNGEONS</span>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Juego: LEVEL DEVIL -->
-                    <div onclick="abrirJuego('/games/level-devil/')" class="card" style="cursor: pointer;" role="button"
-                        tabindex="0">
+                    <a href="/?game=level-devil" onclick="abrirJuego('/games/level-devil/'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/level-devil.webp" alt="LEVEL DEVIL" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>LEVEL DEVIL</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: SUBWAY SURFERS -->
-                    <div onclick="abrirJuego('https://files.gamezhero.com/game/905/1d1/9051d1173be765fb/data/index.html')"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=subway-surfers"
+                        onclick="abrirJuego('https://files.gamezhero.com/game/905/1d1/9051d1173be765fb/data/index.html'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/subway-surfers.webp" alt="SUBWAY SURFERS" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>SUBWAY SURFERS</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: NEON CHALLENGE LEGENDS -->
-                    <div onclick="abrirJuego('https://g.igroutka.ru/games/1536/NQlZkEcweMyRiG0b/f07ccc43-4d95-4bf2-ad9f-d128a03b9a72/index.html')"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=neon-challenge-legends"
+                        onclick="abrirJuego('https://g.igroutka.ru/games/1536/NQlZkEcweMyRiG0b/f07ccc43-4d95-4bf2-ad9f-d128a03b9a72/index.html'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/neon-challenge-legends.webp" alt="NEON CHALLENGE LEGENDS" class="img-fluid"
                             loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>NEON CHALLENGE LEGENDS</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: SPACE WAVES -->
-                    <div onclick="abrirJuego('https://space-waves-unblocked.github.io/space-waves/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=space-waves"
+                        onclick="abrirJuego('https://space-waves-unblocked.github.io/space-waves/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/space-waves.webp" alt="SPACE WAVES" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>SPACE WAVES</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: GEOMETRY DASH LITE -->
-                    <div onclick="abrirJuego('https://lolygames.github.io/gd-lit/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=geometry-dash-lite"
+                        onclick="abrirJuego('https://lolygames.github.io/gd-lit/'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/geometry-dash-lite.webp" alt="GEOMETRY DASH LITE" class="img-fluid"
                             loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>GEOMETRY DASH LITE</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: BASKET RANDOM -->
-                    <div onclick="abrirJuego('https://games.gamevgames.com/games/basket-random/index.html')"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=basket-random"
+                        onclick="abrirJuego('https://games.gamevgames.com/games/basket-random/index.html'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/basket-random.webp" alt="BASKET RANDOM" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>BASKET RANDOM</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: 2048 -->
-                    <div onclick="abrirJuego('https://2048unblocked.bitbucket.io/file/', true)" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=2048"
+                        onclick="abrirJuego('https://2048unblocked.bitbucket.io/file/', true); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/2048.webp" alt="2048" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>2048</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: PAPER.IO 2 -->
-                    <div onclick="abrirJuego('https://paperio2.bitbucket.io/file/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=paper-io-2"
+                        onclick="abrirJuego('https://paperio2.bitbucket.io/file/'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/paper-io-2.webp" alt="PAPER.IO 2" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>PAPER.IO 2</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: MONKEY MART -->
-                    <div onclick="abrirJuego('/games/monkey-mart/index.html')" class="card large"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=monkey-mart" onclick="abrirJuego('/games/monkey-mart/index.html'); return false;"
+                        class="card large" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/monkey-mart.webp" alt="MONKEY MART" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>MONKEY MART</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: BALL RUN 2048 -->
-                    <div onclick="abrirJuego('https://html5.gamedistribution.com/rvvASMiM/39b5aad36f514342966fbf3431e5ba6c/index.html?gd_sdk_referrer_url=https%3A%2F%2Fwww.minijuegos.com%2Fjuego%2Fball-run-2048&mp_api_as3_url=https%3A%2F%2Fssl.minijuegosgratis.com%2Flechuck%2Fas3%2Flatest.swf&mp_api_as3_url_bck=https%3A%2F%2Fapi.minijuegos.com%2Flechuck%2Fclient-as%2F&mp_api_id=5182&mp_api_js_url=https%3A%2F%2Fssl.minijuegosgratis.com%2Flechuck%2Fjs%2Flatest.js&mp_api_js_url_bck=https%3A%2F%2Fapi.minijuegos.com%2Flechuck%2Fclient-js%2F&mp_assets=https%3A%2F%2Fs2.minijuegosgratis.com%2F&mp_embed=0&mp_game_id=242478&mp_game_uid=ball-run-2048&mp_game_url=https%3A%2F%2Fwww.minijuegos.com%2Fjuego%2Fball-run-2048&mp_int=1&mp_locale=es_ES&mp_player_type=IFRAME&mp_site_https_url=https%3A%2F%2Fwww.minijuegos.com%2F&mp_site_name=minijuegos.com&mp_site_url=https%3A%2F%2Fwww.minijuegos.com%2F&mp_timezone=Europe%2FMadrid&mp_view_type=&mini_signature=9c1e8313401c1b67580a9cc4696ce926&xdm_e=https%3A%2F%2Fwww.minijuegos.com&xdm_c=default6372&xdm_p=1&gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5taW5panVlZ29zLmNvbS9qdWVnby9iYWxsLXJ1bi0yMDQ4IiwicGFyZW50RG9tYWluIjoibWluaWp1ZWdvcy5jb20iLCJ0b3BEb21haW4iOiJtaW5panVlZ29zLmNvbSIsImhhc0ltcHJlc3Npb24iOmZhbHNlLCJsb2FkZXJFbmFibGVkIjp0cnVlLCJob3N0IjoiaHRtbDUuZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJ2ZXJzaW9uIjoiMS41LjE4In0%253D')"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=ball-run-2048"
+                        onclick="abrirJuego('https://html5.gamedistribution.com/rvvASMiM/39b5aad36f514342966fbf3431e5ba6c/index.html?gd_sdk_referrer_url=https%3A%2F%2Fwww.minijuegos.com%2Fjuego%2Fball-run-2048&mp_api_as3_url=https%3A%2F%2Fssl.minijuegosgratis.com%2Flechuck%2Fas3%2Flatest.swf&mp_api_as3_url_bck=https%3A%2F%2Fapi.minijuegos.com%2Flechuck%2Fclient-as%2F&mp_api_id=5182&mp_api_js_url=https%3A%2F%2Fssl.minijuegosgratis.com%2Flechuck%2Fjs%2Flatest.js&mp_api_js_url_bck=https%3A%2F%2Fapi.minijuegos.com%2Flechuck%2Fclient-js%2F&mp_assets=https%3A%2F%2Fs2.minijuegosgratis.com%2F&mp_embed=0&mp_game_id=242478&mp_game_uid=ball-run-2048&mp_game_url=https%3A%2F%2Fwww.minijuegos.com%2Fjuego%2Fball-run-2048&mp_int=1&mp_locale=es_ES&mp_player_type=IFRAME&mp_site_https_url=https%3A%2F%2Fwww.minijuegos.com%2F&mp_site_name=minijuegos.com&mp_site_url=https%3A%2F%2Fwww.minijuegos.com%2F&mp_timezone=Europe%2FMadrid&mp_view_type=&mini_signature=9c1e8313401c1b67580a9cc4696ce926&xdm_e=https%3A%2F%2Fwww.minijuegos.com&xdm_c=default6372&xdm_p=1&gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5taW5panVlZ29zLmNvbS9qdWVnby9iYWxsLXJ1bi0yMDQ4IiwicGFyZW50RG9tYWluIjoibWluaWp1ZWdvcy5jb20iLCJ0b3BEb21haW4iOiJtaW5panVlZ29zLmNvbSIsImhhc0ltcHJlc3Npb24iOmZhbHNlLCJsb2FkZXJFbmFibGVkIjp0cnVlLCJob3N0IjoiaHRtbDUuZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJ2ZXJzaW9uIjoiMS41LjE4In0%253D'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/ball-run-2048.webp" alt="BALL RUN 2048" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>BALL RUN 2048</span>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Juego: PANDA RESORT -->
-                    <div onclick="abrirJuego({ es: 'https://www.tablasdemultiplicar.com/gf/panda-resort/52/?language=es&tables_until=10&daily_reward=1&swap_mode=1', en: 'https://www.tablasdemultiplicar.com/gf/panda-resort/52/?language=en&tables_until=10&daily_reward=1&swap_mode=1' })"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=panda-resort"
+                        onclick="abrirJuego({ es: 'https://www.tablasdemultiplicar.com/gf/panda-resort/52/?language=es&tables_until=10&daily_reward=1&swap_mode=1', en: 'https://www.tablasdemultiplicar.com/gf/panda-resort/52/?language=en&tables_until=10&daily_reward=1&swap_mode=1' }); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/panda-resort.webp" alt="PANDA RESORT" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>PANDA RESORT</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: 3x3 RUNNER -->
-                    <div onclick="abrirJuego('https://www.tafeldiploma.nl/gf/3x3-runner/74/?tables_until=10&language=es&swap_mode=1&1')"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=3x3-runner"
+                        onclick="abrirJuego('https://www.tafeldiploma.nl/gf/3x3-runner/74/?tables_until=10&language=es&swap_mode=1&1'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/3x3-runner.webp" alt="3x3 RUNNER" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>3x3 RUNNER</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: STEAL A BRAINROT -->
-                    <div onclick="abrirJuego('https://classroomlesson.github.io/basic-ruffle-player/html/steal_a_brainrot_2/index.html')"
-                        class="card large" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=steal-a-brainrot"
+                        onclick="abrirJuego('https://classroomlesson.github.io/basic-ruffle-player/html/steal_a_brainrot_2/index.html'); return false;"
+                        class="card large" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/steal-a-brainrot.webp" alt="STEAL A BRAINROT" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>STEAL A BRAINROT</span>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Juego: 3x3 OOBY -->
-                    <div onclick="abrirJuego({ es: 'https://www.tafeldiploma.nl/gf/obby/70b/?language=es&tables_until=10&swap_mode=1', en: 'https://www.tafeldiploma.nl/gf/obby/70b/?language=en&tables_until=10&swap_mode=1' })"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=3x3-ooby"
+                        onclick="abrirJuego({ es: 'https://www.tafeldiploma.nl/gf/obby/70b/?language=es&tables_until=10&swap_mode=1', en: 'https://www.tafeldiploma.nl/gf/obby/70b/?language=en&tables_until=10&swap_mode=1' }); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/3x3-ooby.webp" alt="3x3 OOBY" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>3x3 OOBY</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: BALDIS BASICS CLASSIC -->
-                    <div onclick="abrirJuego('https://baldis-basics-online.github.io/file/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=baldis-basics-classic"
+                        onclick="abrirJuego('https://baldis-basics-online.github.io/file/'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/baldis-basics-classic.webp" alt="BALDIS BASICS CLASSIC" class="img-fluid"
                             loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>BALDIS BASICS CLASSIC</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: MINECRAFT -->
-                    <div onclick="abrirJuego('https://d1tm91r4ytbt54.cloudfront.net/2779cbcb-a02f-48a3-9e2e-95a8d123d165/1685483461665/web/index.html')"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=minecraft"
+                        onclick="abrirJuego('https://d1tm91r4ytbt54.cloudfront.net/2779cbcb-a02f-48a3-9e2e-95a8d123d165/1685483461665/web/index.html'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/minecraft.webp" alt="MINECRAFT" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>MINECRAFT</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: DUCK LIFE 4 -->
-                    <div onclick="abrirJuego('https://ext.minijuegosgratis.com/duck-life-4/dl4/')" class="card large"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=duck-life-4"
+                        onclick="abrirJuego('https://ext.minijuegosgratis.com/duck-life-4/dl4/'); return false;"
+                        class="card large" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/duck-life-4.webp" alt="DUCK LIFE 4" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>DUCK LIFE 4</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: JETPACK JOYRIDE -->
-                    <div onclick="abrirJuego('https://abinbins.github.io/a7/jetpack-joyride/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <div href="/?game=jetpack-joyride"
+                        onclick="abrirJuego('https://abinbins.github.io/a7/jetpack-joyride/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/jetpack-joyride.webp" alt="JETPACK JOYRIDE" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
@@ -1481,478 +1527,523 @@
                         </div>
                     </div>
                     <!-- Juego: SLOPE BALL -->
-                    <div onclick="abrirJuego('https://script.google.com/macros/s/AKfycbxvKf9LHprLoblEMWUoqXn4RHxNhtXwmIwYAEAR8UWCr7lFjKwYvkhzPnsb3RWeDZcm/exec')"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=slope-ball"
+                        onclick="abrirJuego('https://script.google.com/macros/s/AKfycbxvKf9LHprLoblEMWUoqXn4RHxNhtXwmIwYAEAR8UWCr7lFjKwYvkhzPnsb3RWeDZcm/exec'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/slope.webp" alt="SLOPE BALL" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>SLOPE BALL</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: WATERMELON DROP -->
-                    <div onclick="abrirJuego('https://bitlifeonline.github.io/watermelon-drop/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=watermelon-drop"
+                        onclick="abrirJuego('https://bitlifeonline.github.io/watermelon-drop/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/watermelon-drop.webp" alt="WATERMELON DROP" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>WATERMELON DROP</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: SOCCER RANDOM -->
-                    <div onclick="abrirJuego('https://hub16x.github.io/soccer-random')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=soccer-random"
+                        onclick="abrirJuego('https://hub16x.github.io/soccer-random'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/soccer-random.webp" alt="SOCCER RANDOM" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>SOCCER RANDOM</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: CHROME DINO -->
-                    <div onclick="abrirJuego('/games/dino/')" class="card" style="cursor: pointer;" role="button"
-                        tabindex="0">
+                    <a href="/?game=chrome-dino" onclick="abrirJuego('/games/dino/'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/chrome-dino.webp" alt="CHROME DINO" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>CHROME DINO</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: ROBLOX CLICKER -->
-                    <div onclick="abrirJuego('https://scratch.mit.edu/projects/1324128146/embed')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=roblox-clicker"
+                        onclick="abrirJuego('https://scratch.mit.edu/projects/1324128146/embed'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/roblox-clicker.webp" alt="ROBLOX CLICKER" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>ROBLOX CLICKER</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: VOLLEY RANDOM -->
-                    <div onclick="abrirJuego('https://hub16x.github.io/volley-random/')" class="card large"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=volley-random"
+                        onclick="abrirJuego('https://hub16x.github.io/volley-random/'); return false;"
+                        class="card large" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/volley-random.webp" alt="VOLLEY RANDOM" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>VOLLEY RANDOM</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: ROBLOX -->
-                    <div onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');  abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.roblox.client/', en: 'https://web.cloudmoonapp.com/en/game/com.roblox.client/'}) }"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=roblox"
+                        onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');  abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.roblox.client/', en: 'https://web.cloudmoonapp.com/en/game/com.roblox.client/'}) }; return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/roblox.webp" alt="ROBLOX" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>ROBLOX</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: GOOGLE CHROME UNBLOCKED -->
-                    <div onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes' )}; abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.android.chrome/', en: 'https://web.cloudmoonapp.com/en/game/com.android.chrome/'})"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=google-chrome-unblocked"
+                        onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes' )}; abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.android.chrome/', en: 'https://web.cloudmoonapp.com/en/game/com.android.chrome/'}); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/google-chrome-unblocked.webp" alt="GOOGLE CHROME UNBLOCKED" class="img-fluid"
                             loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>GOOGLE CHROME UNBLOCKED</span>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Juego: YOUTUBE UNBLOCKED -->
-                    <div onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes')}; abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.google.android.youtube/', en: 'https://web.cloudmoonapp.com/es/game/com.google.android.youtube/'})"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=youtube-unblocked"
+                        onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes')}; abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.google.android.youtube/', en: 'https://web.cloudmoonapp.com/es/game/com.google.android.youtube/'}); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/youtube-unblocked.webp" alt="YOUTUBE UNBLOCKED" class="img-fluid"
                             loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>YOUTUBE UNBLOCKED</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: BRAWL STARS -->
-                    <div onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes')}; abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.supercell.brawlstars/', en: 'https://web.cloudmoonapp.com/en/game/com.supercell.brawlstars/' })"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=brawl-stars"
+                        onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes')}; abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.supercell.brawlstars/', en: 'https://web.cloudmoonapp.com/en/game/com.supercell.brawlstars/' }); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/brawl-stars.webp" alt="BRAWL STARS" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>BRAWL STARS</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: CHATGPT UNBLOCKED -->
-                    <div onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes')}; abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.openai.chatgpt/', en: 'https://web.cloudmoonapp.com/en/game/com.openai.chatgpt/' })"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=chatgpt-unblocked"
+                        onclick="if (confirm('WE ARE NOT RESPONSIBLE FOR THIS SITE. Notice: You must log in to enter. There is a time limit. You need to log in. The log in dosent work in the game. Step 1 - Click on Accept - Step 2 - Click Sing up - Step 3 - Sing up with Google - Step 4 - Click on your profile - Step 5 - Set a password - Step 6 - When you finish to setup the password, then go to the game and log in with email.')) { window.open('/log-in-cloudmoon.html', 'VentanaEmergente', 'width=999999,height=999999,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes')}; abrirJuego({ es: 'https://web.cloudmoonapp.com/es/game/com.openai.chatgpt/', en: 'https://web.cloudmoonapp.com/en/game/com.openai.chatgpt/' }); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/chatgpt-unblocked.webp" alt="CHATGPT UNBLOCKED" class="img-fluid"
                             loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>CHATGPT UNBLOCKED</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: BLUMGI PAINTBALL -->
-                    <div onclick="abrirJuego('https://storeg223.github.io/g66/class-871/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=blumgi-paintball"
+                        onclick="abrirJuego('https://storeg223.github.io/g66/class-871/'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/blumgi-paintball.webp" alt="BLUMGI PAINTBALL" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>BLUMGI PAINTBALL</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: YOHOHO PIRATE BATTLE ROYALE -->
-                    <div onclick="abrirJuego('https://yohoho.io')" class="card" style="cursor: pointer;" role="button"
-                        tabindex="0">
+                    <a href="/?game=yohoho-pirate-battle-royale"
+                        onclick="abrirJuego('https://yohoho.io'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/yohoho.webp" alt="YOHOHO PIRATE BATTLE ROYALE" class="img-fluid"
                             loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>YOHOHO PIRATE BATTLE ROYALE</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: FIREBOY AND WATERGIRL CRYSTAL TEMPLE -->
-                    <div onclick="abrirJuego('https://labgstore1812.github.io/g177/class-343/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=fireboy-and-watergirl-crystal-temple"
+                        onclick="abrirJuego('https://hub16x.github.io/fireboy-crystal'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/fireboy.webp" alt="FIREBOY AND WATERGIRL CRYSTAL TEMPLE" class="img-fluid"
                             loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>FIREBOY AND WATERGIRL CRYSTAL TEMPLE</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: SNOW RIDER 3D -->
-                    <div onclick="abrirJuego('https://itsvijaysingh.github.io/Snow-Rider3D/')" class="card large"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=snow-rider-3d"
+                        onclick="abrirJuego('https://itsvijaysingh.github.io/Snow-Rider3D/'); return false;"
+                        class="card large" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/snow-rider-3d.webp" alt="SNOW RIDER 3D" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>SNOW RIDER 3D</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: BLOXORZ -->
-                    <div onclick="abrirJuego('https://classroom8.github.io/bloxorz/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=bloxorz"
+                        onclick="abrirJuego('https://classroom8.github.io/bloxorz/'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/bloxorz.webp" alt="BLOXORZ" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>BLOXORZ</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: AGAR.IO -->
-                    <div onclick="abrirJuego('https://one.sigmally.com/')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <a href="/?game=agar-io" onclick="abrirJuego('https://one.sigmally.com/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/agar.io.webp" alt="AGAR.IO" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>AGAR.IO</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: DOODLE JUMP -->
-                    <div onclick="abrirJuego('https://doodlejump24.io/doodle-jump.embed')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=doodle-jump"
+                        onclick="abrirJuego('https://doodlejump24.io/doodle-jump.embed'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/doodle-jump.webp" alt="AQUAPARK" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>DOODLE JUMP</span>
                         </div>
-                    </div>
+                    </a>
                 </div> <!-- Fin de card-masonry (Página 1) -->
 
                 <!-- PÁGINA 2 -->
                 <div class="card-masonry pagina-juegos" id="pagina-2" style="display: none;">
                     <!-- Juego: BITLIFE -->
-                    <div onclick="abrirJuego('https://bitlifeonline.github.io/class/index.html')" class="card large"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=bitlife"
+                        onclick="abrirJuego('https://bitlifeonline.github.io/class/index.html'); return false;"
+                        class="card large" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/bitlife.webp" alt="BITLIFE" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>BITLIFE</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: SUPER MEET BOY -->
-                    <div onclick="abrirJuego('https://www.archive.play-games.com/games/ruffle/?swf=archive/5/meatboyv2.swf')"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=super-meet-boy"
+                        onclick="abrirJuego('https://www.archive.play-games.com/games/ruffle/?swf=archive/5/meatboyv2.swf'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/super-meet-boy.webp" alt="SUPER MEET BOY" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>SUPER MEET BOY</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: DRAW A PERFECT CIRCLE -->
-                    <div onclick="abrirJuego('https://testyourdraw.com/draw-perfect-circle', true)" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=draw-a-perfect-circle"
+                        onclick="abrirJuego('https://testyourdraw.com/draw-perfect-circle', true); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/draw-a-perfect-circle.webp" alt="DRAW A PERFECT CIRCLE" class="img-fluid"
                             loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>DRAW A PERFECT CIRCLE</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: SOCCER BROS -->
-                    <div onclick="abrirJuego('https://soccerbros.gg')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <a href="/?game=soccer-bros" onclick="abrirJuego('https://soccerbros.gg'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/soccer-bros.webp" alt="SOCCER BROS" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>SOCCER BROS</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- OvO 3D -->
-                    <div onclick="abrirJuego('https://freetoplayz.github.io/ovo-dimensions/')" class="card large"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=ovo-3d"
+                        onclick="abrirJuego('https://freetoplayz.github.io/ovo-dimensions/'); return false;"
+                        class="card large" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/OvO-3D.webp" alt="OvO 3D" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>OvO 3D</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: BOXING RANDOM -->
-                    <div onclick="abrirJuego('https://unblocked-games-786.github.io/Boxing-Random/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=boxing-random"
+                        onclick="abrirJuego('https://unblocked-games-786.github.io/Boxing-Random/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/boxing-random.webp" alt="BOXING RANDOM" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>BOXING RANDOM</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: 1v1 LOL -->
-                    <div onclick="abrirJuego('https://1v1-lol.gitlab.io/file/', false, false, true)" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=1v1-lol"
+                        onclick="abrirJuego('https://1v1-lol.gitlab.io/file/', false, false, true); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/1v1-lol.webp" alt="1v1 LOL" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>1v1 LOL</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: MOTO X3M -->
-                    <div onclick="abrirJuego('https://www.friv.com/z/games/motox3m/index-x.html')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=moto-x3m"
+                        onclick="abrirJuego('https://www.friv.com/z/games/motox3m/index-x.html'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/moto-x3m.webp" alt="MOTO X3M" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>MOTO X3M</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: RETRO BOWL -->
-                    <div onclick="abrirJuego('https://retro-footballt-105330.gitlab.io/')" class="card large"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=retro-bowl"
+                        onclick="abrirJuego('https://retro-footballt-105330.gitlab.io/'); return false;"
+                        class="card large" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/retro-bowl.webp" alt="RETRO BOWL" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>RETRO BOWL</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: 0h h1 -->
-                    <div onclick="abrirJuego('https://0hh1.com/')" class="card" style="cursor: pointer;" role="button"
-                        tabindex="0">
+                    <a href="/?game=0h-h1" onclick="abrirJuego('https://0hh1.com/'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/0h-h1.webp" alt="0h h1" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>0h h1</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: FLAPPY BIRD -->
-                    <div onclick="abrirJuego('/games/flappy-bird')" class="card" style="cursor: pointer;" role="button"
-                        tabindex="0">
+                    <a href="/?game=flappy-bird" onclick="abrirJuego('/games/flappy-bird'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/flappy-bird.webp" alt="FLAPPY BIRD" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>FLAPPY BIRD</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: BLUMGI BALL -->
-                    <div onclick="abrirJuego('https://abinbins.github.io/a2/blumgi-ball/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=blumgi-ball"
+                        onclick="abrirJuego('https://abinbins.github.io/a2/blumgi-ball/'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/blumgi-ball.webp" alt="BLUMGI BALL" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>BLUMGI BALL</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: LINE RIDER -->
-                    <div onclick="abrirJuego('https://www.linerider.com')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <a href="/?game=line-rider" onclick="abrirJuego('https://www.linerider.com'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/line-rider.webp" alt="LINE RIDER" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>LINE RIDER</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: THE IMPOSIBLE GAME -->
-                    <div onclick="abrirJuego('https://the-impossible-game.game-files.crazygames.com/ruffle/theimpossiblegame.html?czySeasonWorldCup=false&czySeasonWorldCupKeyMatch=false&isNewUser=false&__nextLocale=es&v=2.2')"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=the-imposible-game"
+                        onclick="abrirJuego('https://the-impossible-game.game-files.crazygames.com/ruffle/theimpossiblegame.html?czySeasonWorldCup=false&czySeasonWorldCupKeyMatch=false&isNewUser=false&__nextLocale=es&v=2.2'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/the-imposible-game.webp" alt="THE IMPOSIBLE GAME" class="img-fluid"
                             loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>THE IMPOSIBLE GAME</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: 2048 MULTITASKING -->
-                    <div onclick="abrirJuego('https://calculatorgames.github.io/simplegimes/2048-multitask/index.html', true)"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=2048-multitasking"
+                        onclick="abrirJuego('https://calculatorgames.github.io/simplegimes/2048-multitask/index.html', true); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/2048-multitasking.webp" alt="2048 MULTITASKING" class="img-fluid"
                             loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>2048 MULTITASKING</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: BASKET BROS -->
-                    <div onclick="abrirJuego('https://basketbros.io/')" class="card large" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <a href="/?game=basket-bros" onclick="abrirJuego('https://basketbros.io/'); return false;"
+                        class="card large" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/basket-bros.webp" alt="BASKET BROS" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>BASKET BROS</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: EGGY CAR -->
-                    <div onclick="abrirJuego('https://eggy-car-unblocked.github.io/eggycar/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=eggy-car"
+                        onclick="abrirJuego('https://eggy-car-unblocked.github.io/eggycar/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/eggy-car.webp" alt="EGGY CAR" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>EGGY CAR</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: AQUAPARK -->
-                    <div onclick="alert('In this game, the fullscreen button does NOT work (sometimes yes). Use OPEN IN about:blank.'); abrirJuego('https://hub16x.github.io/aquapark/')"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=aquapark"
+                        onclick="alert('In this game, the fullscreen button does NOT work (sometimes yes). Use OPEN IN about:blank.'); abrirJuego('https://hub16x.github.io/aquapark/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/aquapark.webp" alt="AQUAPARK" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>AQUAPARK</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: GULPER.IO -->
-                    <div onclick="abrirJuego('https://gulper.io')" class="card" style="cursor: pointer;" role="button"
-                        tabindex="0">
+                    <a href="/?game=gulper-io" onclick="abrirJuego('https://gulper.io'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/gulper-io.webp" alt="GULPER.IO" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>GULPER.IO</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: DUNKERS -->
-                    <div onclick="abrirJuego('https://hub16x.github.io/dunkers/')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <a href="/?game=dunkers" onclick="abrirJuego('https://hub16x.github.io/dunkers/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/dunkers.webp" alt="DUNKERS" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>DUNKERS</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: DRIVE MAD 2 -->
-                    <div onclick="abrirJuego('https://play.fancade.com/63BA239C20C40BF3')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=drive-mad-2"
+                        onclick="abrirJuego('https://play.fancade.com/63BA239C20C40BF3'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/drive-mad-2.webp" alt="DRIVE MAD 2" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>DRIVE MAD 2</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juegos 'VEX' -->
                     <!-- Juego: VEX 9 -->
-                    <div onclick="abrirJuego('https://html5.gamedistribution.com/8d034584a63642dcb89fa3d24ed6e1b1/?gd_sdk_referrer_url=https%3A%2F%2Fwww.minijuegos.com')"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=vex-9"
+                        onclick="abrirJuego('https://html5.gamedistribution.com/8d034584a63642dcb89fa3d24ed6e1b1/?gd_sdk_referrer_url=https%3A%2F%2Fwww.minijuegos.com'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/vex-9.webp" alt="VEX 9" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>VEX 9</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: VEX 8 -->
-                    <div onclick="abrirJuego('https://ubg98.github.io/Vex8/')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <a href="/?game=vex-8" onclick="abrirJuego('https://ubg98.github.io/Vex8/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/vex-8.webp" alt="VEX 8" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>VEX 8</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: VEX 7 -->
-                    <div onclick="abrirJuego('https://ubg98.github.io/Vex7/')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <a href="/?game=vex-7" onclick="abrirJuego('https://ubg98.github.io/Vex7/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/vex-7.webp" alt="VEX 7" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>VEX 7</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: VEX 6 -->
-                    <div onclick="abrirJuego('https://ubg98.github.io/Vex6/')" class="card large"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=vex-6" onclick="abrirJuego('https://ubg98.github.io/Vex6/'); return false;"
+                        class="card large" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/vex-6.webp" alt="VEX 6" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>VEX 6</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: VEX 5 -->
-                    <div onclick="abrirJuego('https://ubg98.github.io/Vex5/')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <a href="/?game=vex-5" onclick="abrirJuego('https://ubg98.github.io/Vex5/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/vex-5.webp" alt="VEX 5" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>VEX 5</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: VEX 4 -->
-                    <div onclick="abrirJuego('https://ubg98.github.io/Vex4/')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <a href="/?game=vex-4" onclick="abrirJuego('https://ubg98.github.io/Vex4/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/vex-4.webp" alt="VEX 4" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>VEX 4</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: VEX 3 -->
-                    <div onclick="abrirJuego('https://ubg98.github.io/Vex3/')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <a href="/?game=vex-3" onclick="abrirJuego('https://ubg98.github.io/Vex3/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/vex-3.webp" alt="VEX 3" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>VEX 3</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: VEX 2 -->
-                    <div onclick="abrirJuego('https://script.google.com/macros/s/AKfycbw-bG6zR30e-46eH-18-pKhu7UoYer7F-blrfWBWSd9SrSscIYAs3QNtx6BLR61hsEgEw/exec')"
-                        class="card large" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=vex-2"
+                        onclick="abrirJuego('https://script.google.com/macros/s/AKfycbw-bG6zR30e-46eH-18-pKhu7UoYer7F-blrfWBWSd9SrSscIYAs3QNtx6BLR61hsEgEw/exec'); return false;"
+                        class="card large" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/vex-2.webp" alt="VEX 2" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>VEX 2</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: VEX 1 -->
-                    <div onclick="abrirJuego('https://script.google.com/macros/s/AKfycbxwyDsC49pauwYS59k4k10ptEAWo-6qgJf2nyvPt3i52bikDw98aFuDgvSPRWaIsnr8/exec')"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=vex-1"
+                        onclick="abrirJuego('https://script.google.com/macros/s/AKfycbxwyDsC49pauwYS59k4k10ptEAWo-6qgJf2nyvPt3i52bikDw98aFuDgvSPRWaIsnr8/exec'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/vex-1.webp" alt="VEX 1" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>VEX 1</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: DRIFT HUNTERS -->
-                    <div onclick="abrirJuego('https://drifthuntersonline.gitlab.io/file/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=drift-hunters"
+                        onclick="abrirJuego('https://drifthuntersonline.gitlab.io/file/'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/drift-hunters.webp" alt="DRIFT HUNTERS" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>DRIFT HUNTERS</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: INFINITE CRAFT -->
-                    <div onclick="abrirJuego('https://infinite-craft.net/')" class="card" style="cursor: pointer;"
-                        role="button" tabindex="0">
+                    <a href="/?game=infinite-craft" onclick="abrirJuego('https://infinite-craft.net/'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/infinity-craft.webp" alt="INFINITE CRAFT" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>INFINITE CRAFT</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: 1 (si, literalmente se llama "1") -->
-                    <div onclick="abrirJuego('https://hub16x.github.io/1/', true, false, false)" class="card large"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=1"
+                        onclick="abrirJuego('https://hub16x.github.io/1/', true, false, false); return false;"
+                        class="card large" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/1.webp" alt="1" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>1</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: 9007199254740992 (no se quien jugara esto, prometo que esta guapo) -->
-                    <div onclick="abrirJuego('https://hub16x.github.io/9007199254740992/', true, false, false)"
-                        class="card" style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=9007199254740992"
+                        onclick="abrirJuego('https://hub16x.github.io/9007199254740992/', true, false, false); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/9007199254740992.webp" alt="9007199254740992" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span style="font-size: 0.8rem;">9007199254740992</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: CORE BALL -->
-                    <div onclick="abrirJuego('https://hub16x.github.io/core-ball/')" class="card"
-                        style="cursor: pointer;" role="button" tabindex="0">
+                    <a href="/?game=core-ball"
+                        onclick="abrirJuego('https://hub16x.github.io/core-ball/'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/core-ball.webp" alt="CORE BALL" class="img-fluid" loading="lazy"
                             decoding="async">
                         <div class="card-body">
                             <span>CORE BALL</span>
                         </div>
-                    </div>
+                    </a>
                     <!-- Juego: RECOIL -->
-                    <div onclick="abrirJuego('/games/recoil/')" class="card" style="cursor: pointer;" role="button"
-                        tabindex="0">
+                    <a href="/?game=recoil" onclick="abrirJuego('/games/recoil/'); return false;" class="card"
+                        style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
                         <img src="/images/recoil.webp" alt="RECOIL" class="img-fluid" loading="lazy" decoding="async">
                         <div class="card-body">
                             <span>RECOIL</span>
                         </div>
-                    </div>
+                    </a>
+                    <!-- Juego: PAC MAN -->
+                    <a href="/?game=pac-man" onclick="abrirJuego('https://hub16x.github.io/pac-man'); return false;"
+                        class="card" style="cursor: pointer; text-decoration: none;" role="button" tabindex="0">
+                        <img src="/images/pac-man.webp" alt="PAC MAN" class="img-fluid" loading="lazy" decoding="async">
+                        <div class="card-body">
+                            <span>PAC MAN</span>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- PÁGINA 3 -->
@@ -1991,18 +2082,21 @@
                         sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-top-navigation allow-top-navigation-by-user-activation allow-downloads"
                         scrolling="no">
                     </iframe>
-                    <h1 class="h3" id="titulo-juego-visor"
+
+                    <!-- Optimización semántica: Cambiado de h1 a h2 -->
+                    <h2 class="h3" id="titulo-juego-visor"
                         style="margin-top: 20px; font-family: 'Inter-SemiBold', sans-serif; font-size: 1.5rem; color: #080808; font-weight: 700; text-align: left;">
                         Unblocked
-                    </h1>
+                    </h2>
+
                     <!-- Estrellas -->
                     <div style="text-align:left;">
                         <div
                             style="display:inline-flex;align-items:center;margin-left:auto!important;margin-top:.5rem!important;">
                             <i
                                 style="margin-right:.125rem;display:block;width:1rem;height:1rem;position:relative;top:-.04rem;-webkit-mask-image:url(&quot;data:image/svg+xml,%3csvg viewBox='0 0 24 24' fill='currentColor' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M17.9185 14.3201C17.6595 14.5711 17.5405 14.9341 17.5995 15.2901L18.4885 20.2101C18.5635 20.6271 18.3875 21.0491 18.0385 21.2901C17.6965 21.5401 17.2415 21.5701 16.8685 21.3701L12.4395 19.0601C12.2855 18.9781 12.1145 18.9341 11.9395 18.9291H11.6685C11.5745 18.9431 11.4825 18.9731 11.3985 19.0191L6.96851 21.3401C6.74951 21.4501 6.50151 21.4891 6.25851 21.4501C5.66651 21.3381 5.27151 20.7741 5.36851 20.1791L6.25851 15.2591C6.31751 14.9001 6.19851 14.5351 5.93951 14.2801L2.32851 10.7801C2.02651 10.4871 1.92151 10.0471 2.05951 9.65011C2.19351 9.25411 2.53551 8.96511 2.94851 8.90011L7.91851 8.17911C8.29651 8.14011 8.62851 7.91011 8.79851 7.57011L10.9885 3.08011C11.0405 2.98011 11.1075 2.88811 11.1885 2.81011L11.2785 2.74011C11.3255 2.68811 11.3795 2.64511 11.4395 2.61011L11.5485 2.57011L11.7185 2.50011H12.1395C12.5155 2.53911 12.8465 2.76411 13.0195 3.10011L15.2385 7.57011C15.3985 7.89711 15.7095 8.12411 16.0685 8.17911L21.0385 8.90011C21.4585 8.96011 21.8095 9.25011 21.9485 9.65011C22.0795 10.0511 21.9665 10.4911 21.6585 10.7801L17.9185 14.3201Z'%3e%3c/svg%3e&quot;);mask-image:url(&quot;data:image/svg+xml,%3csvg viewBox='0 0 24 24' fill='currentColor' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M17.9185 14.3201C17.6595 14.5711 17.5405 14.9341 17.5995 15.2901L18.4885 20.2101C18.5635 20.6271 18.3875 21.0491 18.0385 21.2901C17.6965 21.5401 17.2415 21.5701 16.8685 21.3701L12.4395 19.0601C12.2855 18.9781 12.1145 18.9341 11.9395 18.9291H11.6685C11.5745 18.9431 11.4825 18.9731 11.3985 19.0191L6.96851 21.3401C6.74951 21.4501 6.50151 21.4891 6.25851 21.4501C5.66651 21.3381 5.27151 20.7741 5.36851 20.1791L6.25851 15.2591C6.31751 14.9001 6.19851 14.5351 5.93951 14.2801L2.32851 10.7801C2.02651 10.4871 1.92151 10.0471 2.05951 9.65011C2.19351 9.25411 2.53551 8.96511 2.94851 8.90011L7.91851 8.17911C8.29651 8.14011 8.62851 7.91011 8.79851 7.57011L10.9885 3.08011C11.0405 2.98011 11.1075 2.88811 11.1885 2.81011L11.2785 2.74011C11.3255 2.68811 11.3795 2.64511 11.4395 2.61011L11.5485 2.57011L11.7185 2.50011H12.1395C12.5155 2.53911 12.8465 2.76411 13.0195 3.10011L15.2385 7.57011C15.3985 7.89711 15.7095 8.12411 16.0685 8.17911L21.0385 8.90011C21.4585 8.96011 21.8095 9.25011 21.9485 9.65011C22.0795 10.0511 21.9665 10.4911 21.6585 10.7801L17.9185 14.3201Z' fill='currentColor'/%3e%3c/svg%3e&quot;);background-repeat:no-repeat;background-position:center;background-size:contain;background-color:#ffc107;"></i><i
-                                style="margin-right:.125rem;display:block;width:1rem;height:1rem;position:relative;top:-.04rem;-webkit-mask-image:url(&quot;data:image/svg+xml,%3csvg viewBox='0 0 24 24' fill='currentColor' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M17.9185 14.3201C17.6595 14.5711 17.5405 14.9341 17.5995 15.2901L18.4885 20.2101C18.5635 20.6271 18.3875 21.0491 18.0385 21.2901C17.6965 21.5401 17.2415 21.5701 16.8685 21.3701L12.4395 19.0601C12.2855 18.9781 12.1145 18.9341 11.9395 18.9291H11.6685C11.5745 18.9431 11.4825 18.9731 11.3985 19.0191L6.96851 21.3401C6.74951 21.4501 6.50151 21.4891 6.25851 21.4501C5.66651 21.3381 5.27151 20.7741 5.36851 20.1791L6.25851 15.2591C6.31751 14.9001 6.19851 14.5351 5.93951 14.2801L2.32851 10.7801C2.02651 10.4871 1.92151 10.0471 2.05951 9.65011C2.19351 9.25411 2.53551 8.96511 2.94851 8.90011L7.91851 8.17911C8.29651 8.14011 8.62851 7.91011 8.79851 7.57011L10.9885 3.08011C11.0405 2.98011 11.1075 2.88811 11.1885 2.81011L11.2785 2.74011C11.3255 2.68811 11.3795 2.64511 11.4395 2.61011L11.5485 2.57011L11.7185 2.50011H12.1395C12.5155 2.53911 12.8465 2.76411 13.0195 3.10011L15.2385 7.57011C15.3985 7.89711 15.7095 8.12411 16.0685 8.17911L21.0385 8.90011C21.4585 8.96011 21.8095 9.25011 21.9485 9.65011C22.0795 10.0511 21.9665 10.4911 21.6585 10.7801L17.9185 14.3201Z' fill='currentColor'/%3e%3c/svg%3e&quot;);mask-image:url(&quot;data:image/svg+xml,%3csvg viewBox='0 0 24 24' fill='currentColor' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M17.9185 14.3201C17.6595 14.5711 17.5405 14.9341 17.5995 15.2901L18.4885 20.2101C18.5635 20.6271 18.3875 21.0491 18.0385 21.2901C17.6965 21.5401 17.2415 21.5701 16.8685 21.3701L12.4395 19.0601C12.2855 18.9781 12.1145 18.9341 11.9395 18.9291H11.6685C11.5745 18.9431 11.4825 18.9731 11.3985 19.0191L6.96851 21.3401C6.74951 21.4501 6.50151 21.4891 6.25851 21.4501C5.66651 21.3381 5.27151 20.7741 5.36851 20.1791L6.25851 15.2591C6.31751 14.9001 6.19851 14.5351 5.93951 14.2801L2.32851 10.7801C2.02651 10.4871 1.92151 10.0471 2.05951 9.65011C2.19351 9.25411 2.53551 8.96511 2.94851 8.90011L7.91851 8.17911C8.29651 8.14011 8.62851 7.91011 8.79851 7.57011L10.9885 3.08011C11.0405 2.98011 11.1075 2.88811 11.1885 2.81011L11.2785 2.74011C11.3255 2.68811 11.3795 2.64511 11.4395 2.61011L11.5485 2.57011L11.7185 2.50011H12.1395C12.5155 2.53911 12.8465 2.76411 13.0195 3.10011L15.2385 7.57011C15.3985 7.89711 15.7095 8.12411 16.0685 8.17911L21.0385 8.90011C21.4585 8.96011 21.8095 9.25011 21.9485 9.65011C22.0795 10.0511 21.9665 10.4911 21.6585 10.7801L17.9185 14.3201Z' fill='currentColor'/%3e%3c/svg%3e&quot;);background-repeat:no-repeat;background-position:center;background-size:contain;background-color:#ffc107;"></i><i
-                                style="margin-right:.125rem;display:block;width:1rem;height:1rem;position:relative;top:-.04rem;-webkit-mask-image:url(&quot;data:image/svg+xml,%3csvg viewBox='0 0 24 24' fill='currentColor' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M17.9185 14.3201C17.6595 14.5711 17.5405 14.9341 17.5995 15.2901L18.4885 20.2101C18.5635 20.6271 18.3875 21.0491 18.0385 21.2901C17.6965 21.5401 17.2415 21.5701 16.8685 21.3701L12.4395 19.0601C12.2855 18.9781 12.1145 18.9341 11.9395 18.9291H11.6685C11.5745 18.9431 11.4825 18.9731 11.3985 19.0191L6.96851 21.3401C6.74951 21.4501 6.50151 21.4891 6.25851 21.4501C5.66651 21.3381 5.27151 20.7741 5.36851 20.1791L6.25851 15.2591C6.31751 14.9001 6.19851 14.5351 5.93951 14.2801L2.32851 10.7801C2.02651 10.4871 1.92151 10.0471 2.05951 9.65011C2.19351 9.25411 2.53551 8.96511 2.94851 8.90011L7.91851 8.17911C8.29651 8.14011 8.62851 7.91011 8.79851 7.57011L10.9885 3.08011C11.0405 2.98011 11.1075 2.88811 11.1885 2.81011L11.2785 2.74011C11.3255 2.68811 11.3795 2.64511 11.4395 2.61011L11.5485 2.57011L11.7185 2.50011H12.1395C12.5155 2.53911 12.8465 2.76411 13.0195 3.10011L15.2385 7.57011C15.3985 7.89711 15.7095 8.12411 16.0685 8.17911L21.0385 8.90011C21.4585 8.96011 21.8095 9.25011 21.9485 9.65011C22.0795 10.0511 21.9665 10.4911 21.6585 10.7801L17.9185 14.3201Z' fill='currentColor'/%3e%3c/svg%3e&quot;);mask-image:url(&quot;data:image/svg+xml,%3csvg viewBox='0 0 24 24' fill='currentColor' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M17.9185 14.3201C17.6595 14.5711 17.5405 14.9341 17.5995 15.2901L18.4885 20.2101C18.5635 20.6271 18.3875 21.0491 18.0385 21.2901C17.6965 21.5401 17.2415 21.5701 16.8685 21.3701L12.4395 19.0601C12.2855 18.9781 12.1145 18.9341 11.9395 18.9291H11.6685C11.5745 18.9431 11.4825 18.9731 11.3985 19.0191L6.96851 21.3401C6.74951 21.4501 6.50151 21.4891 6.25851 21.4501C5.66651 21.3381 5.27151 20.7741 5.36851 20.1791L6.25851 15.2591C6.31751 14.9001 6.19851 14.5351 5.93951 14.2801L2.32851 10.7801C2.02651 10.4871 1.92151 10.0471 2.05951 9.65011C2.19351 9.25411 2.53551 8.96511 2.94851 8.90011L7.91851 8.17911C8.29651 8.14011 8.62851 7.91011 8.79851 7.57011L10.9885 3.08011C11.0405 2.98011 11.1075 2.88811 11.1885 2.81011L11.2785 2.74011C11.3255 2.68811 11.3795 2.64511 11.4395 2.61011L11.5485 2.57011L11.7185 2.50011H12.1395C12.5155 2.53911 12.8465 2.76411 13.0195 3.10011L15.2385 7.57011C15.3985 7.89711 15.7095 8.12411 16.0685 8.17911L21.0385 8.90011C21.4585 8.96011 21.8095 9.25011 21.9485 9.65011C22.0795 10.0511 21.9665 10.4911 21.6585 10.7801L17.9185 14.3201Z' fill='currentColor'/%3e%3c/svg%3e&quot;);mask-image:url(&quot;data:image/svg+xml,%3csvg viewBox='0 0 24 24' fill='currentColor' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M17.9185 14.3201C17.6595 14.5711 17.5405 14.9341 17.5995 15.2901L18.4885 20.2101C18.5635 20.6271 18.3875 21.0491 18.0385 21.2901C17.6965 21.5401 17.2415 21.5701 16.8685 21.3701L12.4395 19.0601C12.2855 18.9781 12.1145 18.9341 11.9395 18.9291H11.6685C11.5745 18.9431 11.4825 18.9731 11.3985 19.0191L6.96851 21.3401C6.74951 21.4501 6.50151 21.4891 6.25851 21.4501C5.66651 21.3381 5.27151 20.7741 5.36851 20.1791L6.25851 15.2591C6.31751 14.9001 6.19851 14.5351 5.93951 14.2801L2.32851 10.7801C2.02651 10.4871 1.92151 10.0471 2.05951 9.65011C2.19351 9.25411 2.53551 8.96511 2.94851 8.90011L7.91851 8.17911C8.29651 8.14011 8.62851 7.91011 8.79851 7.57011L10.9885 3.08011C11.0405 2.98011 11.1075 2.88811 11.1885 2.81011L11.2785 2.74011C11.3255 2.68811 11.3795 2.64511 11.4395 2.61011L11.5485 2.57011L11.7185 2.50011H12.1395C12.5155 2.53911 12.8465 2.76411 13.0195 3.10011L15.2385 7.57011C15.3985 7.89711 15.7095 8.12411 16.0685 8.17911L21.0385 8.90011C21.4585 8.96011 21.8095 9.25011 21.9485 9.65011C22.0795 10.0511 21.9665 10.4911 21.6585 10.7801L17.9185 14.3201Z' fill='currentColor'/%3e%3c/svg%3e&quot;);background-repeat:no-repeat;background-position:center;background-size:contain;background-color:#ffc107;"></i>
+                                style="margin-right:.125rem;display:block;width:1rem;height:1rem;position:relative;top:-.04rem;-webkit-mask-image:url(&quot;data:image/svg+xml,%3csvg viewBox='0 0 24 24' fill='currentColor' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M17.9185 14.3201C17.6595 14.5711 17.5405 14.9341 17.5995 15.2901L18.4885 20.2101C18.5635 20.6271 18.3875 21.0491 18.0385 21.2901C17.6965 21.5401 17.2415 21.5701 16.8685 21.3701L12.4395 19.0601C12.2855 18.9781 12.1145 18.9341 11.9395 18.9291H11.6685C11.5745 18.9431 11.4825 18.9731 11.3985 19.0191L6.96851 21.3401C6.74951 21.4501 6.50151 21.4891 6.25851 21.4501C5.66651 21.3381 5.27151 20.7741 5.36851 20.1791L6.25851 15.2591C6.31751 14.9001 6.19851 14.5351 5.93951 14.2801L2.32851 10.7801C2.02651 10.4871 1.92151 10.0471 2.05951 9.65011C2.19351 9.25411 2.53551 8.96511 2.94851 8.90011L7.91851 8.17911C8.29651 8.14011 8.62851 7.91011 8.79851 7.57011L10.9885 3.08011C11.0405 2.98011 11.1075 2.88811 11.1885 2.81011L11.2785 2.74011C11.3255 2.68811 11.3795 2.64511 11.4395 2.61011L11.5485 2.57011L11.7185 2.50011H12.1395C12.5155 2.53911 12.8465 2.76411 13.0195 3.10011L15.2385 7.57011C15.3985 7.89711 15.7095 8.12411 16.0685 8.17911L21.0385 8.90011C21.4585 8.96011 21.8095 9.25011 21.9485 9.65011C22.0795 10.0511 21.9665 10.4911 21.6585 10.7801L17.9185 14.3201Z' fill='currentColor'/%3e%3c/svg%3e&quot;);background-repeat:no-repeat;background-position:center;background-size:contain;background-color:#ffc107;"></i><i
+                                style="margin-right:.125rem;display:block;width:1rem;height:1rem;position:relative;top:-.04rem;-webkit-mask-image:url(&quot;data:image/svg+xml,%3csvg viewBox='0 0 24 24' fill='currentColor' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M17.9185 14.3201C17.6595 14.5711 17.5405 14.9341 17.5995 15.2901L18.4885 20.2101C18.5635 20.6271 18.3875 21.0491 18.0385 21.2901C17.6965 21.5401 17.2415 21.5701 16.8685 21.3701L12.4395 19.0601C12.2855 18.9781 12.1145 18.9341 11.9395 18.9291H11.6685C11.5745 18.9431 11.4825 18.9731 11.3985 19.0191L6.96851 21.3401C6.74951 21.4501 6.50151 21.4891 6.25851 21.4501C5.66651 21.3381 5.27151 20.7741 5.36851 20.1791L6.25851 15.2591C6.31751 14.9001 6.19851 14.5351 5.93951 14.2801L2.32851 10.7801C2.02651 10.4871 1.92151 10.0471 2.05951 9.65011C2.19351 9.25411 2.53551 8.96511 2.94851 8.90011L7.91851 8.17911C8.29651 8.14011 8.62851 7.91011 8.79851 7.57011L10.9885 3.08011C11.0405 2.98011 11.1075 2.88811 11.1885 2.81011L11.2785 2.74011C11.3255 2.68811 11.3795 2.64511 11.4395 2.61011L11.5485 2.57011L11.7185 2.50011H12.1395C12.5155 2.53911 12.8465 2.76411 13.0195 3.10011L15.2385 7.57011C15.3985 7.89711 15.7095 8.12411 16.0685 8.17911L21.0385 8.90011C21.4585 8.96011 21.8095 9.25011 21.9485 9.65011C22.0795 10.0511 21.9665 10.4911 21.6585 10.7801L17.9185 14.3201Z' fill='currentColor'/%3e%3c/svg%3e&quot;);background-repeat:no-repeat;background-position:center;background-size:contain;background-color:#ffc107;"></i>
                         </div>
                     </div>
                     <h3 id="text-category"
@@ -2124,6 +2218,7 @@
         let permitePopupsActivo = false;
         let paginaActual = 1;
         let cargasDM2 = 0;
+        let cargasIframeControl = 0; // Se inicializa correctamente para evitar fallos globales
 
         // Caché del DOM centralizada para acelerar las interacciones de JS
         let DOM = {};
@@ -2136,20 +2231,23 @@
             // --- REDIRECCIÓN INTERNA PARA LISTA DE JUEGOS ---
             const visor = document.getElementById('visor-juego');
 
-            visor.addEventListener('load', function () {
-                // Comprobamos si el juego que el usuario abrió está en nuestra lista
-                if (juegosControlados.includes(nombreJuegoActivo)) {
-                    cargasIframeControl++;
+            if (visor) {
+                visor.addEventListener('load', function () {
+                    // Comprobamos si el juego que el usuario abrió está en nuestra lista
+                    if (juegosControlados.includes(nombreJuegoActivo)) {
+                        cargasIframeControl++;
 
-                    // Si es la carga 2, el juego intentó salir de su página inicial
-                    if (cargasIframeControl === 2) {
-                        console.log(nombreJuegoActivo + " intentó navegar. Bloqueando y redirigiendo iframe...");
+                        // Si es la carga 2, el juego intentó salir de su página inicial
+                        if (cargasIframeControl === 2) {
+                            console.log(nombreJuegoActivo + " intentó navegar. Bloqueando y redirigiendo iframe...");
 
-                        // URL que se cargará dentro del iframe
-                        visor.src = "/403.html";
+                            // URL que se cargará dentro del iframe
+                            visor.src = "/403.html";
+                        }
                     }
-                }
-            });
+                });
+            }
+
             // Función para detectar el juego por URL (?game= o simplemente ?)
             const abrirJuegoDesdeURL = () => {
                 // 1. Intentamos obtener el parámetro "game" (ej: ?game=oh-flip)
@@ -2307,7 +2405,10 @@
 
             for (let card of cards) {
                 const onclickAttr = card.getAttribute('onclick') || '';
-                if (onclickAttr.includes(searchString)) {
+                const hrefAttr = card.getAttribute('href') || '';
+
+                // Buscamos tanto en onclick como en href por compatibilidad
+                if (onclickAttr.includes(searchString) || hrefAttr.includes(searchString)) {
                     const span = card.querySelector('.card-body span');
                     if (span) {
                         nombreJuego = span.textContent.trim();
