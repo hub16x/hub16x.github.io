@@ -1,8 +1,8 @@
 /**
  * ============================================================================
- * Project: GameDistribution.com HTML5 SDK - LITE / BASURA EDITION v7.1
+ * Project: GameDistribution.com HTML5 SDK - LITE / BASURA EDITION v7.2
  * Description: SDK deobfuscado + Secuestro de createElement + Atajos de Emergencia
- * Version: 7.1.0 - THE GHOST HIJACKER (Anti-403 Unity Edition)
+ * Version: 7.2.0 - CDN FRIENDLY EDITION (Optimizado para GitHub Pages)
  * ============================================================================
  */
 
@@ -11,12 +11,10 @@
     const LOG_STYLE_PREFIX = "color: #00ffff; font-weight: bold; background: #111; padding: 2px 4px; border-radius: 3px; border: 1px solid #00ffff;";
     const LOG_STYLE_TEXT = "color: #444; font-weight: bold;";
 
-    // Intentamos detectar dinámicamente nuestra propia ruta local para redirigir allí
-    let miRutaPropia = '/sdkgamedistributionmod.js';
+    // Intentamos detectar dinámicamente nuestra propia ruta absoluta de GitHub
+    let miRutaPropia = 'https://hub16x.github.io/assets/scripts/sdkgamedistributionmod.js';
     if (document.currentScript && document.currentScript.src) {
-        try {
-            miRutaPropia = new URL(document.currentScript.src).pathname;
-        } catch (e) {}
+        miRutaPropia = document.currentScript.src; // Guarda la URL completa (incluyendo dominio de GitHub)
     }
 
     // Intentamos extraer el nombre del juego de forma dinámica
@@ -32,11 +30,8 @@
 
     /**
      * ====================================================================
-     * HACK DIRECTO: SECUESTRO DE CREATELLEMENT (Bye Bye Service Worker!)
+     * HACK DIRECTO: SECUESTRO DE CREATELLEMENT
      * ====================================================================
-     * Cuando Unity intente hacer document.createElement('script') para
-     * inyectar el SDK original, interceptaremos la asignación de '.src'
-     * y le obligaremos a inyectar este archivo modificado en su lugar.
      */
     (function() {
         const originalCreateElement = document.createElement;
@@ -49,10 +44,9 @@
                         return this.getAttribute('src') || '';
                     },
                     set: function(value) {
-                        // Si la URL apunta a GameDistribution y al script de inicio...
                         if (typeof value === 'string' && value.includes('gamedistribution.com') && value.includes('main.min.js')) {
-                            console.log(LOG_PREFIX + " Secuestrando inyección dinámica de Unity. Redirigiendo a Basura Edition...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
-                            // Le encajamos la ruta a nuestra versión local
+                            console.log(LOG_PREFIX + " Secuestrando inyección dinámica de Unity. Redirigiendo a tu CDN de GitHub Pages...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
+                            // Desvía la petición a tu URL absoluta de GitHub
                             this.setAttribute('src', miRutaPropia);
                             return;
                         }
@@ -65,7 +59,7 @@
         };
     })();
 
-    console.log(LOG_PREFIX + " Iniciando Sistema Anti-Basura v7.1...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
+    console.log(LOG_PREFIX + " Iniciando Sistema Anti-Basura v7.2 (CDN Edition)...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
     const nombreDelJuego = obtenerNombreJuego();
     console.log(LOG_PREFIX + ` Intentando hackear [${nombreDelJuego}] 🚀`, LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
 
