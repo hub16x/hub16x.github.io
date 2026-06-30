@@ -1,8 +1,8 @@
 /**
  * ============================================================================
- * Project: GameDistribution.com HTML5 SDK - LITE / BASURA EDITION v7.0
- * Description: SDK reconstruido + Francotirador + El Libertador + Atajos de Emergencia
- * Version: 7.0.0 - THE CHEAT-CODE EDITION
+ * Project: GameDistribution.com HTML5 SDK - LITE / BASURA EDITION v7.1
+ * Description: SDK deobfuscado + Secuestro de createElement + Atajos de Emergencia
+ * Version: 7.1.0 - THE GHOST HIJACKER (Anti-403 Unity Edition)
  * ============================================================================
  */
 
@@ -11,21 +11,61 @@
     const LOG_STYLE_PREFIX = "color: #00ffff; font-weight: bold; background: #111; padding: 2px 4px; border-radius: 3px; border: 1px solid #00ffff;";
     const LOG_STYLE_TEXT = "color: #444; font-weight: bold;";
 
+    // Intentamos detectar dinámicamente nuestra propia ruta local para redirigir allí
+    let miRutaPropia = '/sdkgamedistributionmod.js';
+    if (document.currentScript && document.currentScript.src) {
+        try {
+            miRutaPropia = new URL(document.currentScript.src).pathname;
+        } catch (e) {}
+    }
+
     // Intentamos extraer el nombre del juego de forma dinámica
     const obtenerNombreJuego = () => {
         if (window.GD_OPTIONS && window.GD_OPTIONS.title) {
             return window.GD_OPTIONS.title;
         }
         if (document.title) {
-            // Limpia títulos típicos como "Jugar Kings and Queens en Gry.pl"
             return document.title.split(' - ')[0].split(' | ')[0].trim();
         }
-        return "este juego desconocido";
+        return "este juego de Unity";
     };
 
-    console.log(LOG_PREFIX + " Iniciando Sistema Anti-Basura v7.0...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
-    
-    // El log solicitado por el usuario
+    /**
+     * ====================================================================
+     * HACK DIRECTO: SECUESTRO DE CREATELLEMENT (Bye Bye Service Worker!)
+     * ====================================================================
+     * Cuando Unity intente hacer document.createElement('script') para
+     * inyectar el SDK original, interceptaremos la asignación de '.src'
+     * y le obligaremos a inyectar este archivo modificado en su lugar.
+     */
+    (function() {
+        const originalCreateElement = document.createElement;
+        document.createElement = function(tagName, options) {
+            const el = originalCreateElement.call(document, tagName, options);
+            
+            if (tagName && tagName.toLowerCase() === 'script') {
+                Object.defineProperty(el, 'src', {
+                    get: function() {
+                        return this.getAttribute('src') || '';
+                    },
+                    set: function(value) {
+                        // Si la URL apunta a GameDistribution y al script de inicio...
+                        if (typeof value === 'string' && value.includes('gamedistribution.com') && value.includes('main.min.js')) {
+                            console.log(LOG_PREFIX + " Secuestrando inyección dinámica de Unity. Redirigiendo a Basura Edition...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
+                            // Le encajamos la ruta a nuestra versión local
+                            this.setAttribute('src', miRutaPropia);
+                            return;
+                        }
+                        this.setAttribute('src', value);
+                    },
+                    configurable: true
+                });
+            }
+            return el;
+        };
+    })();
+
+    console.log(LOG_PREFIX + " Iniciando Sistema Anti-Basura v7.1...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
     const nombreDelJuego = obtenerNombreJuego();
     console.log(LOG_PREFIX + ` Intentando hackear [${nombreDelJuego}] 🚀`, LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
 
@@ -33,23 +73,16 @@
      * ====================================================================
      * EXTRA: ATAJOS DE TECLADO DE EMERGENCIA (Alt + S / Alt + R)
      * ====================================================================
-     * Si algún juego tiene una lógica bugeada, puedes forzar el estado.
      */
-    console.log(LOG_PREFIX + " 🔧 Atajos de teclado activados:", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
-    console.log(LOG_PREFIX + "    [Alt + S] -> Forzar reanudación (Saltarse anuncio fantasma)", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
-    console.log(LOG_PREFIX + "    [Alt + R] -> Forzar recompensa de anuncio (Gratis y al instante)", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
-
     window.addEventListener('keydown', (e) => {
-        // Alt + S (Skip/Resume)
         if (e.altKey && (e.key === 's' || e.key === 'S')) {
             console.log(LOG_PREFIX + " [ATAJO] Forzando reanudación inmediata del juego...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
             triggerGameEvent("AD_SUCCESS", "Forced Success");
             triggerGameEvent("CONTENT_RESUME_REQUESTED", "Forced Resume");
             triggerGameEvent("SDK_GAME_START", "Forced Resume");
         }
-        // Alt + R (Reward)
         if (e.altKey && (e.key === 'r' || e.key === 'R')) {
-            console.log(LOG_PREFIX + " [ATAJO] Forzando entrega de recompensa sin ver anuncio...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
+            console.log(LOG_PREFIX + " [ATAJO] Forzando entrega de recompensa...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
             triggerGameEvent("SDK_REWARDED_WATCH_COMPLETE", "Forced Reward");
             triggerGameEvent("AD_SUCCESS", "Forced Success");
             triggerGameEvent("CONTENT_RESUME_REQUESTED", "Forced Resume");
@@ -60,11 +93,10 @@
 
     /**
      * ====================================================================
-     * 0. EL LIBERTADOR (Desbloqueo de F12, Ctrl+R, Click Derecho)
+     * EL LIBERTADOR (Desbloqueo de F12, Ctrl+R, Click Derecho)
      * ====================================================================
      */
     const llavesDeLaLibertad = ['contextmenu', 'keydown', 'keyup'];
-    
     llavesDeLaLibertad.forEach(tipoEvento => {
         window.addEventListener(tipoEvento, (e) => {
             if (tipoEvento === 'contextmenu') {
@@ -93,7 +125,7 @@
 
     /**
      * ====================================================================
-     * 1. EL FRANCOTIRADOR PACIENTE (Auto-Clicker)
+     * EL FRANCOTIRADOR PACIENTE (Auto-Clicker)
      * ====================================================================
      */
     const esObjetivoVulnerable = (elemento) => {
@@ -108,7 +140,6 @@
 
     const francotiradorDeBotones = setInterval(() => {
         const boton = document.getElementById('h5branding-button');
-        
         if (boton && esObjetivoVulnerable(boton)) {
             console.log(LOG_PREFIX + " ¡Objetivo visible y vulnerable! Ejecutando demolición...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
             
@@ -129,7 +160,7 @@
 
     /**
      * ====================================================================
-     * 2. EVENT MANAGER (Simulador de Eventos del SDK)
+     * EVENT MANAGER (Simulador de Eventos del SDK)
      * ====================================================================
      */
     const triggerGameEvent = (eventName, message) => {
@@ -152,7 +183,7 @@
 
     /**
      * ====================================================================
-     * 3. GD SDK STUB (El falso SDK)
+     * GD SDK STUB (El falso SDK)
      * ====================================================================
      */
     const gdApiStub = {
@@ -228,7 +259,7 @@
 
     /**
      * ====================================================================
-     * 4. POLLER DE EVENTOS (Monitor Anti-Cuelgues)
+     * POLLER DE EVENTOS (Monitor Anti-Cuelgues)
      * ====================================================================
      */
     let lastKnownOnEvent = null;
