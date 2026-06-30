@@ -1,8 +1,8 @@
 /**
  * ============================================================================
- * Project: GameDistribution.com HTML5 SDK - LITE / BASURA EDITION v7.4
- * Description: SDK deobfuscado + Secuestro de createElement + Auto-Start Unity
- * Version: 7.4.0 - THE GAME STARTER (Fix de Pantalla Negra para Unity)
+ * Project: GameDistribution.com HTML5 SDK - LITE / BASURA EDITION v7.5
+ * Description: SDK deobfuscado + Secuestro de createElement + Parche Anti-Cuelgues
+ * Version: 7.5.0 - THE BULLETPROOF EDITION (Solución para el error de UnityLoader)
  * ============================================================================
  */
 
@@ -28,7 +28,7 @@
         } catch (e) {}
     }
 
-    // Intentamos extraer el nombre del juego de forma deobfuscada
+    // Intentamos extraer el nombre del juego de forma dinámica
     const obtenerNombreJuego = () => {
         if (window.GD_OPTIONS && window.GD_OPTIONS.title) {
             return window.GD_OPTIONS.title;
@@ -69,7 +69,7 @@
         };
     })();
 
-    console.log(LOG_PREFIX + " Iniciando Sistema Anti-Basura v7.4...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
+    console.log(LOG_PREFIX + " Iniciando Sistema Anti-Basura v7.5 (Bulletproof)...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
     const nombreDelJuego = obtenerNombreJuego();
     console.log(LOG_PREFIX + ` Intentando hackear [${nombreDelJuego}] 🚀`, LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
 
@@ -121,11 +121,16 @@
         }, true);
     });
 
-    Object.defineProperty(document, 'oncontextmenu', {
-        set: function() { console.log(LOG_PREFIX + " El juego intentó bloquear el click derecho. Denegado.", LOG_STYLE_PREFIX, LOG_STYLE_TEXT); },
-        get: function() { return null; },
-        configurable: true 
-    });
+    // Envolvemos esto en un try-catch blindado para evitar detener la carga de Unity
+    try {
+        Object.defineProperty(document, 'oncontextmenu', {
+            set: function() { console.log(LOG_PREFIX + " El juego intentó bloquear el click derecho. Denegado.", LOG_STYLE_PREFIX, LOG_STYLE_TEXT); },
+            get: function() { return null; },
+            configurable: true 
+        });
+    } catch (error) {
+        console.log(LOG_PREFIX + " Nota: No se pudo inyectar el bypass de oncontextmenu nativo (no es crítico, ignorando...).", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
+    }
 
 
     /**
@@ -284,16 +289,12 @@
                 triggerGameEvent("SDK_READY", "Everything is ready.");
                 readyFiredForCurrent = true;
 
-                // --------------------------------------------------------------------
-                // NUEVO PARCHE DE INICIO DE UNITY:
                 // Forzamos la señal de que los anuncios iniciales han concluido.
-                // Esto despierta al motor gráfico de Unity sacándolo de la pausa inicial.
-                // --------------------------------------------------------------------
                 setTimeout(() => {
                     console.log(LOG_PREFIX + " Forzando inicio/reanudación automática del motor de Unity (SDK_GAME_START)...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
                     triggerGameEvent("CONTENT_RESUME_REQUESTED", "Ad finished.");
                     triggerGameEvent("SDK_GAME_START", "Everything is loaded, start the game.");
-                }, 500); // 500ms tras SDK_READY
+                }, 500); 
             }
         }
 
