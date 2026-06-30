@@ -1,8 +1,8 @@
 /**
  * ============================================================================
- * Project: GameDistribution.com HTML5 SDK - LITE / BASURA EDITION v7.2
- * Description: SDK deobfuscado + Secuestro de createElement + Atajos de Emergencia
- * Version: 7.2.0 - CDN FRIENDLY EDITION (Optimizado para GitHub Pages)
+ * Project: GameDistribution.com HTML5 SDK - LITE / BASURA EDITION v7.3
+ * Description: SDK deobfuscado + Secuestro de createElement + Atajos + Doble Carga Fix
+ * Version: 7.3.0 - ANTI-DOUBLE LOAD (Fix definitivo para Unity WebGL)
  * ============================================================================
  */
 
@@ -11,10 +11,21 @@
     const LOG_STYLE_PREFIX = "color: #00ffff; font-weight: bold; background: #111; padding: 2px 4px; border-radius: 3px; border: 1px solid #00ffff;";
     const LOG_STYLE_TEXT = "color: #444; font-weight: bold;";
 
+    // --------------------------------------------------------------------
+    // ESCUDO DE DOBLE EJECUCIÓN: Evita romper el motor si el script se carga 2 veces
+    // --------------------------------------------------------------------
+    if (window.GD_HACK_ACTIVE) {
+        console.log(LOG_PREFIX + " Redirección de Unity completada. Evitando doble ejecución...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
+        return; // Salimos de inmediato para no lanzar TypeErrors
+    }
+    window.GD_HACK_ACTIVE = true;
+
     // Intentamos detectar dinámicamente nuestra propia ruta absoluta de GitHub
     let miRutaPropia = 'https://hub16x.github.io/assets/scripts/sdkgamedistributionmod.js';
     if (document.currentScript && document.currentScript.src) {
-        miRutaPropia = document.currentScript.src; // Guarda la URL completa (incluyendo dominio de GitHub)
+        try {
+            miRutaPropia = document.currentScript.src;
+        } catch (e) {}
     }
 
     // Intentamos extraer el nombre del juego de forma dinámica
@@ -46,7 +57,6 @@
                     set: function(value) {
                         if (typeof value === 'string' && value.includes('gamedistribution.com') && value.includes('main.min.js')) {
                             console.log(LOG_PREFIX + " Secuestrando inyección dinámica de Unity. Redirigiendo a tu CDN de GitHub Pages...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
-                            // Desvía la petición a tu URL absoluta de GitHub
                             this.setAttribute('src', miRutaPropia);
                             return;
                         }
@@ -59,7 +69,7 @@
         };
     })();
 
-    console.log(LOG_PREFIX + " Iniciando Sistema Anti-Basura v7.2 (CDN Edition)...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
+    console.log(LOG_PREFIX + " Iniciando Sistema Anti-Basura v7.3 (CDN Edition)...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
     const nombreDelJuego = obtenerNombreJuego();
     console.log(LOG_PREFIX + ` Intentando hackear [${nombreDelJuego}] 🚀`, LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
 
@@ -113,7 +123,8 @@
 
     Object.defineProperty(document, 'oncontextmenu', {
         set: function() { console.log(LOG_PREFIX + " El juego intentó bloquear el click derecho. Denegado.", LOG_STYLE_PREFIX, LOG_STYLE_TEXT); },
-        get: function() { return null; }
+        get: function() { return null; },
+        configurable: true // Permitimos que sea configurable por si acaso
     });
 
 
