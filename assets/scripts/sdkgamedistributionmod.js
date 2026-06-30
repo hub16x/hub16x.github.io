@@ -1,8 +1,8 @@
 /**
  * ============================================================================
- * Project: GameDistribution.com HTML5 SDK - LITE / BASURA EDITION v7.3
- * Description: SDK deobfuscado + Secuestro de createElement + Atajos + Doble Carga Fix
- * Version: 7.3.0 - ANTI-DOUBLE LOAD (Fix definitivo para Unity WebGL)
+ * Project: GameDistribution.com HTML5 SDK - LITE / BASURA EDITION v7.4
+ * Description: SDK deobfuscado + Secuestro de createElement + Auto-Start Unity
+ * Version: 7.4.0 - THE GAME STARTER (Fix de Pantalla Negra para Unity)
  * ============================================================================
  */
 
@@ -12,15 +12,15 @@
     const LOG_STYLE_TEXT = "color: #444; font-weight: bold;";
 
     // --------------------------------------------------------------------
-    // ESCUDO DE DOBLE EJECUCIÓN: Evita romper el motor si el script se carga 2 veces
+    // ESCUDO DE DOBLE EJECUCIÓN
     // --------------------------------------------------------------------
     if (window.GD_HACK_ACTIVE) {
         console.log(LOG_PREFIX + " Redirección de Unity completada. Evitando doble ejecución...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
-        return; // Salimos de inmediato para no lanzar TypeErrors
+        return; 
     }
     window.GD_HACK_ACTIVE = true;
 
-    // Intentamos detectar dinámicamente nuestra propia ruta absoluta de GitHub
+    // Intentamos detectar dinámicamente nuestra propia ruta de GitHub
     let miRutaPropia = 'https://hub16x.github.io/assets/scripts/sdkgamedistributionmod.js';
     if (document.currentScript && document.currentScript.src) {
         try {
@@ -28,7 +28,7 @@
         } catch (e) {}
     }
 
-    // Intentamos extraer el nombre del juego de forma dinámica
+    // Intentamos extraer el nombre del juego de forma deobfuscada
     const obtenerNombreJuego = () => {
         if (window.GD_OPTIONS && window.GD_OPTIONS.title) {
             return window.GD_OPTIONS.title;
@@ -69,7 +69,7 @@
         };
     })();
 
-    console.log(LOG_PREFIX + " Iniciando Sistema Anti-Basura v7.3 (CDN Edition)...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
+    console.log(LOG_PREFIX + " Iniciando Sistema Anti-Basura v7.4...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
     const nombreDelJuego = obtenerNombreJuego();
     console.log(LOG_PREFIX + ` Intentando hackear [${nombreDelJuego}] 🚀`, LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
 
@@ -124,7 +124,7 @@
     Object.defineProperty(document, 'oncontextmenu', {
         set: function() { console.log(LOG_PREFIX + " El juego intentó bloquear el click derecho. Denegado.", LOG_STYLE_PREFIX, LOG_STYLE_TEXT); },
         get: function() { return null; },
-        configurable: true // Permitimos que sea configurable por si acaso
+        configurable: true 
     });
 
 
@@ -283,6 +283,17 @@
                 console.log(LOG_PREFIX + ` [${obtenerNombreJuego()}] listo. Enviando señal de inicio (SDK_READY)...`, LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
                 triggerGameEvent("SDK_READY", "Everything is ready.");
                 readyFiredForCurrent = true;
+
+                // --------------------------------------------------------------------
+                // NUEVO PARCHE DE INICIO DE UNITY:
+                // Forzamos la señal de que los anuncios iniciales han concluido.
+                // Esto despierta al motor gráfico de Unity sacándolo de la pausa inicial.
+                // --------------------------------------------------------------------
+                setTimeout(() => {
+                    console.log(LOG_PREFIX + " Forzando inicio/reanudación automática del motor de Unity (SDK_GAME_START)...", LOG_STYLE_PREFIX, LOG_STYLE_TEXT);
+                    triggerGameEvent("CONTENT_RESUME_REQUESTED", "Ad finished.");
+                    triggerGameEvent("SDK_GAME_START", "Everything is loaded, start the game.");
+                }, 500); // 500ms tras SDK_READY
             }
         }
 
